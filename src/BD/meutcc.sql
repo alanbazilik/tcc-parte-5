@@ -89,16 +89,13 @@ CREATE TABLE Venda (
     codvenda serial PRIMARY KEY,
     datavenda date not null,
     fk_codcliente INTEGER,
-    fk_codfuncionario INTEGER
+    fk_codfuncionario INTEGER,
+	fk_codproduto INTEGER,
+    quantv numeric(10,2) not null,
+    valorv numeric(10,2) not null
 );
 
-CREATE TABLE Itens_Venda (
-    fk_codproduto INTEGER,
-    fk_codvenda integer,
-    quantv numeric(10,2) not null,
-    valorv numeric(10,2) not null,
-    PRIMARY KEY (fk_codproduto, fk_codvenda)
-);
+
  
  
 ALTER TABLE funcionario ADD CONSTRAINT FK_funcionario_4
@@ -157,13 +154,11 @@ ALTER TABLE Venda ADD CONSTRAINT FK_Venda_4
     FOREIGN KEY (fk_codfuncionario)
     REFERENCES funcionario (cod_funcionario);
  
-ALTER TABLE Itens_Venda ADD CONSTRAINT FK_Itens_Venda_1
+ALTER TABLE Venda ADD CONSTRAINT FK_Venda_5
     FOREIGN KEY (fk_codproduto)
     REFERENCES produto (codigo_barras);
  
-ALTER TABLE Itens_Venda ADD CONSTRAINT FK_Itens_Venda_3
-    FOREIGN KEY (fk_codvenda)
-    REFERENCES Venda (codvenda);
+
 
 ALTER TABLE Telefone ADD CONSTRAINT FK_Telefone_1
     FOREIGN KEY (fk_codtipotel)

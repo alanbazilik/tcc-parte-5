@@ -43,8 +43,8 @@ public class venda extends javax.swing.JFrame {
         salvar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        marca = new javax.swing.JComboBox<>();
-        tipo1 = new javax.swing.JComboBox<>();
+        marca = new javax.swing.JComboBox<String>();
+        tipo1 = new javax.swing.JComboBox<String>();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -106,7 +106,7 @@ public class venda extends javax.swing.JFrame {
             }
         });
         getContentPane().add(produtos);
-        produtos.setBounds(160, 70, 160, 22);
+        produtos.setBounds(160, 70, 160, 20);
 
         excluir.setText("desativar");
         jSplitPane2.setLeftComponent(excluir);
@@ -138,23 +138,23 @@ public class venda extends javax.swing.JFrame {
         getContentPane().add(jLabel6);
         jLabel6.setBounds(0, 140, 150, 25);
 
-        marca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        marca.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         marca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 marcaActionPerformed(evt);
             }
         });
         getContentPane().add(marca);
-        marca.setBounds(110, 140, 110, 22);
+        marca.setBounds(110, 140, 110, 20);
 
-        tipo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        tipo1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         tipo1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tipo1ActionPerformed(evt);
             }
         });
         getContentPane().add(tipo1);
-        tipo1.setBounds(90, 110, 110, 22);
+        tipo1.setBounds(90, 110, 110, 20);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thumb2-program-code-black-backgrounds-programming-background-with-program-code-code.jpg"))); // NOI18N
         getContentPane().add(jLabel4);
