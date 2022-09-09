@@ -190,26 +190,12 @@
                       <KeyStroke key="Shift+Ctrl+Alt+V"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/img/crescimento.png"/>
+                      <Image iconType="3" name="/img/icons8-finalizar-pedido-32.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="venda"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vendaActionPerformed"/>
-                  </Events>
-                </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="itemvendas1">
-                  <Properties>
-                    <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
-                      <KeyStroke key="Ctrl+Alt+V"/>
-                    </Property>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/img/icons8-finalizar-pedido-32.png"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="itemvenda"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemvendas1ActionPerformed"/>
                   </Events>
                 </MenuItem>
               </SubComponents>
