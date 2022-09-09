@@ -23,14 +23,13 @@ public class ProdutoDAO {
     PreparedStatement pgsql;
     Statement st;
     ResultSet rs;
-    public ResultSet listamarca(int fk_marca)
+    public ResultSet listamarca()
     {
         ConexaoDAO cb = new ConexaoDAO();
         con = cb.conectaPostgre();
         
         ResultSet rs = null;
-        String sql = "select * from produto where fk_marca = ?" 
-                                                        + fk_marca;
+        String sql = "select * from produto";
         
         try {
             st = con.createStatement(ResultSet.CONCUR_UPDATABLE,
@@ -45,14 +44,13 @@ public class ProdutoDAO {
         
         
     }
-   public ResultSet listatipo(int fk_tipo)
+   public ResultSet listatipo()
     {
         ConexaoDAO cb = new ConexaoDAO();
         con = cb.conectaPostgre();
         
         ResultSet rs = null;
-        String sql = "select * from produto where fk_tipo = ?" 
-                                                        + fk_tipo;
+        String sql = "select * from produto ";
         
         try {
             st = con.createStatement(ResultSet.CONCUR_UPDATABLE,

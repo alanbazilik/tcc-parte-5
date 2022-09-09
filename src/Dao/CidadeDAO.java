@@ -23,14 +23,14 @@ public class CidadeDAO {
     PreparedStatement pgsql;
     Statement st;
     ResultSet rs;
-    public ResultSet listacidade(int fk_uf)
+    public ResultSet listacidade()
     {
         ConexaoDAO cb = new ConexaoDAO();
         con = cb.conectaPostgre();
         
         ResultSet rs = null;
-        String sql = "select * from cidade where fk_uf = ?" 
-                                                        + fk_uf;
+        String sql = "select * from cidade"; 
+                                                        
         
         try {
             st = con.createStatement(ResultSet.CONCUR_UPDATABLE,
@@ -48,7 +48,7 @@ public class CidadeDAO {
     
     
     
-   public void Inseretelefone(CidadeModel gs)
+   public void Inserecidade(CidadeModel gs)
     {
         ConexaoDAO cb = new ConexaoDAO();
         con = cb.conectaPostgre();
@@ -69,7 +69,7 @@ public class CidadeDAO {
             Logger.getLogger(CidadeDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void Alteratipotel(CidadeModel gs)
+    public void Alteracidade(CidadeModel gs)
     {
         ConexaoDAO cb = new ConexaoDAO();
         con = cb.conectaPostgre();
@@ -94,7 +94,7 @@ public class CidadeDAO {
     }
  
     
-  public void Excluitipotel(CidadeModel gs)
+  public void Excluicidade(CidadeModel gs)
     {
         ConexaoDAO cb = new ConexaoDAO();
         con = cb.conectaPostgre();
@@ -112,7 +112,7 @@ public class CidadeDAO {
             Logger.getLogger(CidadeDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-     public ResultSet PesquisarTodosTelefone(String cidade)
+     public ResultSet PesquisarTodoscidade(String cidade)
     {
            ConexaoDAO cb = new ConexaoDAO();
         con = cb.conectaPostgre();
