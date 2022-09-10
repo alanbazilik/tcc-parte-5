@@ -23,14 +23,13 @@ public class vendaDAO {
     PreparedStatement pgsql;
     Statement st;
     ResultSet rs;
-    public ResultSet listafuncionario(int fk_codfuncionario)
+    public ResultSet listafuncionario()
     {
         ConexaoDAO cb = new ConexaoDAO();
         con = cb.conectaPostgre();
         
         ResultSet rs = null;
-        String sql = "select * from Venda where fk_codfuncionario = ?" 
-                                                        + fk_codfuncionario;
+        String sql = "select * from Venda";
         
         try {
             st = con.createStatement(ResultSet.CONCUR_UPDATABLE,
@@ -45,14 +44,13 @@ public class vendaDAO {
         
         
     }
-   public ResultSet listacliente(int fk_cliente)
+   public ResultSet listacliente()
     {
         ConexaoDAO cb = new ConexaoDAO();
         con = cb.conectaPostgre();
         
         ResultSet rs = null;
-        String sql = "select * from Venda where fk_codcliente = ?" 
-                                                        + fk_cliente;
+        String sql = "select * from Venda";
         
         try {
             st = con.createStatement(ResultSet.CONCUR_UPDATABLE,
@@ -67,14 +65,13 @@ public class vendaDAO {
         
         
     }    
-       public ResultSet listaproduto(int fk_codproduto)
+       public ResultSet listaproduto()
     {
         ConexaoDAO cb = new ConexaoDAO();
         con = cb.conectaPostgre();
         
         ResultSet rs = null;
-        String sql = "select * from Venda where fk_codproduto = ?" 
-                                                        + fk_codproduto;
+        String sql = "select * from Venda";
         
         try {
             st = con.createStatement(ResultSet.CONCUR_UPDATABLE,
