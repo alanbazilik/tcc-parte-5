@@ -69,10 +69,10 @@ public class cidade extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setFocusCycleRoot(false);
-        setMaximumSize(new java.awt.Dimension(650, 315));
-        setMinimumSize(new java.awt.Dimension(650, 315));
-        setPreferredSize(new java.awt.Dimension(650, 315));
-        setSize(new java.awt.Dimension(650, 315));
+        setMaximumSize(new java.awt.Dimension(704, 331));
+        setMinimumSize(new java.awt.Dimension(704, 331));
+        setPreferredSize(new java.awt.Dimension(704, 331));
+        setSize(new java.awt.Dimension(704, 331));
         getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 255));
@@ -201,9 +201,9 @@ public class cidade extends javax.swing.JFrame {
         jScrollPane1.setViewportView(cidadetabela);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(210, 60, 420, 230);
+        jScrollPane1.setBounds(210, 60, 480, 230);
 
-        setSize(new java.awt.Dimension(645, 331));
+        setSize(new java.awt.Dimension(704, 331));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -231,17 +231,20 @@ public class cidade extends javax.swing.JFrame {
         {
             excluircidade();
             limparCampos();
+              pesquisartel();
         }
     }//GEN-LAST:event_deletarActionPerformed
 
     private void salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarActionPerformed
         // TODO add your handling code here:
          Inserircidade();
+         limparCampos();
           pesquisartel();
     }//GEN-LAST:event_salvarActionPerformed
 
     private void alterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarActionPerformed
         alterarcidade();
+         limparCampos();
         pesquisartel();
     }//GEN-LAST:event_alterarActionPerformed
 

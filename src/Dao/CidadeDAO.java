@@ -55,7 +55,7 @@ public class CidadeDAO {
         
         String sql = "insert into cidade"
                 + "(nomecidade ,fk_uf)"
-                + " values (?,?)";
+                + " values (upper(?),?)";
         
         try {
             pgsql = con.prepareStatement(sql);
@@ -75,7 +75,7 @@ public class CidadeDAO {
         con = cb.conectaPostgre();
         
         String sql = "UPDATE cidade SET "
-                + "nomecidade = ?,fk_uf = ?"
+                + "nomecidade = upper(?),fk_uf = ?"
                 + "WHERE codcidade = ?";
         
         try {
