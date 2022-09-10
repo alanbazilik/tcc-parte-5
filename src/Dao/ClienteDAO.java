@@ -23,14 +23,13 @@ public class ClienteDAO {
     PreparedStatement pgsql;
     Statement st;
     ResultSet rs;
-    public ResultSet listabairro(int fk_bairro)
+    public ResultSet listabairro()
     {
         ConexaoDAO cb = new ConexaoDAO();
         con = cb.conectaPostgre();
         
         ResultSet rs = null;
-        String sql = "select * from Cliente where fk_bairro = ?" 
-                                                        + fk_bairro;
+        String sql = "select * from Cliente";
         
         try {
             st = con.createStatement(ResultSet.CONCUR_UPDATABLE,
@@ -45,14 +44,13 @@ public class ClienteDAO {
         
         
     }
-   public ResultSet listarcidade(int fk_cidade)
+   public ResultSet listarcidade()
     {
         ConexaoDAO cb = new ConexaoDAO();
         con = cb.conectaPostgre();
         
         ResultSet rs = null;
-        String sql = "select * from Cliente where fk_cidade = ?" 
-                                                        + fk_cidade;
+        String sql = "select * from Cliente";
         
         try {
             st = con.createStatement(ResultSet.CONCUR_UPDATABLE,
@@ -67,14 +65,13 @@ public class ClienteDAO {
         
         
     }    
-       public ResultSet listatelefone(int fk_codtelefone)
+       public ResultSet listatelefone()
     {
         ConexaoDAO cb = new ConexaoDAO();
         con = cb.conectaPostgre();
         
         ResultSet rs = null;
-        String sql = "select * from Cliente where fk_codtelefone = ?" 
-                                                        + fk_codtelefone;
+        String sql = "select * from Cliente";
         
         try {
             st = con.createStatement(ResultSet.CONCUR_UPDATABLE,
@@ -89,14 +86,13 @@ public class ClienteDAO {
         
         
     }  
-           public ResultSet listarua(int fk_codrua)
+           public ResultSet listarua()
     {
         ConexaoDAO cb = new ConexaoDAO();
         con = cb.conectaPostgre();
         
         ResultSet rs = null;
-        String sql = "select * from Cliente where fk_codrua = ?" 
-                                                        + fk_codrua;
+        String sql = "select * from Cliente";
         
         try {
             st = con.createStatement(ResultSet.CONCUR_UPDATABLE,

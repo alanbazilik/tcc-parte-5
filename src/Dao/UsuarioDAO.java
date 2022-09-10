@@ -23,7 +23,7 @@ import static sun.security.jgss.GSSUtil.login;
 
 /**
  *
- * @author Codinhoto
+ * @author Alan
  */
 public class UsuarioDAO {
 
