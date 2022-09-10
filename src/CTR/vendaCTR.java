@@ -5,9 +5,7 @@
 package CTR;
 
 import Dao.vendaDAO;
-import Dao.FuncionarioDAO;
-import Dao.ClienteDAO;
-import Dao.ProdutoDAO;
+
 import Model.ClienteModel;
 import Model.FuncionarioModel;
 import Model.ProdutoModel;
@@ -88,67 +86,62 @@ public class vendaCTR {
         }
     }
               
-//    public void InserecidadeCTR(String nome_funcionario,String rg,String cpf,int fk_bairro,int fk_cidade,
-//    int fk_codtelefone,int fk_codrua,String numerocasa)
-//    {
-//        // Cria um objeto da MODEL
-//        FuncionarioModel objprProdutoModel = new FuncionarioModel();
-//        //Envia por meio de SET o valor de nome
-//        objprProdutoModel.setNome_funcionario(nome_funcionario);
-//        objprProdutoModel.setRg(rg);
-//        objprProdutoModel.setRg(cpf);
-//          objprProdutoModel.setFk_bairro(fk_bairro);
-//           objprProdutoModel.setFk_cidade(fk_cidade);
-//            objprProdutoModel.setFk_codtelefone(fk_codtelefone);
-//             objprProdutoModel.setFk_codrua(fk_codrua);
-//              objprProdutoModel.setNumerocasa(numerocasa);
-//        //Declara objeto da DAO
-//        FuncionarioDAO objdao = new FuncionarioDAO();
-//        //Utiliza método insere e parametro MODEL
-//        objdao.Inseretelefone(objprProdutoModel);
-//                
-//    }
-//             public void AlteracidadeCTR(String nome_funcionario,String rg,String cpf,int fk_bairro,int fk_cidade,
-//    int fk_codtelefone,int fk_codrua,String numerocasa,int cod)
-//    {
-//        // Cria um objeto da MODEL
-//        // Cria um objeto da MODEL
-//        FuncionarioModel objprProdutoModel = new FuncionarioModel();
-//        //Envia por meio de SET o valor de nome
-//        objprProdutoModel.setNome_funcionario(nome_funcionario);
-//        objprProdutoModel.setRg(rg);
-//        objprProdutoModel.setRg(cpf);
-//          objprProdutoModel.setFk_bairro(fk_bairro);
-//           objprProdutoModel.setFk_cidade(fk_cidade);
-//            objprProdutoModel.setFk_codtelefone(fk_codtelefone);
-//             objprProdutoModel.setFk_codrua(fk_codrua);
-//              objprProdutoModel.setNumerocasa(numerocasa);
-//    objprProdutoModel.setCod_funcionario(cod);
-//   
-//
-//        //Declara objeto da DAO
-//        FuncionarioDAO objdao = new  FuncionarioDAO();
-//        //Utiliza método insere e parametro MODEL
-//        objdao.Alteratipotel(objprProdutoModel);
-//    }
-//  
-//     
-//    
-//      public void ExcluitelCTR(int idcliente)
-//     {
-//        FuncionarioModel objfunc = new FuncionarioModel();
-//         
-//         
-//         objfunc.setCod_funcionario(idcliente);
-//         
-//         FuncionarioDAO objdao = new FuncionarioDAO();
-//         objdao.Excluitipotel(objfunc);
-//     }
-//     public ResultSet PesquisartelCTR(String cliente)
-//    {
-//        FuncionarioDAO objfunc = new FuncionarioDAO();
-//        
-//        return objfunc.PesquisarTodos(cliente);
-//        
-//    }  
+    public void InserevendaCTR(String data,int fk_cliente,int fk_funcionario,int fk_produto,float quantv,float valorv)
+    {
+        // Cria um objeto da MODEL
+        VendaModel objprProdutoModel = new VendaModel();
+        //Envia por meio de SET o valor de nome
+        objprProdutoModel.setDatavenda(data);
+         objprProdutoModel.setFk_codfuncionario(fk_funcionario);
+          objprProdutoModel.setFk_codcliente(fk_cliente);
+          objprProdutoModel.setFk_codproduto(fk_produto);
+          objprProdutoModel.setQuantv(quantv);
+          objprProdutoModel.setValorv(valorv);
+        //Declara objeto da DAO
+        vendaDAO objdao = new vendaDAO();
+        //Utiliza método insere e parametro MODEL
+        objdao.Inseretelefone(objprProdutoModel);
+                
+    }
+             public void AlteracidadeCTR(String data,int fk_cliente,int fk_funcionario,int fk_produto,float quantv,float valorv,int cod)
+    {
+        // Cria um objeto da MODEL
+        // Cria um objeto da MODEL
+          VendaModel objprProdutoModel = new VendaModel();
+        //Envia por meio de SET o valor de nome
+        objprProdutoModel.setDatavenda(data);
+         objprProdutoModel.setFk_codfuncionario(fk_funcionario);
+          objprProdutoModel.setFk_codcliente(fk_cliente);
+          objprProdutoModel.setFk_codproduto(fk_produto);
+          objprProdutoModel.setQuantv(quantv);
+          objprProdutoModel.setValorv(valorv);
+        //Declara objeto da DAO
+    objprProdutoModel.setCodvenda(cod);
+   
+
+        //Declara objeto da DAO
+             vendaDAO objdao = new vendaDAO();
+        //Utiliza método insere e parametro MODEL
+        objdao.Alteratipotel(objprProdutoModel);
+    }
+  
+     
+    
+      public void ExcluitelCTR(int idvenda)
+     {
+        VendaModel objfunc = new VendaModel();
+         
+         
+         objfunc.setCodvenda(idvenda);
+         
+         vendaDAO objdao = new vendaDAO();
+         objdao.Excluitipotel(objfunc);
+     }
+     public ResultSet PesquisartelCTR(String date)
+    {
+        vendaDAO objfunc = new vendaDAO();
+        
+        return objfunc.PesquisarTodosTelefone(date);
+        
+    }  
 }

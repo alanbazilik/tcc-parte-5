@@ -1,4 +1,4 @@
-create database estoque;
+﻿create database estoque;
 
 CREATE TABLE usuario(
 	codusuario serial primary key,
@@ -87,7 +87,7 @@ CREATE TABLE Telefone (
 
 CREATE TABLE Venda (
     codvenda serial PRIMARY KEY,
-    datavenda date not null,
+    datavenda varchar(20) not null,
     fk_codcliente INTEGER,
     fk_codfuncionario INTEGER,
 	fk_codproduto INTEGER,
