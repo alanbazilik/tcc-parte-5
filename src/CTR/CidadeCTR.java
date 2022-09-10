@@ -23,7 +23,7 @@ public class CidadeCTR {
    public List<EstadoModel> carregaCombo() {
         List<EstadoModel> cidade = new ArrayList<>();
         CidadeDAO objdao = new CidadeDAO();
-        ResultSet rsestadp = objdao.listacidade();
+        ResultSet rsestadp = objdao.listaestado();
 
         try {
             while (rsestadp.next()) {

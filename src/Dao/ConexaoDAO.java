@@ -20,7 +20,7 @@ public class ConexaoDAO {
 
     private String caminho = "jdbc:postgresql://localhost:5432/";
     private String usuario = "postgres";
-    private String senha = "unifunec";
+    private String senha = "info@1234";
     private Connection con = null;
     private String bancoPrincipal = "estoque";
 
@@ -30,13 +30,13 @@ public class ConexaoDAO {
 
             try {
                 con = DriverManager.getConnection(caminho + bancoPrincipal, usuario, senha);
-                //JOptionPane.showMessageDialog(null,"Conectado com Sucesso!!!");
+               // JOptionPane.showMessageDialog(null,"Conectado com Sucesso!!!");
             } catch (SQLException ex) {
                 Logger.getLogger(ConexaoDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         } catch (ClassNotFoundException ex) {
-           // System.out.println("Driver não encontrada.");
+         //  System.out.println("Driver não encontrada.");
             Logger.getLogger(ConexaoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return con;

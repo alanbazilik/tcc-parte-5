@@ -23,13 +23,13 @@ public class CidadeDAO {
     PreparedStatement pgsql;
     Statement st;
     ResultSet rs;
-    public ResultSet listacidade()
+    public ResultSet listaestado()
     {
         ConexaoDAO cb = new ConexaoDAO();
         con = cb.conectaPostgre();
         
         ResultSet rs = null;
-        String sql = "select * from cidade"; 
+        String sql = "select * from estado"; 
                                                         
         
         try {

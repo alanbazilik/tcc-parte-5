@@ -58,7 +58,7 @@ public class tela_telefone extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         telefone = new javax.swing.JTextField();
-        jcomboxtel = new javax.swing.JComboBox<String>();
+        jcomboxtel = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtalbetel = new javax.swing.JTable();
         buscar = new javax.swing.JButton();
@@ -113,7 +113,7 @@ public class tela_telefone extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 826, 59);
+        jPanel1.setBounds(0, 0, 833, 59);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -133,16 +133,16 @@ public class tela_telefone extends javax.swing.JFrame {
             }
         });
         getContentPane().add(telefone);
-        telefone.setBounds(180, 110, 160, 20);
+        telefone.setBounds(180, 110, 160, 19);
 
-        jcomboxtel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcomboxtel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jcomboxtel.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jcomboxtelItemStateChanged(evt);
             }
         });
         getContentPane().add(jcomboxtel);
-        jcomboxtel.setBounds(230, 150, 120, 20);
+        jcomboxtel.setBounds(230, 150, 120, 24);
 
         jtalbetel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

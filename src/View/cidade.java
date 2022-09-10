@@ -4,7 +4,21 @@
  */
 package View;
 
+import CTR.CidadeCTR;
+import CTR.TelefoneCTR;
+import Model.EstadoModel;
 import Sistemas_login.utilitarios;
+import static View.cidade.id_cidade;
+import static View.tela_telefone.button;
+import static View.tela_telefone.id_tel;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,8 +29,16 @@ public class cidade extends javax.swing.JFrame {
     /**
      * Creates new form cidade
      */
+        public static int id_cidade;
+    public static int fkcod_cidade;
+    ResultSet rsfunc;
+    String opcao;
+    List<EstadoModel> listcidade;
     public cidade() {
         initComponents();
+        carregaestadocmb();
+        desativarBotoes();
+         pesquisartel();
          utilitarios u = new utilitarios();
     u.inserirIcone(this);
     }
@@ -35,16 +57,15 @@ public class cidade extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         cidade = new javax.swing.JTextField();
-        jSplitPane2 = new javax.swing.JSplitPane();
-        excluir = new javax.swing.JButton();
-        Alterar = new javax.swing.JButton();
-        jSplitPane1 = new javax.swing.JSplitPane();
-        cradastrar = new javax.swing.JButton();
+        uf = new javax.swing.JComboBox<>();
+        deletar = new javax.swing.JButton();
+        cadastrar = new javax.swing.JButton();
         salvar = new javax.swing.JButton();
-        uf = new javax.swing.JComboBox<String>();
+        alterar = new javax.swing.JButton();
+        atualizar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        cidadetabela = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setFocusCycleRoot(false);
@@ -83,13 +104,13 @@ public class cidade extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Estado:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 130, 150, 25);
+        jLabel2.setBounds(0, 130, 70, 25);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Nome cidade:");
+        jLabel3.setText("Cidade:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(0, 100, 150, 25);
+        jLabel3.setBounds(0, 100, 70, 25);
 
         cidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,57 +118,164 @@ public class cidade extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cidade);
-        cidade.setBounds(130, 100, 160, 20);
+        cidade.setBounds(70, 100, 140, 19);
 
-        excluir.setText("desativar");
-        jSplitPane2.setLeftComponent(excluir);
-
-        Alterar.setText("Alterar");
-        jSplitPane2.setRightComponent(Alterar);
-
-        getContentPane().add(jSplitPane2);
-        jSplitPane2.setBounds(10, 230, 180, 49);
-
-        cradastrar.setText("cradastrar");
-        jSplitPane1.setLeftComponent(cradastrar);
-
-        salvar.setText("salvar");
-        jSplitPane1.setRightComponent(salvar);
-
-        getContentPane().add(jSplitPane1);
-        jSplitPane1.setBounds(10, 180, 180, 51);
-
-        uf.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        uf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(uf);
-        uf.setBounds(80, 130, 150, 20);
+        uf.setBounds(70, 130, 140, 24);
+
+        deletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar (1).png"))); // NOI18N
+        deletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(deletar);
+        deletar.setBounds(10, 230, 50, 50);
+
+        cadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/addition.png"))); // NOI18N
+        cadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cadastrar);
+        cadastrar.setBounds(10, 180, 50, 50);
+
+        salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salvar.png"))); // NOI18N
+        salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(salvar);
+        salvar.setBounds(70, 180, 50, 50);
+
+        alterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar (1).png"))); // NOI18N
+        alterar.setActionCommand("alterar");
+        alterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alterarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(alterar);
+        alterar.setBounds(70, 230, 50, 50);
+
+        atualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/atualizar.png"))); // NOI18N
+        atualizar.setToolTipText("");
+        atualizar.setActionCommand("refesh");
+        atualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atualizarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(atualizar);
+        atualizar.setBounds(160, 240, 50, 50);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thumb2-program-code-black-backgrounds-programming-background-with-program-code-code.jpg"))); // NOI18N
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 60, 340, 240);
+        jLabel4.setBounds(-60, 60, 270, 240);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        cidadetabela.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.black));
+        cidadetabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        cidadetabela.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cidadetabelaMouseClicked(evt);
+            }
+        });
+        cidadetabela.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cidadetabelaKeyPressed(evt);
+            }
+        });
+        jScrollPane1.setViewportView(cidadetabela);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(340, 60, 300, 240);
+        jScrollPane1.setBounds(210, 60, 420, 230);
 
-        setSize(new java.awt.Dimension(645, 308));
+        setSize(new java.awt.Dimension(645, 331));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cidadeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cidadeActionPerformed
+
+    private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
+        // TODO add your handling code here:
+            ativarBotoes();
+        limparCampos();
+        opcao = "Inserir";
+        button = true;
+    }//GEN-LAST:event_cadastrarActionPerformed
+
+    private void deletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletarActionPerformed
+                String [] options = new String[] {"Sim","Não"};
+
+        Object ret = JOptionPane.showOptionDialog
+        (null, "Tem certeza que deseja excluir: "
+            + cidade.getText() + "?","AVISO", JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+
+        if(options[Integer.valueOf(ret.toString())].equals("Sim"))
+        {
+            excluircidade();
+            limparCampos();
+        }
+    }//GEN-LAST:event_deletarActionPerformed
+
+    private void salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarActionPerformed
+        // TODO add your handling code here:
+         Inserircidade();
+          pesquisartel();
+    }//GEN-LAST:event_salvarActionPerformed
+
+    private void alterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarActionPerformed
+        alterarcidade();
+        pesquisartel();
+    }//GEN-LAST:event_alterarActionPerformed
+
+    private void atualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarActionPerformed
+        // TODO add your handling code here:
+        pesquisartel();
+    }//GEN-LAST:event_atualizarActionPerformed
+
+    private void cidadetabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cidadetabelaMouseClicked
+            if(evt.getClickCount() == 2)
+        {
+            int linha = cidadetabela.getSelectedRow();
+            
+       
+            this.cidade.setText((String) cidadetabela.getValueAt(linha, 0));
+          
+            
+            tela_tipotelefone.button = 
+           (boolean) cidadetabela.getValueAt(linha, 0);
+                    
+            this.dispose();
+        }
+    }//GEN-LAST:event_cidadetabelaMouseClicked
+
+    private void cidadetabelaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cidadetabelaKeyPressed
+         int linha = cidadetabela.getSelectedRow();
+            
+           
+            this.cidade.setText((String) cidadetabela.getValueAt(linha, 1));
+            id_cidade= (int) cidadetabela.getValueAt(linha, 0);
+   
+            opcao="Alterar";
+            ativarBotoes();
+    }//GEN-LAST:event_cidadetabelaKeyPressed
 
     /**
      * @param args the command line arguments
@@ -183,21 +311,114 @@ public class cidade extends javax.swing.JFrame {
             }
         });
     }
-
+    public void desativarBotoes()
+    {
+        salvar.setEnabled(false);
+        cidade.setEnabled(false);
+      uf.setEnabled(false);
+    }
+    
+    public void ativarBotoes()
+    {
+        salvar.setEnabled(true);
+        cidade.setEnabled(true);
+        uf.setEnabled(true);
+    }
+      public void limparCampos()
+    {
+          cidade.setText("");
+    }
+public void carregaestadocmb()
+    {
+        CidadeCTR objtel = new CidadeCTR();
+        listcidade = objtel.carregaCombo();
+        
+        uf.removeAllItems();
+        int i = 0;
+        
+        while(i < listcidade.size())
+        {
+            uf.addItem(listcidade.get(i).getNomeestado());
+            i++;
+        }
+       
+    }
+ public void preenche_item()
+    {
+     String [] colunas = {"Codigo","cidade","estado"};
+        
+        String [][] linhas ={};
+        
+        DefaultTableModel tablemodel = new DefaultTableModel(linhas,colunas)
+        {
+            public boolean CelulaEditavel(int rowIndex, int mColIndex)
+            {
+                return true;
+            }
+        };
+        
+        Vector <Vector> dados = new Vector();
+        
+        try {
+            while(rsfunc.next())
+            {
+                Vector regVetor = new Vector();
+                
+                regVetor.add(rsfunc.getInt("codcidade"));
+                regVetor.add(rsfunc.getString("nomecidade"));
+                regVetor.add(rsfunc.getInt("fk_uf"));
+                dados.add(regVetor);
+                tablemodel.addRow(regVetor);
+            }
+            cidadetabela.setModel(tablemodel);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Bairros.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void Inserircidade()
+    {
+        CidadeCTR objcli = new  CidadeCTR();
+        
+        objcli.InserecidadeCTR(
+                cidade.getText(), 
+            listcidade.get(uf.getSelectedIndex()).getCod_estado());
+    }
+    public  void alterarcidade(){
+         CidadeCTR objcli = new  CidadeCTR();
+        objcli.AlteracidadeCTR(
+                cidade.getText(), 
+            listcidade.get(uf.getSelectedIndex()).getCod_estado(),id_cidade);
+    
+    }
+    public  void excluircidade(){
+      int linha = cidadetabela.getSelectedRow();
+        
+        CidadeCTR objcli = new CidadeCTR();
+        
+        objcli.ExcluitelCTR(id_cidade);
+    }
+          public void pesquisartel()
+    {
+         CidadeCTR objfunc = new CidadeCTR();
+        rsfunc = objfunc.PesquisartelCTR(cidade.getText());
+        
+        preenche_item();
+        
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Alterar;
+    private javax.swing.JButton alterar;
+    private javax.swing.JButton atualizar;
+    private javax.swing.JButton cadastrar;
     private javax.swing.JTextField cidade;
-    private javax.swing.JButton cradastrar;
-    private javax.swing.JButton excluir;
+    private javax.swing.JTable cidadetabela;
+    private javax.swing.JButton deletar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JSplitPane jSplitPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton salvar;
     private javax.swing.JComboBox<String> uf;
     // End of variables declaration//GEN-END:variables
