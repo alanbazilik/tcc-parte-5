@@ -29,7 +29,7 @@ public class FuncionarioDAO {
         con = cb.conectaPostgre();
         
         ResultSet rs = null;
-        String sql = "select * from funcionario";
+        String sql = "select * from bairro";
                                                        
         
         try {
@@ -51,7 +51,7 @@ public class FuncionarioDAO {
         con = cb.conectaPostgre();
         
         ResultSet rs = null;
-        String sql = "select * from funcionario";
+        String sql = "select * from cidade";
         
         try {
             st = con.createStatement(ResultSet.CONCUR_UPDATABLE,
@@ -72,7 +72,7 @@ public class FuncionarioDAO {
         con = cb.conectaPostgre();
         
         ResultSet rs = null;
-        String sql = "select * from funcionario";
+        String sql = "select * from Telefone";
         
         try {
             st = con.createStatement(ResultSet.CONCUR_UPDATABLE,
@@ -93,7 +93,7 @@ public class FuncionarioDAO {
         con = cb.conectaPostgre();
         
         ResultSet rs = null;
-        String sql = "select * from funcionario";
+        String sql = "select * from Rua";
         
         try {
             st = con.createStatement(ResultSet.CONCUR_UPDATABLE,

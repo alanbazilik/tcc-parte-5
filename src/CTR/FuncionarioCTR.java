@@ -39,7 +39,7 @@ public class FuncionarioCTR {
             return bairros1;
 
         } catch (SQLException ex) {
-            Logger.getLogger(ClienteCTR.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FuncionarioCTR.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
@@ -60,7 +60,7 @@ public class FuncionarioCTR {
             return rua;
 
         } catch (SQLException ex) {
-            Logger.getLogger(ClienteCTR.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FuncionarioCTR.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
@@ -81,7 +81,7 @@ public class FuncionarioCTR {
             return telefone;
 
         } catch (SQLException ex) {
-            Logger.getLogger(ClienteCTR.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FuncionarioCTR.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }  
@@ -102,7 +102,7 @@ public class FuncionarioCTR {
             return cidade;
 
         } catch (SQLException ex) {
-            Logger.getLogger(ClienteCTR.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FuncionarioCTR.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }

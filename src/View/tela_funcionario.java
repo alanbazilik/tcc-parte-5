@@ -4,8 +4,14 @@
  * and open the template in the editor.
  */
 package View;
-
+import CTR.FuncionarioCTR;
+import Model.CidadeModel;
+import Model.bairroModel;
+import Model.telefoneModel;    
+import Model.RuaModel;
 import Sistemas_login.utilitarios;
+import java.sql.ResultSet;
+import java.util.List;
 
 
 
@@ -18,8 +24,20 @@ public class tela_funcionario extends javax.swing.JFrame {
     /**
      * Creates new form tela_funcionario
      */
+      public static int id_cidade;
+    public static int fkcod_cidade;
+    ResultSet rsfunc;
+    String opcao;
+    List<CidadeModel> listcidade;
+     List<bairroModel> listbairro;
+      List<telefoneModel> listtelefone;
+       List<RuaModel> listrua;
     public tela_funcionario() {
         initComponents();
+        carregabairrocmb();
+        carregacidadecmb();
+        carregaruacmb();
+        carregatelefonecmb();
          utilitarios u = new utilitarios();
     u.inserirIcone(this);
     }
@@ -40,26 +58,25 @@ public class tela_funcionario extends javax.swing.JFrame {
         rg = new javax.swing.JTextField();
         funcionario = new javax.swing.JTextField();
         cpf = new javax.swing.JTextField();
-        rua = new javax.swing.JComboBox<String>();
+        rua = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        bairro = new javax.swing.JComboBox<String>();
+        bairro = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        cidade = new javax.swing.JComboBox<String>();
-        telefone = new javax.swing.JComboBox<String>();
+        cidade = new javax.swing.JComboBox<>();
+        telefone = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         casa = new javax.swing.JTextField();
-        jSplitPane1 = new javax.swing.JSplitPane();
-        cradastrar = new javax.swing.JButton();
-        salvar = new javax.swing.JButton();
-        jSplitPane2 = new javax.swing.JSplitPane();
-        excluir = new javax.swing.JButton();
-        Alterar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         tela_princial = new javax.swing.JLabel();
+        cadastrar = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        deletar = new javax.swing.JButton();
+        alterar = new javax.swing.JButton();
+        atualizar = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -72,109 +89,91 @@ public class tela_funcionario extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("nome_funcionario");
+        jLabel2.setText("Funcionario:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 65, 151, 25);
+        jLabel2.setBounds(0, 65, 110, 25);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText(" rg");
+        jLabel3.setText("Rg:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(6, 97, 23, 25);
+        jLabel3.setBounds(0, 90, 30, 25);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("cpf");
+        jLabel4.setText("Cpf:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 129, 26, 25);
+        jLabel4.setBounds(0, 120, 40, 25);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("bairro");
+        jLabel5.setText("Bairro:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(0, 161, 52, 25);
+        jLabel5.setBounds(0, 150, 60, 25);
         getContentPane().add(rg);
-        rg.setBounds(47, 101, 191, 20);
+        rg.setBounds(40, 100, 110, 19);
         getContentPane().add(funcionario);
-        funcionario.setBounds(157, 69, 191, 20);
+        funcionario.setBounds(110, 70, 130, 19);
         getContentPane().add(cpf);
-        cpf.setBounds(47, 133, 191, 20);
+        cpf.setBounds(40, 120, 110, 19);
 
-        rua.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        rua.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(rua);
-        rua.setBounds(66, 228, 120, 20);
+        rua.setBounds(50, 210, 120, 24);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("cidade");
+        jLabel6.setText("Cidade:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(0, 192, 56, 25);
+        jLabel6.setBounds(0, 180, 70, 25);
 
-        bairro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        bairro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(bairro);
-        bairro.setBounds(74, 161, 120, 20);
+        bairro.setBounds(70, 150, 120, 24);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("telefone");
+        jLabel7.setText("Telefone:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(0, 256, 68, 25);
+        jLabel7.setBounds(0, 230, 90, 25);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("rua");
+        jLabel8.setText("Rua:");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(0, 224, 29, 25);
+        jLabel8.setBounds(0, 200, 50, 25);
 
-        cidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(cidade);
-        cidade.setBounds(74, 196, 120, 20);
+        cidade.setBounds(70, 180, 120, 24);
 
-        telefone.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        telefone.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(telefone);
-        telefone.setBounds(74, 260, 56, 20);
+        telefone.setBounds(90, 240, 100, 24);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("numerocasa");
+        jLabel9.setText("Nº:");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(0, 294, 102, 25);
+        jLabel9.setBounds(0, 260, 40, 25);
         getContentPane().add(casa);
-        casa.setBounds(108, 298, 191, 20);
-
-        cradastrar.setText("cradastrar");
-        jSplitPane1.setLeftComponent(cradastrar);
-
-        salvar.setText("salvar");
-        jSplitPane1.setRightComponent(salvar);
-
-        getContentPane().add(jSplitPane1);
-        jSplitPane1.setBounds(10, 340, 180, 51);
-
-        excluir.setText("desativar");
-        jSplitPane2.setLeftComponent(excluir);
-
-        Alterar.setText("Alterar");
-        jSplitPane2.setRightComponent(Alterar);
-
-        getContentPane().add(jSplitPane2);
-        jSplitPane2.setBounds(10, 389, 180, 49);
+        casa.setBounds(30, 270, 100, 19);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(370, 60, 430, 380);
+        jScrollPane1.setBounds(240, 60, 560, 350);
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 255));
 
@@ -211,6 +210,32 @@ public class tela_funcionario extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 801, 59);
+
+        cadastrar.setForeground(new java.awt.Color(0, 0, 0));
+        cadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/addition.png"))); // NOI18N
+        getContentPane().add(cadastrar);
+        cadastrar.setBounds(10, 300, 60, 40);
+
+        jButton2.setForeground(new java.awt.Color(0, 0, 0));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salvar.png"))); // NOI18N
+        getContentPane().add(jButton2);
+        jButton2.setBounds(66, 300, 70, 40);
+
+        deletar.setForeground(new java.awt.Color(0, 0, 0));
+        deletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar (1).png"))); // NOI18N
+        getContentPane().add(deletar);
+        deletar.setBounds(10, 340, 60, 40);
+
+        alterar.setForeground(new java.awt.Color(0, 0, 0));
+        alterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar (1).png"))); // NOI18N
+        getContentPane().add(alterar);
+        alterar.setBounds(70, 340, 66, 40);
+
+        atualizar.setForeground(new java.awt.Color(0, 0, 0));
+        atualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/atualizar.png"))); // NOI18N
+        atualizar.setActionCommand("");
+        getContentPane().add(atualizar);
+        atualizar.setBounds(190, 360, 50, 50);
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thumb2-program-code-black-backgrounds-programming-background-with-program-code-code.jpg"))); // NOI18N
         getContentPane().add(jLabel10);
@@ -261,16 +286,77 @@ public class tela_funcionario extends javax.swing.JFrame {
         });
         
     }
-
+public void carregacidadecmb()
+    {
+        FuncionarioCTR objtel = new FuncionarioCTR();
+        listcidade = objtel.carregaCombocidade();
+        
+        cidade.removeAllItems();
+        int i = 0;
+        
+        while(i < listcidade.size())
+        {
+            cidade.addItem(listcidade.get(i).getNomecidade());
+            i++;
+        }
+       
+    }
+public void carregaruacmb()
+    {
+        FuncionarioCTR objtel = new FuncionarioCTR();
+        listrua = objtel.carregaComboRua();
+        
+        rua.removeAllItems();
+        int i = 0;
+        
+        while(i < listrua.size())
+        {
+            rua.addItem(listrua.get(i).getNomerua());
+            i++;
+        }
+       
+    }
+public void carregatelefonecmb()
+    {
+        FuncionarioCTR objtel = new FuncionarioCTR();
+        listtelefone = objtel.carregaCombotelefone();
+        
+        telefone.removeAllItems();
+        int i = 0;
+        
+        while(i < listrua.size())
+        {
+            telefone.addItem(listtelefone.get(i).getNumerotel());
+            i++;
+        }
+       
+    }
+public void carregabairrocmb()
+    {
+        FuncionarioCTR objtel = new FuncionarioCTR();
+        listbairro = objtel.carregaCombobairro();
+        
+        bairro.removeAllItems();
+        int i = 0;
+        
+        while(i < listbairro.size())
+        {
+            bairro.addItem(listbairro.get(i).getBairros());
+            i++;
+        }
+       
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Alterar;
+    private javax.swing.JButton alterar;
+    private javax.swing.JButton atualizar;
     private javax.swing.JComboBox<String> bairro;
+    private javax.swing.JButton cadastrar;
     private javax.swing.JTextField casa;
     private javax.swing.JComboBox<String> cidade;
     private javax.swing.JTextField cpf;
-    private javax.swing.JButton cradastrar;
-    private javax.swing.JButton excluir;
+    private javax.swing.JButton deletar;
     private javax.swing.JTextField funcionario;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -283,12 +369,9 @@ public class tela_funcionario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JSplitPane jSplitPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField rg;
     private javax.swing.JComboBox<String> rua;
-    private javax.swing.JButton salvar;
     private javax.swing.JLabel tela_princial;
     private javax.swing.JComboBox<String> telefone;
     // End of variables declaration//GEN-END:variables
