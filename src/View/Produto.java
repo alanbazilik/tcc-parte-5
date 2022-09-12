@@ -4,9 +4,21 @@
  */
 package View;
 
+import CTR.produto_CTR;
+import Model.marca_model;
+import Model.tipoModel;
 import Sistemas_login.utilitarios;
+import static View.tela_telefone.button;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,9 +29,18 @@ public class Produto extends javax.swing.JFrame {
     /**
      * Creates new form cidade
      */
+         public static int id_produto;
+    public static int fkmarca;
+    ResultSet rsfunc;
+    String opcao;
+    List<tipoModel> liatipo;
+    List<marca_model> liamarca;
     public Produto() {
         initComponents();
-
+        desativarBotoes();
+        carregamarca();
+        carregatipo();
+        pesquisarproduto();
         utilitarios u = new utilitarios();
         u.inserirIcone(this);
     }
@@ -37,27 +58,28 @@ public class Produto extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         tela_princial = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        produtos = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        tipos1 = new javax.swing.JLabel();
+        tipos = new javax.swing.JLabel();
         quantidade = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        tipo = new javax.swing.JComboBox<>();
         marca = new javax.swing.JComboBox<>();
-        tipo1 = new javax.swing.JComboBox<>();
-        cradastrar = new javax.swing.JButton();
-        salvar = new javax.swing.JButton();
-        excluir = new javax.swing.JButton();
-        Alterar = new javax.swing.JButton();
+        deletar = new javax.swing.JButton();
+        alterar = new javax.swing.JButton();
+        cadastrar2 = new javax.swing.JButton();
+        salvar1 = new javax.swing.JButton();
+        refesh = new javax.swing.JButton();
+        Produto = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        produtable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setFocusCycleRoot(false);
-        setMaximumSize(new java.awt.Dimension(650, 350));
-        setMinimumSize(new java.awt.Dimension(650, 350));
-        setPreferredSize(new java.awt.Dimension(650, 350));
-        setSize(new java.awt.Dimension(650, 350));
+        setMaximumSize(new java.awt.Dimension(645, 380));
+        setMinimumSize(new java.awt.Dimension(645, 380));
+        setPreferredSize(new java.awt.Dimension(645, 380));
+        setSize(new java.awt.Dimension(645, 380));
         getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 255));
@@ -99,99 +121,116 @@ public class Produto extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Nome do produto:");
+        jLabel2.setText("Produto:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 70, 170, 25);
-
-        produtos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                produtosActionPerformed(evt);
-            }
-        });
-        getContentPane().add(produtos);
-        produtos.setBounds(160, 70, 160, 22);
+        jLabel2.setBounds(0, 70, 80, 25);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Quantidade:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(0, 110, 150, 25);
+        jLabel5.setBounds(0, 100, 120, 25);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Marca:");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(0, 170, 150, 25);
+        tipos1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        tipos1.setForeground(new java.awt.Color(255, 255, 255));
+        tipos1.setText("Marca:");
+        getContentPane().add(tipos1);
+        tipos1.setBounds(0, 160, 70, 25);
 
-        quantidade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                quantidadeActionPerformed(evt);
-            }
-        });
+        tipos.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        tipos.setForeground(new java.awt.Color(255, 255, 255));
+        tipos.setText("Tipo:");
+        getContentPane().add(tipos);
+        tipos.setBounds(0, 130, 60, 25);
         getContentPane().add(quantidade);
-        quantidade.setBounds(160, 110, 160, 22);
+        quantidade.setBounds(110, 100, 110, 20);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Tipo:");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(0, 140, 150, 25);
+        tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(tipo);
+        tipo.setBounds(70, 130, 150, 24);
 
         marca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        marca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                marcaActionPerformed(evt);
-            }
-        });
         getContentPane().add(marca);
-        marca.setBounds(102, 170, 110, 22);
+        marca.setBounds(70, 160, 150, 24);
 
-        tipo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        tipo1.addActionListener(new java.awt.event.ActionListener() {
+        deletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar (1).png"))); // NOI18N
+        deletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tipo1ActionPerformed(evt);
+                deletarActionPerformed(evt);
             }
         });
-        getContentPane().add(tipo1);
-        tipo1.setBounds(102, 140, 110, 22);
+        getContentPane().add(deletar);
+        deletar.setBounds(0, 290, 40, 40);
 
-        cradastrar.setText("cradastrar");
-        getContentPane().add(cradastrar);
-        cradastrar.setBounds(20, 210, 82, 51);
+        alterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar (1).png"))); // NOI18N
+        alterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alterarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(alterar);
+        alterar.setBounds(40, 290, 40, 40);
 
-        salvar.setText("salvar");
-        getContentPane().add(salvar);
-        salvar.setBounds(20, 270, 92, 51);
+        cadastrar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/addition.png"))); // NOI18N
+        cadastrar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastrar2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cadastrar2);
+        cadastrar2.setBounds(0, 250, 40, 40);
 
-        excluir.setText("desativar");
-        getContentPane().add(excluir);
-        excluir.setBounds(130, 210, 77, 49);
+        salvar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salvar.png"))); // NOI18N
+        salvar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvar1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(salvar1);
+        salvar1.setBounds(40, 250, 40, 40);
 
-        Alterar.setText("Alterar");
-        getContentPane().add(Alterar);
-        Alterar.setBounds(130, 270, 92, 49);
+        refesh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/atualizar.png"))); // NOI18N
+        refesh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refeshActionPerformed(evt);
+            }
+        });
+        getContentPane().add(refesh);
+        refesh.setBounds(170, 290, 50, 42);
+        getContentPane().add(Produto);
+        Produto.setBounds(80, 70, 140, 19);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thumb2-program-code-black-backgrounds-programming-background-with-program-code-code.jpg"))); // NOI18N
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 60, 340, 270);
+        jLabel4.setBounds(0, 60, 220, 280);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        produtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        produtable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                produtableMouseClicked(evt);
+            }
+        });
+        produtable.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                produtableKeyPressed(evt);
+            }
+        });
+        jScrollPane1.setViewportView(produtable);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(340, 60, 300, 270);
+        jScrollPane1.setBounds(220, 60, 410, 280);
 
-        setSize(new java.awt.Dimension(645, 341));
+        setSize(new java.awt.Dimension(645, 380));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -202,22 +241,79 @@ public class Produto extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_tela_princialMouseClicked
 
-    private void produtosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_produtosActionPerformed
+    private void salvar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvar1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_produtosActionPerformed
+       Inseriproduto();
+         limparCampos();
+          pesquisarproduto();
+    }//GEN-LAST:event_salvar1ActionPerformed
 
-    private void quantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quantidadeActionPerformed
+    private void cadastrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrar2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_quantidadeActionPerformed
+              ativarBotoes();
+        limparCampos();
+        opcao = "Inserir";
+        button = true;
+    }//GEN-LAST:event_cadastrar2ActionPerformed
 
-    private void marcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marcaActionPerformed
+    private void deletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_marcaActionPerformed
+                   String [] options = new String[] {"Sim","Não"};
 
-    private void tipo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipo1ActionPerformed
+        Object ret = JOptionPane.showOptionDialog
+        (null, "Tem certeza que deseja excluir: "
+            + Produto.getText() + "?","AVISO", JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+
+        if(options[Integer.valueOf(ret.toString())].equals("Sim"))
+        {
+            excluirproduto();
+            limparCampos();
+              pesquisarproduto();
+        }
+    }//GEN-LAST:event_deletarActionPerformed
+
+    private void alterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tipo1ActionPerformed
+                alterarproduto();
+         limparCampos();
+        pesquisarproduto();
+    }//GEN-LAST:event_alterarActionPerformed
 
+    private void refeshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refeshActionPerformed
+        // TODO add your handling code here:
+        pesquisarproduto();
+    }//GEN-LAST:event_refeshActionPerformed
+
+    private void produtableKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_produtableKeyPressed
+        // TODO add your handling code here:
+             int linha = produtable.getSelectedRow();
+            
+           
+               this.Produto.setText((String) produtable.getValueAt(linha, 1));
+         quantidade.setText(""+produtable.getValueAt(produtable.getSelectedRow(), 2));
+            id_produto= (int) produtable.getValueAt(linha, 0);
+   
+            opcao="Alterar";
+            ativarBotoes();
+    }//GEN-LAST:event_produtableKeyPressed
+
+    private void produtableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_produtableMouseClicked
+        // TODO add your handling code here:
+             if(evt.getClickCount() == 2)
+        {
+            int linha = produtable.getSelectedRow();
+            
+       
+            this.Produto.setText((String) produtable.getValueAt(linha, 1));
+         quantidade.setText(""+produtable.getValueAt(produtable.getSelectedRow(), 2));
+            
+            tela_tipotelefone.button = 
+           (boolean) produtable.getValueAt(linha, 0);
+                    
+            this.dispose();
+    }//GEN-LAST:event_produtableMouseClicked
+    }
     /**
      * @param args the command line arguments
      */
@@ -267,25 +363,146 @@ public class Produto extends javax.swing.JFrame {
             }
         });
     }
+ public void desativarBotoes()
+    {
+        deletar.setEnabled(false);
+        Produto.setEnabled(false);
+      quantidade.setEnabled(false);
+      tipo.setEnabled(false);
+      marca.setEnabled(false);
+    }
+    
+    public void ativarBotoes()
+    {
+             deletar.setEnabled(true);
+        Produto.setEnabled(true);
+      quantidade.setEnabled(true);
+      tipo.setEnabled(true);
+      marca.setEnabled(true);
+    }
+      public void limparCampos()
+    {
+          Produto.setText("");
+             quantidade.setText("");
+    }
+      public void carregamarca()
+    {
+        produto_CTR objtel = new produto_CTR();
+        liamarca = objtel.carregaCombomarcaproduto();
+        
+        marca.removeAllItems();
+        int i = 0;
+        
+        while(i < liamarca.size())
+        {
+            marca.addItem(liamarca.get(i).getMarca_produto());
+            i++;
+        }
+       
+    }
+        public void carregatipo()
+    {
+        produto_CTR objtel = new produto_CTR();
+        liatipo = objtel.carregaCombotipoproduto();
+        
+        tipo.removeAllItems();
+        int i = 0;
+        
+        while(i < liatipo.size())
+        {
+            tipo.addItem(liatipo.get(i).getTipo());
+            i++;
+        }
 
+    }
+        public void Inseriproduto()
+    {
+        produto_CTR objcli = new  produto_CTR();
+        
+        objcli.InsereprodutoCTR(
+       Produto.getText(),Integer.parseInt(quantidade.getText()),
+               liatipo.get(tipo.getSelectedIndex()).getCod_tipo(),
+                liamarca.get(marca.getSelectedIndex()).getCod_marca_produto()); 
+    }
+                public void alterarproduto()
+    {
+        produto_CTR objcli = new  produto_CTR();
+        
+        objcli.AlteraprodutoCTR(
+       Produto.getText(),Integer.parseInt(quantidade.getText()),
+               liatipo.get(tipo.getSelectedIndex()).getCod_tipo(),
+                liamarca.get(marca.getSelectedIndex()).getCod_marca_produto(),id_produto); 
+    }
+                  public  void excluirproduto(){
+      int linha = produtable.getSelectedRow();
+        
+        produto_CTR objcli = new produto_CTR();
+        
+        objcli.ExcluiprodutoCTR(id_produto);
+    }
+          public void pesquisarproduto()
+    {
+         produto_CTR objfunc = new produto_CTR();
+        rsfunc = objfunc.PesquisarprodutoCTR(Produto.getText());
+        
+        preenche_item();
+        
+    }
+          public void preenche_item()
+    {
+     String [] colunas = {"Codigo de barras","Produto","quantidade","tipo","marca"};
+        
+        String [][] linhas ={};
+        
+        DefaultTableModel tablemodel = new DefaultTableModel(linhas,colunas)
+        {
+            public boolean CelulaEditavel(int rowIndex, int mColIndex)
+            {
+                return true;
+            }
+        };
+        
+        Vector <Vector> dados = new Vector();
+        
+        try {
+            while(rsfunc.next())
+            {
+                Vector regVetor = new Vector();
+                
+                regVetor.add(rsfunc.getInt("codigo_barras"));
+                regVetor.add(rsfunc.getString("produto"));
+                regVetor.add(rsfunc.getInt("quantidade"));
+                regVetor.add(rsfunc.getInt("fk_marca"));
+                regVetor.add(rsfunc.getInt("fk_tipo"));
+                
+                dados.add(regVetor);
+                tablemodel.addRow(regVetor);
+            }
+            produtable.setModel(tablemodel);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Produto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Alterar;
-    private javax.swing.JButton cradastrar;
-    private javax.swing.JButton excluir;
+    private javax.swing.JTextField Produto;
+    private javax.swing.JButton alterar;
+    private javax.swing.JButton cadastrar2;
+    private javax.swing.JButton deletar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JComboBox<String> marca;
-    private javax.swing.JTextField produtos;
+    private javax.swing.JTable produtable;
     private javax.swing.JTextField quantidade;
-    private javax.swing.JButton salvar;
+    private javax.swing.JButton refesh;
+    private javax.swing.JButton salvar1;
     private javax.swing.JLabel tela_princial;
-    private javax.swing.JComboBox<String> tipo1;
+    private javax.swing.JComboBox<String> tipo;
+    private javax.swing.JLabel tipos;
+    private javax.swing.JLabel tipos1;
     // End of variables declaration//GEN-END:variables
 }

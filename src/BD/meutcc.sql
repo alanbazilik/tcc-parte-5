@@ -38,7 +38,7 @@ CREATE TABLE bairro (
 );
 
 CREATE TABLE produto (
-    codigo_barras INTEGER PRIMARY KEY,
+    codigo_barras serial PRIMARY KEY,
     produto VARCHAR(80),
     quantidade INTEGER,
     fk_tipo INTEGER,

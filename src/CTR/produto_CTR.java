@@ -21,6 +21,27 @@ import java.util.logging.Logger;
  * @author User
  */
 public class produto_CTR {
+         public List<tipoModel> carregaCombotipoproduto() {
+        List<tipoModel> tipo = new ArrayList<>();
+        ProdutoDAO objdao = new ProdutoDAO();
+        ResultSet rstipo = objdao.listatipo();
+
+        try {
+            while (rstipo.next()) {
+                tipoModel gs = new tipoModel();
+                gs.setCod_tipo(rstipo.getInt("cod_tipo_produto"));
+                gs.setTipo(rstipo.getString("tipo"));
+                
+
+                tipo.add(gs);
+            }
+            return tipo;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(produto_CTR.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
      public List<marca_model> carregaCombomarcaproduto() {
         List<marca_model> marca = new ArrayList<>();
         ProdutoDAO objdao = new ProdutoDAO();
@@ -43,23 +64,23 @@ public class produto_CTR {
         }
     }
     
-    public void InserecidadeCTR(String marca,int quantidade,int fkmarca,int tipo)
+    public void InsereprodutoCTR(String produto,int quantidade,int fkmarca,int fk_tipo)
     {
         // Cria um objeto da MODEL
         ProdutoModel objprProdutoModel = new ProdutoModel();
         //Envia por meio de SET o valor de nome
-        objprProdutoModel.setProduto(marca);
+        objprProdutoModel.setProduto(produto);
         objprProdutoModel.setQuantidade(quantidade);
         objprProdutoModel.setFk_marca(fkmarca);
-         objprProdutoModel.setFk_tipo(tipo);
+         objprProdutoModel.setFk_tipo(fk_tipo);
          
         //Declara objeto da DAO
         ProdutoDAO objdao = new ProdutoDAO();
         //Utiliza método insere e parametro MODEL
-        objdao.Inseretelefone(objprProdutoModel);
+        objdao.Insereproduto(objprProdutoModel);
                 
     }
-             public void AlteracidadeCTR(String marca,int quantidade,int fkmarca,int tipo,int id_prod)
+             public void AlteraprodutoCTR(String marca,int quantidade,int fkmarca,int tipo,int id_prod)
     {
         // Cria um objeto da MODEL
         ProdutoModel objrua = new ProdutoModel();
@@ -79,7 +100,7 @@ public class produto_CTR {
   
      
     
-      public void ExcluitelCTR(int idproduto)
+      public void ExcluiprodutoCTR(int idproduto)
      {
         ProdutoModel objfunc = new ProdutoModel();
          
@@ -89,7 +110,7 @@ public class produto_CTR {
          ProdutoDAO objdao = new ProdutoDAO();
          objdao.Excluitipotel(objfunc);
      }
-     public ResultSet PesquisartelCTR(String produto)
+     public ResultSet PesquisarprodutoCTR(String produto)
     {
         ProdutoDAO objfunc = new ProdutoDAO();
         

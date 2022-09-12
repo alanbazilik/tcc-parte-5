@@ -29,7 +29,7 @@ public class ProdutoDAO {
         con = cb.conectaPostgre();
         
         ResultSet rs = null;
-        String sql = "select * from produto";
+        String sql = "select * from marca";
         
         try {
             st = con.createStatement(ResultSet.CONCUR_UPDATABLE,
@@ -50,7 +50,7 @@ public class ProdutoDAO {
         con = cb.conectaPostgre();
         
         ResultSet rs = null;
-        String sql = "select * from produto ";
+        String sql = "select * from tipos ";
         
         try {
             st = con.createStatement(ResultSet.CONCUR_UPDATABLE,
@@ -67,14 +67,14 @@ public class ProdutoDAO {
     }    
     
     
-   public void Inseretelefone(ProdutoModel gs)
+   public void Insereproduto(ProdutoModel gs)
     {
         ConexaoDAO cb = new ConexaoDAO();
         con = cb.conectaPostgre();
         
         String sql = "insert into produto"
-                + "(produto ,quantidade,fk_tipo,fk_marca)"
-                + " values (upper(?),?,?,?)";
+             + "(produto,quantidade,fk_tipo,fk_marca)"
+                + " values (?,?,?,?)";
         
         try {
             pgsql = con.prepareStatement(sql);
