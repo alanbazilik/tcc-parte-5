@@ -4,7 +4,20 @@
  */
 package View;
 
+import Model.FuncionarioModel;
+import Model.ClienteModel;
+import Model.ProdutoModel;
+import CTR.vendaCTR;
 import Sistemas_login.utilitarios;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,10 +28,24 @@ public class venda extends javax.swing.JFrame {
     /**
      * Creates new form cidade
      */
+    public static int id_venda;
+    public static int fkcod_cidade;
+    ResultSet rsfunc;
+    String opcao;
+    List<FuncionarioModel> listfFuncionarioModels;
+    List<ClienteModel> listcClienteModels;
+    List<ProdutoModel> listpProdutoModels;
+    static boolean button;
+
     public venda() {
         initComponents();
+        desativarBotoes();
+        pesquisarvenda();
+        carregaclintecmb();
+        carregafuncionariocmb();
+        carregaprodutocmb();
         utilitarios u = new utilitarios();
-    u.inserirIcone(this);
+        u.inserirIcone(this);
     }
 
     /**
@@ -34,20 +61,25 @@ public class venda extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         tela_princial = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        produtos = new javax.swing.JTextField();
-        jSplitPane2 = new javax.swing.JSplitPane();
-        excluir = new javax.swing.JButton();
-        Alterar = new javax.swing.JButton();
-        jSplitPane1 = new javax.swing.JSplitPane();
-        cradastrar = new javax.swing.JButton();
-        salvar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        marca = new javax.swing.JComboBox<String>();
-        tipo1 = new javax.swing.JComboBox<String>();
+        funcionario = new javax.swing.JComboBox<>();
+        clientes = new javax.swing.JComboBox<>();
+        atualizar = new javax.swing.JButton();
+        alterar = new javax.swing.JButton();
+        deletar = new javax.swing.JButton();
+        cadastrar = new javax.swing.JButton();
+        salvar = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        produto = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        Quantv = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        Valorv = new javax.swing.JTextField();
+        date = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        vendaTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setFocusCycleRoot(false);
@@ -96,87 +128,147 @@ public class venda extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Data da venda");
+        jLabel2.setText("Data:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 70, 170, 25);
-
-        produtos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                produtosActionPerformed(evt);
-            }
-        });
-        getContentPane().add(produtos);
-        produtos.setBounds(160, 70, 160, 20);
-
-        excluir.setText("desativar");
-        jSplitPane2.setLeftComponent(excluir);
-
-        Alterar.setText("Alterar");
-        jSplitPane2.setRightComponent(Alterar);
-
-        getContentPane().add(jSplitPane2);
-        jSplitPane2.setBounds(10, 270, 180, 49);
-
-        cradastrar.setText("cradastrar");
-        jSplitPane1.setLeftComponent(cradastrar);
-
-        salvar.setText("salvar");
-        jSplitPane1.setRightComponent(salvar);
-
-        getContentPane().add(jSplitPane1);
-        jSplitPane1.setBounds(10, 220, 180, 51);
+        jLabel2.setBounds(0, 70, 50, 25);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("cliente");
+        jLabel5.setText("Cliente:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(0, 110, 150, 25);
+        jLabel5.setBounds(0, 110, 70, 25);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("funcionário");
+        jLabel6.setText("Quantv:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(0, 140, 150, 25);
+        jLabel6.setBounds(0, 190, 80, 30);
 
-        marca.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        marca.addActionListener(new java.awt.event.ActionListener() {
+        funcionario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        funcionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                marcaActionPerformed(evt);
+                funcionarioActionPerformed(evt);
             }
         });
-        getContentPane().add(marca);
-        marca.setBounds(110, 140, 110, 20);
+        getContentPane().add(funcionario);
+        funcionario.setBounds(110, 140, 110, 24);
 
-        tipo1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        tipo1.addActionListener(new java.awt.event.ActionListener() {
+        clientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        clientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tipo1ActionPerformed(evt);
+                clientesActionPerformed(evt);
             }
         });
-        getContentPane().add(tipo1);
-        tipo1.setBounds(90, 110, 110, 20);
+        getContentPane().add(clientes);
+        clientes.setBounds(90, 110, 110, 24);
+
+        atualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/atualizar.png"))); // NOI18N
+        atualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atualizarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(atualizar);
+        atualizar.setBounds(170, 280, 50, 50);
+
+        alterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar (1).png"))); // NOI18N
+        alterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alterarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(alterar);
+        alterar.setBounds(60, 290, 66, 40);
+
+        deletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar (1).png"))); // NOI18N
+        deletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(deletar);
+        deletar.setBounds(0, 290, 60, 40);
+
+        cadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/addition.png"))); // NOI18N
+        cadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cadastrar);
+        cadastrar.setBounds(0, 250, 60, 40);
+
+        salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salvar.png"))); // NOI18N
+        salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(salvar);
+        salvar.setBounds(60, 250, 70, 40);
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Funcionário:");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(0, 140, 110, 25);
+
+        produto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(produto);
+        produto.setBounds(90, 170, 120, 24);
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Produto:");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(0, 165, 80, 30);
+        getContentPane().add(Quantv);
+        Quantv.setBounds(80, 200, 120, 19);
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Valorv:");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(0, 220, 80, 30);
+        getContentPane().add(Valorv);
+        Valorv.setBounds(80, 230, 120, 19);
+
+        date.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        date.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(date);
+        date.setBounds(80, 65, 80, 30);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thumb2-program-code-black-backgrounds-programming-background-with-program-code-code.jpg"))); // NOI18N
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 60, 340, 270);
+        jLabel4.setBounds(0, 60, 220, 350);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        vendaTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        vendaTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                vendaTableMouseClicked(evt);
+            }
+        });
+        vendaTable.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                vendaTableKeyPressed(evt);
+            }
+        });
+        jScrollPane1.setViewportView(vendaTable);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(340, 60, 300, 270);
+        jScrollPane1.setBounds(220, 60, 410, 280);
 
-        setSize(new java.awt.Dimension(645, 341));
+        setSize(new java.awt.Dimension(645, 380));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -187,17 +279,81 @@ public class venda extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_tela_princialMouseClicked
 
-    private void produtosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_produtosActionPerformed
+    private void funcionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funcionarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_produtosActionPerformed
+    }//GEN-LAST:event_funcionarioActionPerformed
 
-    private void marcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marcaActionPerformed
+    private void clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_marcaActionPerformed
+    }//GEN-LAST:event_clientesActionPerformed
 
-    private void tipo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipo1ActionPerformed
+    private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
+        ativarBotoes();
+        limparCampos();
+        pesquisarvenda();
+        opcao = "Inserir";
+        button = true;
+    }//GEN-LAST:event_cadastrarActionPerformed
+
+    private void deletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletarActionPerformed
+        String[] options = new String[]{"Sim", "Não"};
+           LocalDate localDate = LocalDate.now();
+        date.setText("" + localDate); 
+        Object ret = JOptionPane.showOptionDialog(null, "Tem certeza que deseja excluir: "
+                + date.getText() + "?", "AVISO", JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+
+        if (options[Integer.valueOf(ret.toString())].equals("Sim")) {
+            excluirvenda();
+            limparCampos();
+            desativarBotoes();
+            pesquisarvenda();
+        }
+    }//GEN-LAST:event_deletarActionPerformed
+
+    private void alterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarActionPerformed
+        alterarvenda();
+        limparCampos();
+        pesquisarvenda();
+    }//GEN-LAST:event_alterarActionPerformed
+
+    private void salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tipo1ActionPerformed
+        inserevenda();
+        limparCampos();
+        desativarBotoes();
+        pesquisarvenda();
+
+    }//GEN-LAST:event_salvarActionPerformed
+
+    private void atualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarActionPerformed
+        // TODO add your handling code here:
+        pesquisarvenda();
+    }//GEN-LAST:event_atualizarActionPerformed
+
+    private void vendaTableKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vendaTableKeyPressed
+        int linha = vendaTable.getSelectedRow();
+       Quantv.setText(vendaTable.getModel().getValueAt(linha, 5).toString());
+       Valorv.setText(vendaTable.getModel().getValueAt(linha, 6).toString());
+        id_venda = (int) vendaTable.getValueAt(linha, 0);
+
+        opcao = "Alterar";
+        ativarBotoes();
+    }//GEN-LAST:event_vendaTableKeyPressed
+
+    private void vendaTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vendaTableMouseClicked
+        if (evt.getClickCount() == 2) {
+            int linha = vendaTable.getSelectedRow();
+
+               
+                  Quantv.setText(vendaTable.getModel().getValueAt(linha, 5).toString());
+       Valorv.setText(vendaTable.getModel().getValueAt(linha, 6).toString());
+            tela_Cliente.button
+                    = (boolean) vendaTable.getValueAt(linha, 0);
+
+            this.dispose();
+        }
+    }//GEN-LAST:event_vendaTableMouseClicked
 
     /**
      * @param args the command line arguments
@@ -265,24 +421,181 @@ public class venda extends javax.swing.JFrame {
         });
     }
 
+    public void desativarBotoes() {
+        salvar.setEnabled(false);
+        deletar.setEnabled(false);
+        date.setEnabled(false);
+        funcionario.setEnabled(false);
+        clientes.setEnabled(false);
+        produto.setEnabled(false);
+        Quantv.setEnabled(false);
+        Valorv.setEnabled(false);
+
+    }
+
+    public void ativarBotoes() {
+        salvar.setEnabled(true);
+        deletar.setEnabled(true);
+        date.setEnabled(true);
+        funcionario.setEnabled(true);
+        clientes.setEnabled(true);
+        produto.setEnabled(true);
+        Quantv.setEnabled(true);
+        Valorv.setEnabled(true);
+
+    }
+
+    public void limparCampos() {
+        date.setText("");
+        Quantv.setText("");
+        Valorv.setText("");
+
+    }
+
+    public void carregaclintecmb() {
+        vendaCTR objtel = new vendaCTR();
+        listcClienteModels = objtel.carregaCombocliente();
+
+        clientes.removeAllItems();
+        int i = 0;
+
+        while (i < listcClienteModels.size()) {
+            clientes.addItem(listcClienteModels.get(i).getNome_Cliente());
+            i++;
+        }
+
+    }
+
+    public void carregafuncionariocmb() {
+        vendaCTR objtel = new vendaCTR();
+        listfFuncionarioModels = objtel.carregaCombofuncionario();
+
+        funcionario.removeAllItems();
+        int i = 0;
+
+        while (i < listfFuncionarioModels.size()) {
+            funcionario.addItem(listfFuncionarioModels.get(i).getNome_funcionario());
+            i++;
+        }
+
+    }
+
+    public void carregaprodutocmb() {
+        vendaCTR objtel = new vendaCTR();
+        listpProdutoModels = objtel.carregaComboProduto();
+
+        produto.removeAllItems();
+        int i = 0;
+
+        while (i < listpProdutoModels.size()) {
+            produto.addItem(listpProdutoModels.get(i).getProduto());
+            i++;
+        }
+
+    }
+
+    public void inserevenda() {
+
+        vendaCTR objtel1 = new vendaCTR();
+        LocalDate localDate = LocalDate.now();
+        date.setText("" + localDate);
+        objtel1.InserevendaCTR(
+                date.getText(),
+                listcClienteModels.get(clientes.getSelectedIndex()).getCod_Cliente(),
+                listfFuncionarioModels.get(funcionario.getSelectedIndex()).getCod_funcionario(),
+                listpProdutoModels.get(produto.getSelectedIndex()).getCodigo_barras(),
+                Float.parseFloat(Quantv.getText()),
+                Float.parseFloat(Valorv.getText())
+        );
+    }
+
+    public void alterarvenda() {
+
+        vendaCTR objtel1 = new vendaCTR();
+        LocalDate localDate = LocalDate.now();
+        date.setText("" + localDate);
+        objtel1.AlteracidadeCTR(
+                date.getText(),
+                listcClienteModels.get(clientes.getSelectedIndex()).getCod_Cliente(),
+                listfFuncionarioModels.get(funcionario.getSelectedIndex()).getCod_funcionario(),
+                listpProdutoModels.get(produto.getSelectedIndex()).getCodigo_barras(),
+                Float.parseFloat(Quantv.getText()),
+                Float.parseFloat(Valorv.getText()), id_venda
+        );
+    }
+
+    public void excluirvenda() {
+        int linha = vendaTable.getSelectedRow();
+        
+        vendaCTR objcli = new vendaCTR();
+
+        objcli.ExcluitelCTR(id_venda);
+    }
+
+    public void pesquisarvenda() {
+        vendaCTR objfunc = new vendaCTR();
+        rsfunc = objfunc.PesquisartelCTR(date.getText());
+
+        preenche_item();
+
+    }
+
+    public void preenche_item() {
+        String[] colunas = {"Codigo", "Data", "Funcionario", "Cliente", "Produto", "Quantidade", "Valor"};
+
+        String[][] linhas = {};
+
+        DefaultTableModel tablemodel = new DefaultTableModel(linhas, colunas) {
+            public boolean CelulaEditavel(int rowIndex, int mColIndex) {
+                return true;
+            }
+        };
+
+        Vector<Vector> dados = new Vector();
+
+        try {
+            while (rsfunc.next()) {
+                Vector regVetor = new Vector();
+
+                regVetor.add(rsfunc.getInt("codvenda"));
+                regVetor.add(rsfunc.getString("datavenda"));
+                regVetor.add(rsfunc.getInt("fk_codfuncionario"));
+                regVetor.add(rsfunc.getInt("fk_codcliente"));
+                regVetor.add(rsfunc.getInt("fk_codproduto"));
+                regVetor.add(rsfunc.getFloat("quantv"));
+                regVetor.add(rsfunc.getFloat("valorv"));
+                dados.add(regVetor);
+                tablemodel.addRow(regVetor);
+            }
+            vendaTable.setModel(tablemodel);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(venda.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Alterar;
-    private javax.swing.JButton cradastrar;
-    private javax.swing.JButton excluir;
+    private javax.swing.JTextField Quantv;
+    private javax.swing.JTextField Valorv;
+    private javax.swing.JButton alterar;
+    private javax.swing.JButton atualizar;
+    private javax.swing.JButton cadastrar;
+    private javax.swing.JComboBox<String> clientes;
+    private javax.swing.JLabel date;
+    private javax.swing.JButton deletar;
+    private javax.swing.JComboBox<String> funcionario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JSplitPane jSplitPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JComboBox<String> marca;
-    private javax.swing.JTextField produtos;
+    private javax.swing.JComboBox<String> produto;
     private javax.swing.JButton salvar;
     private javax.swing.JLabel tela_princial;
-    private javax.swing.JComboBox<String> tipo1;
+    private javax.swing.JTable vendaTable;
     // End of variables declaration//GEN-END:variables
 }

@@ -29,7 +29,7 @@ public class vendaDAO {
         con = cb.conectaPostgre();
         
         ResultSet rs = null;
-        String sql = "select * from Venda";
+        String sql = "select * from funcionario";
         
         try {
             st = con.createStatement(ResultSet.CONCUR_UPDATABLE,
@@ -50,7 +50,7 @@ public class vendaDAO {
         con = cb.conectaPostgre();
         
         ResultSet rs = null;
-        String sql = "select * from Venda";
+        String sql = "select * from Cliente";
         
         try {
             st = con.createStatement(ResultSet.CONCUR_UPDATABLE,
@@ -71,7 +71,7 @@ public class vendaDAO {
         con = cb.conectaPostgre();
         
         ResultSet rs = null;
-        String sql = "select * from Venda";
+        String sql = "select * from produto";
         
         try {
             st = con.createStatement(ResultSet.CONCUR_UPDATABLE,
