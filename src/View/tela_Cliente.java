@@ -42,6 +42,7 @@ public class tela_Cliente extends javax.swing.JFrame {
       static boolean  button;
     public tela_Cliente() {
         initComponents();
+         pesquisarfuncionaro();
         desativarBotoes();
         carregabairrocmb();
         carregacidadecmb();
@@ -307,6 +308,7 @@ public class tela_Cliente extends javax.swing.JFrame {
     private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
            ativarBotoes();
         limparCampos();
+         pesquisarfuncionaro();
         opcao = "Inserir";
           button = true;
     }//GEN-LAST:event_cadastrarActionPerformed
@@ -559,7 +561,7 @@ objfuncionario.AlteraClienteCTR(
                 Vector regVetor = new Vector();
                 
                 regVetor.add(rsfunc.getInt("cod_cliente"));
-                regVetor.add(rsfunc.getString("Cliente"));
+                regVetor.add(rsfunc.getString("nome_cliente"));
                  regVetor.add(rsfunc.getString("rg"));
                   regVetor.add(rsfunc.getString("cpf"));
                 regVetor.add(rsfunc.getInt("fk_bairro"));
