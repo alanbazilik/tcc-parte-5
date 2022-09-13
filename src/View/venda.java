@@ -76,7 +76,7 @@ public class venda extends javax.swing.JFrame {
         Quantv = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         Valorv = new javax.swing.JTextField();
-        date = new javax.swing.JLabel();
+        date = new javax.swing.JFormattedTextField();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         vendaTable = new javax.swing.JTable();
@@ -233,10 +233,13 @@ public class venda extends javax.swing.JFrame {
         getContentPane().add(Valorv);
         Valorv.setBounds(80, 230, 120, 19);
 
-        date.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        date.setForeground(new java.awt.Color(255, 255, 255));
+        try {
+            date.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         getContentPane().add(date);
-        date.setBounds(80, 65, 80, 30);
+        date.setBounds(70, 70, 120, 19);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thumb2-program-code-black-backgrounds-programming-background-with-program-code-code.jpg"))); // NOI18N
         getContentPane().add(jLabel4);
@@ -333,6 +336,7 @@ public class venda extends javax.swing.JFrame {
 
     private void vendaTableKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vendaTableKeyPressed
         int linha = vendaTable.getSelectedRow();
+         this.date.setText((String) vendaTable.getValueAt(linha, 1));
        Quantv.setText(vendaTable.getModel().getValueAt(linha, 5).toString());
        Valorv.setText(vendaTable.getModel().getValueAt(linha, 6).toString());
         id_venda = (int) vendaTable.getValueAt(linha, 0);
@@ -345,7 +349,7 @@ public class venda extends javax.swing.JFrame {
         if (evt.getClickCount() == 2) {
             int linha = vendaTable.getSelectedRow();
 
-               
+                this.date.setText((String) vendaTable.getValueAt(linha, 1));
                   Quantv.setText(vendaTable.getModel().getValueAt(linha, 5).toString());
        Valorv.setText(vendaTable.getModel().getValueAt(linha, 6).toString());
             tela_Cliente.button
@@ -497,8 +501,6 @@ public class venda extends javax.swing.JFrame {
     public void inserevenda() {
 
         vendaCTR objtel1 = new vendaCTR();
-        LocalDate localDate = LocalDate.now();
-        date.setText("" + localDate);
         objtel1.InserevendaCTR(
                 date.getText(),
                 listcClienteModels.get(clientes.getSelectedIndex()).getCod_Cliente(),
@@ -512,8 +514,6 @@ public class venda extends javax.swing.JFrame {
     public void alterarvenda() {
 
         vendaCTR objtel1 = new vendaCTR();
-        LocalDate localDate = LocalDate.now();
-        date.setText("" + localDate);
         objtel1.AlteracidadeCTR(
                 date.getText(),
                 listcClienteModels.get(clientes.getSelectedIndex()).getCod_Cliente(),
@@ -534,7 +534,7 @@ public class venda extends javax.swing.JFrame {
 
     public void pesquisarvenda() {
         vendaCTR objfunc = new vendaCTR();
-        rsfunc = objfunc.PesquisartelCTR(date.getText());
+        rsfunc = objfunc.PesquisartelCTR(Quantv.getText());
 
         preenche_item();
 
@@ -580,7 +580,7 @@ public class venda extends javax.swing.JFrame {
     private javax.swing.JButton atualizar;
     private javax.swing.JButton cadastrar;
     private javax.swing.JComboBox<String> clientes;
-    private javax.swing.JLabel date;
+    private javax.swing.JFormattedTextField date;
     private javax.swing.JButton deletar;
     private javax.swing.JComboBox<String> funcionario;
     private javax.swing.JLabel jLabel1;
