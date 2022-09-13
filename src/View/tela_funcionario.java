@@ -11,7 +11,13 @@ import Model.telefoneModel;
 import Model.RuaModel;
 import Sistemas_login.utilitarios;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 
 
@@ -24,7 +30,7 @@ public class tela_funcionario extends javax.swing.JFrame {
     /**
      * Creates new form tela_funcionario
      */
-      public static int id_cidade;
+      public static int id_funcionario;
     public static int fkcod_cidade;
     ResultSet rsfunc;
     String opcao;
@@ -32,8 +38,10 @@ public class tela_funcionario extends javax.swing.JFrame {
      List<bairroModel> listbairro;
       List<telefoneModel> listtelefone;
        List<RuaModel> listrua;
+      static boolean  button;
     public tela_funcionario() {
         initComponents();
+        desativarBotoes();
         carregabairrocmb();
         carregacidadecmb();
         carregaruacmb();
@@ -58,33 +66,33 @@ public class tela_funcionario extends javax.swing.JFrame {
         rg = new javax.swing.JTextField();
         funcionario = new javax.swing.JTextField();
         cpf = new javax.swing.JTextField();
-        rua = new javax.swing.JComboBox<>();
+        rua = new javax.swing.JComboBox<String>();
         jLabel6 = new javax.swing.JLabel();
-        bairro = new javax.swing.JComboBox<>();
+        bairro = new javax.swing.JComboBox<String>();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        cidade = new javax.swing.JComboBox<>();
-        telefone = new javax.swing.JComboBox<>();
+        cidade = new javax.swing.JComboBox<String>();
+        telefone = new javax.swing.JComboBox<String>();
         jLabel9 = new javax.swing.JLabel();
         casa = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        funcionariotable = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         tela_princial = new javax.swing.JLabel();
         cadastrar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        salvar = new javax.swing.JButton();
         deletar = new javax.swing.JButton();
         alterar = new javax.swing.JButton();
         atualizar = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(801, 495));
-        setMinimumSize(new java.awt.Dimension(801, 495));
-        setPreferredSize(new java.awt.Dimension(801, 495));
+        setMaximumSize(new java.awt.Dimension(790, 410));
+        setMinimumSize(new java.awt.Dimension(790, 410));
+        setPreferredSize(new java.awt.Dimension(790, 410));
         setResizable(false);
-        setSize(new java.awt.Dimension(801, 495));
+        setSize(new java.awt.Dimension(790, 410));
         getContentPane().setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
@@ -111,15 +119,21 @@ public class tela_funcionario extends javax.swing.JFrame {
         getContentPane().add(jLabel5);
         jLabel5.setBounds(0, 150, 60, 25);
         getContentPane().add(rg);
-        rg.setBounds(40, 100, 110, 19);
-        getContentPane().add(funcionario);
-        funcionario.setBounds(110, 70, 130, 19);
-        getContentPane().add(cpf);
-        cpf.setBounds(40, 120, 110, 19);
+        rg.setBounds(40, 100, 110, 20);
 
-        rua.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        funcionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                funcionarioActionPerformed(evt);
+            }
+        });
+        getContentPane().add(funcionario);
+        funcionario.setBounds(110, 70, 130, 20);
+        getContentPane().add(cpf);
+        cpf.setBounds(40, 120, 110, 20);
+
+        rua.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(rua);
-        rua.setBounds(50, 210, 120, 24);
+        rua.setBounds(50, 210, 120, 20);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -127,9 +141,9 @@ public class tela_funcionario extends javax.swing.JFrame {
         getContentPane().add(jLabel6);
         jLabel6.setBounds(0, 180, 70, 25);
 
-        bairro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        bairro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(bairro);
-        bairro.setBounds(70, 150, 120, 24);
+        bairro.setBounds(70, 150, 120, 20);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -143,23 +157,23 @@ public class tela_funcionario extends javax.swing.JFrame {
         getContentPane().add(jLabel8);
         jLabel8.setBounds(0, 200, 50, 25);
 
-        cidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(cidade);
-        cidade.setBounds(70, 180, 120, 24);
+        cidade.setBounds(70, 180, 120, 20);
 
-        telefone.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        telefone.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(telefone);
-        telefone.setBounds(90, 240, 100, 24);
+        telefone.setBounds(90, 240, 100, 20);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Nº:");
+        jLabel9.setText("Nº.casa:");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(0, 260, 40, 25);
+        jLabel9.setBounds(0, 260, 80, 25);
         getContentPane().add(casa);
-        casa.setBounds(30, 270, 100, 19);
+        casa.setBounds(80, 270, 100, 20);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        funcionariotable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -170,7 +184,17 @@ public class tela_funcionario extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        funcionariotable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                funcionariotableMouseClicked(evt);
+            }
+        });
+        funcionariotable.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                funcionariotableKeyPressed(evt);
+            }
+        });
+        jScrollPane1.setViewportView(funcionariotable);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(240, 60, 560, 350);
@@ -211,29 +235,48 @@ public class tela_funcionario extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 801, 59);
 
-        cadastrar.setForeground(new java.awt.Color(0, 0, 0));
         cadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/addition.png"))); // NOI18N
+        cadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastrarActionPerformed(evt);
+            }
+        });
         getContentPane().add(cadastrar);
         cadastrar.setBounds(10, 300, 60, 40);
 
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salvar.png"))); // NOI18N
-        getContentPane().add(jButton2);
-        jButton2.setBounds(66, 300, 70, 40);
+        salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salvar.png"))); // NOI18N
+        salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(salvar);
+        salvar.setBounds(66, 300, 70, 40);
 
-        deletar.setForeground(new java.awt.Color(0, 0, 0));
         deletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar (1).png"))); // NOI18N
+        deletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletarActionPerformed(evt);
+            }
+        });
         getContentPane().add(deletar);
         deletar.setBounds(10, 340, 60, 40);
 
-        alterar.setForeground(new java.awt.Color(0, 0, 0));
         alterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar (1).png"))); // NOI18N
+        alterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alterarActionPerformed(evt);
+            }
+        });
         getContentPane().add(alterar);
-        alterar.setBounds(70, 340, 66, 40);
+        alterar.setBounds(70, 340, 65, 40);
 
-        atualizar.setForeground(new java.awt.Color(0, 0, 0));
         atualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/atualizar.png"))); // NOI18N
-        atualizar.setActionCommand("");
+        atualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atualizarActionPerformed(evt);
+            }
+        });
         getContentPane().add(atualizar);
         atualizar.setBounds(190, 360, 50, 50);
 
@@ -250,6 +293,83 @@ public class tela_funcionario extends javax.swing.JFrame {
        Tela_principal telasp =  new Tela_principal();
        telasp.setVisible(true);
     }//GEN-LAST:event_tela_princialMouseClicked
+
+    private void funcionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funcionarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_funcionarioActionPerformed
+
+    private void salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarActionPerformed
+        // TODO add your handling code here:
+            inserefuncionario();
+         limparCampos();
+          pesquisarfuncionaro();
+    }//GEN-LAST:event_salvarActionPerformed
+
+    private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
+           ativarBotoes();
+        limparCampos();
+        opcao = "Inserir";
+          button = true;
+    }//GEN-LAST:event_cadastrarActionPerformed
+
+    private void deletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletarActionPerformed
+                         String [] options = new String[] {"Sim","Não"};
+
+        Object ret = JOptionPane.showOptionDialog
+        (null, "Tem certeza que deseja excluir: "
+            + funcionario.getText() + "?","AVISO", JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+
+        if(options[Integer.valueOf(ret.toString())].equals("Sim"))
+        {
+            excluirfuncionaro();
+            limparCampos();
+              pesquisarfuncionaro();
+        }
+    }//GEN-LAST:event_deletarActionPerformed
+
+    private void alterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarActionPerformed
+       alterafuncionario();
+         limparCampos();
+        pesquisarfuncionaro();
+    }//GEN-LAST:event_alterarActionPerformed
+
+    private void atualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarActionPerformed
+        // TODO add your handling code here:
+        pesquisarfuncionaro();
+    }//GEN-LAST:event_atualizarActionPerformed
+
+    private void funcionariotableKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_funcionariotableKeyPressed
+            int linha = funcionariotable.getSelectedRow();
+            
+           
+               this.funcionario.setText((String) funcionariotable.getValueAt(linha, 1));
+            this.rg.setText((String) funcionariotable.getValueAt(linha, 2));
+             this.cpf.setText((String) funcionariotable.getValueAt(linha, 3));
+               this.casa.setText((String) funcionariotable.getValueAt(linha, 8));
+            id_funcionario= (int) funcionariotable.getValueAt(linha, 0);
+   
+            opcao="Alterar";
+            ativarBotoes();
+    }//GEN-LAST:event_funcionariotableKeyPressed
+
+    private void funcionariotableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_funcionariotableMouseClicked
+          if(evt.getClickCount() == 2)
+        {
+            int linha = funcionariotable.getSelectedRow();
+            
+       
+             this.funcionario.setText((String) funcionariotable.getValueAt(linha, 1));
+            this.rg.setText((String) funcionariotable.getValueAt(linha, 2));
+             this.cpf.setText((String) funcionariotable.getValueAt(linha, 3));
+              this.casa.setText((String) funcionariotable.getValueAt(linha, 8));
+            
+            tela_funcionario.button = 
+           (boolean) funcionariotable.getValueAt(linha, 0);
+                    
+            this.dispose();
+    }           
+    }//GEN-LAST:event_funcionariotableMouseClicked
 
     /**
      * @param args the command line arguments
@@ -285,6 +405,38 @@ public class tela_funcionario extends javax.swing.JFrame {
             }
         });
         
+    }
+     public void desativarBotoes()
+    {
+        deletar.setEnabled(false);
+        funcionario.setEnabled(false);
+      rg.setEnabled(false);
+      cpf.setEnabled(false);
+      bairro.setEnabled(false);
+      cidade.setEnabled(false);
+      telefone.setEnabled(false);
+      rua.setEnabled(false);
+      casa.setEnabled(false);
+    }
+    
+    public void ativarBotoes()
+    {
+                  deletar.setEnabled(true);
+        funcionario.setEnabled(true);
+      rg.setEnabled(true);
+      cpf.setEnabled(true);
+      bairro.setEnabled(true);
+      cidade.setEnabled(true);
+      telefone.setEnabled(true);
+      rua.setEnabled(true);
+      casa.setEnabled(true);
+    }
+      public void limparCampos()
+    {
+          funcionario.setText("");
+             rg.setText("");
+              cpf.setText("");
+                casa.setText("");
     }
 public void carregacidadecmb()
     {
@@ -346,6 +498,82 @@ public void carregabairrocmb()
         }
        
     }
+public void inserefuncionario(){
+FuncionarioCTR  objfuncionario = new FuncionarioCTR();
+objfuncionario.InserefuncionarioCTR(
+        funcionario.getText(),rg.getText(),cpf.getText(),
+        listbairro.get(bairro.getSelectedIndex()).getCodbairro(),
+        listcidade.get(cidade.getSelectedIndex()).getCodcidade(),
+        listtelefone.get(telefone.getSelectedIndex()).getCodtelefone(),
+        listrua.get(rua.getSelectedIndex()).getCodrua(),casa.getText());
+        
+        
+}
+public void alterafuncionario(){
+FuncionarioCTR  objfuncionario = new FuncionarioCTR();
+objfuncionario.AlterafuncionarioCTR(
+        funcionario.getText(),rg.getText(),cpf.getText(),
+        listbairro.get(bairro.getSelectedIndex()).getCodbairro(),
+        listcidade.get(cidade.getSelectedIndex()).getCodcidade(),
+        listtelefone.get(telefone.getSelectedIndex()).getCodtelefone(),
+        listrua.get(rua.getSelectedIndex()).getCodrua(),casa.getText(),id_funcionario);
+        
+        
+}
+                 public  void excluirfuncionaro(){
+      int linha = funcionariotable.getSelectedRow();
+        
+        FuncionarioCTR objcli = new FuncionarioCTR();
+        
+        objcli.ExcluifuncionaroCTR(id_funcionario);
+    }
+          public void pesquisarfuncionaro()
+    {
+         FuncionarioCTR objfunc = new FuncionarioCTR();
+        rsfunc = objfunc.PesquisarfuncionaroCTR(funcionario.getText());
+        
+        preenche_item();
+        
+    }
+          public void preenche_item()
+    {
+     String [] colunas = {"Codigo","Funcionario","Rg","Cpf","Bairro","Cidade","Rua","Telefone","Nº.Casa"};
+        
+        String [][] linhas ={};
+        
+        DefaultTableModel tablemodel = new DefaultTableModel(linhas,colunas)
+        {
+            public boolean CelulaEditavel(int rowIndex, int mColIndex)
+            {
+                return true;
+            }
+        };
+        
+        Vector <Vector> dados = new Vector();
+        
+        try {
+            while(rsfunc.next())
+            {
+                Vector regVetor = new Vector();
+                
+                regVetor.add(rsfunc.getInt("cod_funcionario"));
+                regVetor.add(rsfunc.getString("nome_funcionario"));
+                 regVetor.add(rsfunc.getString("rg"));
+                  regVetor.add(rsfunc.getString("cpf"));
+                regVetor.add(rsfunc.getInt("fk_bairro"));
+                regVetor.add(rsfunc.getInt("fk_cidade"));
+                regVetor.add(rsfunc.getInt("fk_codtelefone"));
+                regVetor.add(rsfunc.getInt("fk_codrua"));
+                regVetor.add(rsfunc.getString("numerocasa"));
+                dados.add(regVetor);
+                tablemodel.addRow(regVetor);
+            }
+            funcionariotable.setModel(tablemodel);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(tela_funcionario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton alterar;
     private javax.swing.JButton atualizar;
@@ -356,7 +584,7 @@ public void carregabairrocmb()
     private javax.swing.JTextField cpf;
     private javax.swing.JButton deletar;
     private javax.swing.JTextField funcionario;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JTable funcionariotable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -369,9 +597,9 @@ public void carregabairrocmb()
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField rg;
     private javax.swing.JComboBox<String> rua;
+    private javax.swing.JButton salvar;
     private javax.swing.JLabel tela_princial;
     private javax.swing.JComboBox<String> telefone;
     // End of variables declaration//GEN-END:variables

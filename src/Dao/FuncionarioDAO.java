@@ -108,14 +108,14 @@ public class FuncionarioDAO {
         
         
     }  
-   public void Inseretelefone(FuncionarioModel gs)
+   public void Insereproduto(FuncionarioModel gs)
     {
         ConexaoDAO cb = new ConexaoDAO();
         con = cb.conectaPostgre();
         
         String sql = "insert into funcionario"
                 + "(nome_funcionario,rg,cpf,fk_bairro,fk_cidade,fk_codtelefone,fk_codrua,numerocasa)"
-                + " values (?,?,?,?,?,?,?,?)";
+                + " values (upper(?),?,?,?,?,?,?,?)";
         
         try {
             pgsql = con.prepareStatement(sql);

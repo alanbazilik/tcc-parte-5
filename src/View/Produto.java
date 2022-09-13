@@ -62,8 +62,8 @@ public class Produto extends javax.swing.JFrame {
         tipos1 = new javax.swing.JLabel();
         tipos = new javax.swing.JLabel();
         quantidade = new javax.swing.JTextField();
-        tipo = new javax.swing.JComboBox<>();
-        marca = new javax.swing.JComboBox<>();
+        tipo = new javax.swing.JComboBox<String>();
+        marca = new javax.swing.JComboBox<String>();
         deletar = new javax.swing.JButton();
         alterar = new javax.swing.JButton();
         cadastrar2 = new javax.swing.JButton();
@@ -86,6 +86,7 @@ public class Produto extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Tela cadastro produto");
 
         tela_princial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-reserva-64.png"))); // NOI18N
@@ -101,9 +102,9 @@ public class Produto extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(84, 84, 84)
+                .addContainerGap(157, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 215, Short.MAX_VALUE)
+                .addGap(142, 142, 142)
                 .addComponent(tela_princial)
                 .addGap(188, 188, 188))
         );
@@ -111,8 +112,10 @@ public class Produto extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(tela_princial, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tela_princial, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)))
                 .addGap(4, 4, 4))
         );
 
@@ -145,13 +148,13 @@ public class Produto extends javax.swing.JFrame {
         getContentPane().add(quantidade);
         quantidade.setBounds(110, 100, 110, 20);
 
-        tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        tipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(tipo);
-        tipo.setBounds(70, 130, 150, 24);
+        tipo.setBounds(70, 130, 150, 20);
 
-        marca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        marca.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(marca);
-        marca.setBounds(70, 160, 150, 24);
+        marca.setBounds(70, 160, 150, 20);
 
         deletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar (1).png"))); // NOI18N
         deletar.addActionListener(new java.awt.event.ActionListener() {
@@ -196,9 +199,9 @@ public class Produto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(refesh);
-        refesh.setBounds(170, 290, 50, 42);
+        refesh.setBounds(170, 290, 50, 41);
         getContentPane().add(Produto);
-        Produto.setBounds(80, 70, 140, 19);
+        Produto.setBounds(80, 70, 140, 20);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thumb2-program-code-black-backgrounds-programming-background-with-program-code-code.jpg"))); // NOI18N
         getContentPane().add(jLabel4);

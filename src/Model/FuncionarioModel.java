@@ -135,13 +135,13 @@ public class FuncionarioModel {
     public void setNumerocasa(String numerocasa) {
         this.numerocasa = numerocasa;
     }
-     private int cod_funcionario;
-     private String nome_funcionario;
-     private String rg;
-     private String cpf;
+    private int cod_funcionario;
+    private String nome_funcionario;
+    private String rg;
+    private String cpf;
     private int fk_bairro;
     private int fk_cidade;
-  private int fk_codtelefone;
-  private int fk_codrua;
-  private String numerocasa;
+    private int fk_codtelefone;
+    private int fk_codrua;
+    private String numerocasa;
 }

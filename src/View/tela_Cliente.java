@@ -4,8 +4,21 @@
  * and open the template in the editor.
  */
 package View;
-
+import CTR.ClienteCTR;
+import CTR.FuncionarioCTR;
+import Model.CidadeModel;
+import Model.bairroModel;
+import Model.telefoneModel;    
+import Model.RuaModel;
 import Sistemas_login.utilitarios;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 
 
@@ -18,8 +31,22 @@ public class tela_Cliente extends javax.swing.JFrame {
     /**
      * Creates new form tela_funcionario
      */
+      public static int id_cliente;
+    public static int fkcod_cidade;
+    ResultSet rsfunc;
+    String opcao;
+    List<CidadeModel> listcidade;
+     List<bairroModel> listbairro;
+      List<telefoneModel> listtelefone;
+       List<RuaModel> listrua;
+      static boolean  button;
     public tela_Cliente() {
         initComponents();
+        desativarBotoes();
+        carregabairrocmb();
+        carregacidadecmb();
+        carregaruacmb();
+        carregatelefonecmb();
          utilitarios u = new utilitarios();
     u.inserirIcone(this);
     }
@@ -33,16 +60,12 @@ public class tela_Cliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jToolBar8 = new javax.swing.JToolBar();
-        tela_princial = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         rg = new javax.swing.JTextField();
-        Cliente = new javax.swing.JTextField();
+        funcionario = new javax.swing.JTextField();
         cpf = new javax.swing.JTextField();
         rua = new javax.swing.JComboBox<String>();
         jLabel6 = new javax.swing.JLabel();
@@ -53,31 +76,133 @@ public class tela_Cliente extends javax.swing.JFrame {
         telefone = new javax.swing.JComboBox<String>();
         jLabel9 = new javax.swing.JLabel();
         casa = new javax.swing.JTextField();
-        jSplitPane1 = new javax.swing.JSplitPane();
-        cradastrar = new javax.swing.JButton();
-        salvar = new javax.swing.JButton();
-        jSplitPane2 = new javax.swing.JSplitPane();
-        excluir = new javax.swing.JButton();
-        Alterar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        funcionariotable = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        tela_princial = new javax.swing.JLabel();
+        cadastrar = new javax.swing.JButton();
+        salvar = new javax.swing.JButton();
+        deletar = new javax.swing.JButton();
+        alterar = new javax.swing.JButton();
+        atualizar = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(801, 500));
-        setMinimumSize(new java.awt.Dimension(801, 500));
-        setPreferredSize(new java.awt.Dimension(801, 500));
-        setSize(new java.awt.Dimension(801, 500));
+        setMinimumSize(new java.awt.Dimension(790, 410));
+        setResizable(false);
+        setSize(new java.awt.Dimension(790, 410));
         getContentPane().setLayout(null);
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Cliente:");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 65, 110, 25);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Rg:");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(0, 90, 30, 25);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Cpf:");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(0, 120, 40, 25);
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Bairro:");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(0, 150, 60, 25);
+        getContentPane().add(rg);
+        rg.setBounds(40, 100, 110, 20);
+
+        funcionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                funcionarioActionPerformed(evt);
+            }
+        });
+        getContentPane().add(funcionario);
+        funcionario.setBounds(110, 70, 130, 20);
+        getContentPane().add(cpf);
+        cpf.setBounds(40, 120, 110, 20);
+
+        rua.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(rua);
+        rua.setBounds(50, 210, 120, 20);
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Cidade:");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(0, 180, 70, 25);
+
+        bairro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(bairro);
+        bairro.setBounds(70, 150, 120, 20);
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Telefone:");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(0, 230, 90, 25);
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Rua:");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(0, 200, 50, 25);
+
+        cidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(cidade);
+        cidade.setBounds(70, 180, 120, 20);
+
+        telefone.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(telefone);
+        telefone.setBounds(90, 240, 100, 20);
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Nº.casa:");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(0, 260, 80, 25);
+        getContentPane().add(casa);
+        casa.setBounds(80, 270, 100, 20);
+
+        funcionariotable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        funcionariotable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                funcionariotableMouseClicked(evt);
+            }
+        });
+        funcionariotable.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                funcionariotableKeyPressed(evt);
+            }
+        });
+        jScrollPane1.setViewportView(funcionariotable);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(240, 60, 560, 350);
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Tela Cliente");
-
-        jToolBar8.setRollover(true);
-        jToolBar8.setBorderPainted(false);
 
         tela_princial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-reserva-64.png"))); // NOI18N
         tela_princial.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -86,132 +211,73 @@ public class tela_Cliente extends javax.swing.JFrame {
                 tela_princialMouseClicked(evt);
             }
         });
-        jToolBar8.add(tela_princial);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(84, 84, 84)
+                .addContainerGap(276, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(445, 445, 445)
-                .addComponent(jToolBar8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(257, 257, 257)
+                .addComponent(tela_princial))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1)
-            .addComponent(jToolBar8, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(tela_princial))
+                .addContainerGap())
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 810, 59);
+        jPanel1.setBounds(0, 0, 801, 59);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("nome_Cliente");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 65, 112, 25);
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText(" rg");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(6, 97, 23, 25);
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("cpf");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 129, 26, 25);
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("bairro");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(0, 161, 52, 25);
-        getContentPane().add(rg);
-        rg.setBounds(47, 101, 191, 20);
-        getContentPane().add(Cliente);
-        Cliente.setBounds(157, 69, 191, 20);
-        getContentPane().add(cpf);
-        cpf.setBounds(47, 133, 191, 20);
-
-        rua.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(rua);
-        rua.setBounds(66, 228, 120, 20);
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("cidade");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(0, 192, 56, 25);
-
-        bairro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(bairro);
-        bairro.setBounds(74, 161, 120, 20);
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("telefone");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(0, 256, 68, 25);
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("rua");
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(0, 224, 29, 25);
-
-        cidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(cidade);
-        cidade.setBounds(74, 196, 120, 20);
-
-        telefone.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(telefone);
-        telefone.setBounds(74, 260, 56, 20);
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("numerocasa");
-        getContentPane().add(jLabel9);
-        jLabel9.setBounds(0, 294, 102, 25);
-        getContentPane().add(casa);
-        casa.setBounds(108, 298, 191, 20);
-
-        cradastrar.setText("cradastrar");
-        jSplitPane1.setLeftComponent(cradastrar);
-
-        salvar.setText("salvar");
-        jSplitPane1.setRightComponent(salvar);
-
-        getContentPane().add(jSplitPane1);
-        jSplitPane1.setBounds(10, 340, 180, 51);
-
-        excluir.setText("desativar");
-        jSplitPane2.setLeftComponent(excluir);
-
-        Alterar.setText("Alterar");
-        jSplitPane2.setRightComponent(Alterar);
-
-        getContentPane().add(jSplitPane2);
-        jSplitPane2.setBounds(10, 389, 180, 49);
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+        cadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/addition.png"))); // NOI18N
+        cadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastrarActionPerformed(evt);
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        });
+        getContentPane().add(cadastrar);
+        cadastrar.setBounds(10, 300, 60, 40);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(370, 60, 430, 380);
+        salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salvar.png"))); // NOI18N
+        salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(salvar);
+        salvar.setBounds(66, 300, 70, 40);
+
+        deletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar (1).png"))); // NOI18N
+        deletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(deletar);
+        deletar.setBounds(10, 340, 60, 40);
+
+        alterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar (1).png"))); // NOI18N
+        alterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alterarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(alterar);
+        alterar.setBounds(70, 340, 65, 40);
+
+        atualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/atualizar.png"))); // NOI18N
+        atualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atualizarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(atualizar);
+        atualizar.setBounds(190, 360, 50, 50);
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thumb2-program-code-black-backgrounds-programming-background-with-program-code-code.jpg"))); // NOI18N
         getContentPane().add(jLabel10);
@@ -223,11 +289,86 @@ public class tela_Cliente extends javax.swing.JFrame {
 
     private void tela_princialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tela_princialMouseClicked
         // TODO add your handling code here:
-           Tela_principal objtel = new Tela_principal();
-      objtel.setVisible(true);
-      this.dispose();
-
+       Tela_principal telasp =  new Tela_principal();
+       telasp.setVisible(true);
     }//GEN-LAST:event_tela_princialMouseClicked
+
+    private void funcionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funcionarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_funcionarioActionPerformed
+
+    private void salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarActionPerformed
+        // TODO add your handling code here:
+            inserefuncionario();
+         limparCampos();
+          pesquisarfuncionaro();
+    }//GEN-LAST:event_salvarActionPerformed
+
+    private void cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarActionPerformed
+           ativarBotoes();
+        limparCampos();
+        opcao = "Inserir";
+          button = true;
+    }//GEN-LAST:event_cadastrarActionPerformed
+
+    private void deletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletarActionPerformed
+                         String [] options = new String[] {"Sim","Não"};
+
+        Object ret = JOptionPane.showOptionDialog
+        (null, "Tem certeza que deseja excluir: "
+            + funcionario.getText() + "?","AVISO", JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+
+        if(options[Integer.valueOf(ret.toString())].equals("Sim"))
+        {
+            excluirfuncionaro();
+            limparCampos();
+              pesquisarfuncionaro();
+        }
+    }//GEN-LAST:event_deletarActionPerformed
+
+    private void alterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarActionPerformed
+       alterafuncionario();
+         limparCampos();
+        pesquisarfuncionaro();
+    }//GEN-LAST:event_alterarActionPerformed
+
+    private void atualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarActionPerformed
+        // TODO add your handling code here:
+        pesquisarfuncionaro();
+    }//GEN-LAST:event_atualizarActionPerformed
+
+    private void funcionariotableKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_funcionariotableKeyPressed
+            int linha = funcionariotable.getSelectedRow();
+            
+           
+               this.funcionario.setText((String) funcionariotable.getValueAt(linha, 1));
+            this.rg.setText((String) funcionariotable.getValueAt(linha, 2));
+             this.cpf.setText((String) funcionariotable.getValueAt(linha, 3));
+               this.casa.setText((String) funcionariotable.getValueAt(linha, 8));
+            id_cliente= (int) funcionariotable.getValueAt(linha, 0);
+   
+            opcao="Alterar";
+            ativarBotoes();
+    }//GEN-LAST:event_funcionariotableKeyPressed
+
+    private void funcionariotableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_funcionariotableMouseClicked
+          if(evt.getClickCount() == 2)
+        {
+            int linha = funcionariotable.getSelectedRow();
+            
+       
+             this.funcionario.setText((String) funcionariotable.getValueAt(linha, 1));
+            this.rg.setText((String) funcionariotable.getValueAt(linha, 2));
+             this.cpf.setText((String) funcionariotable.getValueAt(linha, 3));
+              this.casa.setText((String) funcionariotable.getValueAt(linha, 8));
+            
+            tela_Cliente.button = 
+           (boolean) funcionariotable.getValueAt(linha, 0);
+                    
+            this.dispose();
+    }           
+    }//GEN-LAST:event_funcionariotableMouseClicked
 
     /**
      * @param args the command line arguments
@@ -256,6 +397,8 @@ public class tela_Cliente extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -265,16 +408,185 @@ public class tela_Cliente extends javax.swing.JFrame {
         });
         
     }
-
+     public void desativarBotoes()
+    {
+        deletar.setEnabled(false);
+        funcionario.setEnabled(false);
+      rg.setEnabled(false);
+      cpf.setEnabled(false);
+      bairro.setEnabled(false);
+      cidade.setEnabled(false);
+      telefone.setEnabled(false);
+      rua.setEnabled(false);
+      casa.setEnabled(false);
+    }
+    
+    public void ativarBotoes()
+    {
+                  deletar.setEnabled(true);
+        funcionario.setEnabled(true);
+      rg.setEnabled(true);
+      cpf.setEnabled(true);
+      bairro.setEnabled(true);
+      cidade.setEnabled(true);
+      telefone.setEnabled(true);
+      rua.setEnabled(true);
+      casa.setEnabled(true);
+    }
+      public void limparCampos()
+    {
+          funcionario.setText("");
+             rg.setText("");
+              cpf.setText("");
+                casa.setText("");
+    }
+public void carregacidadecmb()
+    {
+        FuncionarioCTR objtel = new FuncionarioCTR();
+        listcidade = objtel.carregaCombocidade();
+        
+        cidade.removeAllItems();
+        int i = 0;
+        
+        while(i < listcidade.size())
+        {
+            cidade.addItem(listcidade.get(i).getNomecidade());
+            i++;
+        }
+       
+    }
+public void carregaruacmb()
+    {
+        FuncionarioCTR objtel = new FuncionarioCTR();
+        listrua = objtel.carregaComboRua();
+        
+        rua.removeAllItems();
+        int i = 0;
+        
+        while(i < listrua.size())
+        {
+            rua.addItem(listrua.get(i).getNomerua());
+            i++;
+        }
+       
+    }
+public void carregatelefonecmb()
+    {
+        FuncionarioCTR objtel = new FuncionarioCTR();
+        listtelefone = objtel.carregaCombotelefone();
+        
+        telefone.removeAllItems();
+        int i = 0;
+        
+        while(i < listrua.size())
+        {
+            telefone.addItem(listtelefone.get(i).getNumerotel());
+            i++;
+        }
+       
+    }
+public void carregabairrocmb()
+    {
+        FuncionarioCTR objtel = new FuncionarioCTR();
+        listbairro = objtel.carregaCombobairro();
+        
+        bairro.removeAllItems();
+        int i = 0;
+        
+        while(i < listbairro.size())
+        {
+            bairro.addItem(listbairro.get(i).getBairros());
+            i++;
+        }
+       
+    }
+public void inserefuncionario(){
+ClienteCTR  objfuncionario = new ClienteCTR();
+objfuncionario.InsereClienteCTR(
+        funcionario.getText(),rg.getText(),cpf.getText(),
+        listbairro.get(bairro.getSelectedIndex()).getCodbairro(),
+        listcidade.get(cidade.getSelectedIndex()).getCodcidade(),
+        listtelefone.get(telefone.getSelectedIndex()).getCodtelefone(),
+        listrua.get(rua.getSelectedIndex()).getCodrua(),casa.getText());
+        
+        
+}
+public void alterafuncionario(){
+ClienteCTR  objfuncionario = new ClienteCTR();
+objfuncionario.AlteraClienteCTR(
+        funcionario.getText(),rg.getText(),cpf.getText(),
+        listbairro.get(bairro.getSelectedIndex()).getCodbairro(),
+        listcidade.get(cidade.getSelectedIndex()).getCodcidade(),
+        listtelefone.get(telefone.getSelectedIndex()).getCodtelefone(),
+        listrua.get(rua.getSelectedIndex()).getCodrua(),casa.getText(),id_cliente);
+        
+        
+}
+                 public  void excluirfuncionaro(){
+      int linha = funcionariotable.getSelectedRow();
+        
+        ClienteCTR objcli = new ClienteCTR();
+        
+        objcli.ExcluiClienteCTR(id_cliente);
+    }
+          public void pesquisarfuncionaro()
+    {
+         ClienteCTR objfunc = new ClienteCTR();
+        rsfunc = objfunc.PesquisarClienteCTR(funcionario.getText());
+        
+        preenche_item();
+        
+    }
+          public void preenche_item()
+    {
+     String [] colunas = {"Codigo","Cliente","Rg","Cpf","Bairro","Cidade","Rua","Telefone","Nº.Casa"};
+        
+        String [][] linhas ={};
+        
+        DefaultTableModel tablemodel = new DefaultTableModel(linhas,colunas)
+        {
+            public boolean CelulaEditavel(int rowIndex, int mColIndex)
+            {
+                return true;
+            }
+        };
+        
+        Vector <Vector> dados = new Vector();
+        
+        try {
+            while(rsfunc.next())
+            {
+                Vector regVetor = new Vector();
+                
+                regVetor.add(rsfunc.getInt("cod_cliente"));
+                regVetor.add(rsfunc.getString("Cliente"));
+                 regVetor.add(rsfunc.getString("rg"));
+                  regVetor.add(rsfunc.getString("cpf"));
+                regVetor.add(rsfunc.getInt("fk_bairro"));
+                regVetor.add(rsfunc.getInt("fk_cidade"));
+                regVetor.add(rsfunc.getInt("fk_codtelefone"));
+                regVetor.add(rsfunc.getInt("fk_codrua"));
+                regVetor.add(rsfunc.getString("numerocasa"));
+                dados.add(regVetor);
+                tablemodel.addRow(regVetor);
+            }
+            funcionariotable.setModel(tablemodel);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(tela_Cliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Alterar;
-    private javax.swing.JTextField Cliente;
+    private javax.swing.JButton alterar;
+    private javax.swing.JButton atualizar;
     private javax.swing.JComboBox<String> bairro;
+    private javax.swing.JButton cadastrar;
     private javax.swing.JTextField casa;
     private javax.swing.JComboBox<String> cidade;
     private javax.swing.JTextField cpf;
-    private javax.swing.JButton cradastrar;
-    private javax.swing.JButton excluir;
+    private javax.swing.JButton deletar;
+    private javax.swing.JTextField funcionario;
+    private javax.swing.JTable funcionariotable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -287,10 +599,6 @@ public class tela_Cliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JSplitPane jSplitPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JToolBar jToolBar8;
     private javax.swing.JTextField rg;
     private javax.swing.JComboBox<String> rua;
     private javax.swing.JButton salvar;

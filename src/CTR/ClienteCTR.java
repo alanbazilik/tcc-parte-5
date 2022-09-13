@@ -22,7 +22,8 @@ import java.util.logging.Logger;
  * @author alang
  */
 public class ClienteCTR {
-     public List<bairroModel> carregaCombobairro() {
+
+    public List<bairroModel> carregaCombobairro() {
         List<bairroModel> bairros1 = new ArrayList<>();
         ClienteDAO objdao = new ClienteDAO();
         ResultSet rsbairro = objdao.listabairro();
@@ -32,7 +33,6 @@ public class ClienteCTR {
                 bairroModel gs = new bairroModel();
                 gs.setCodbairro(rsbairro.getInt("codbairro"));
                 gs.setBairros(rsbairro.getString("bairro"));
-                
 
                 bairros1.add(gs);
             }
@@ -43,7 +43,8 @@ public class ClienteCTR {
             return null;
         }
     }
-          public List<RuaModel> carregaComboRua() {
+
+    public List<RuaModel> carregaComboRua() {
         List<RuaModel> rua = new ArrayList<>();
         ClienteDAO objdao = new ClienteDAO();
         ResultSet rsrua = objdao.listarua();
@@ -53,7 +54,6 @@ public class ClienteCTR {
                 RuaModel gs = new RuaModel();
                 gs.setCodrua(rsrua.getInt("codrua"));
                 gs.setNomerua(rsrua.getString("nomerua"));
-                
 
                 rua.add(gs);
             }
@@ -64,7 +64,8 @@ public class ClienteCTR {
             return null;
         }
     }
-                  public List<telefoneModel> carregaCombotelefone() {
+
+    public List<telefoneModel> carregaCombotelefone() {
         List<telefoneModel> telefone = new ArrayList<>();
         ClienteDAO objdao = new ClienteDAO();
         ResultSet rsrua = objdao.listatelefone();
@@ -74,7 +75,6 @@ public class ClienteCTR {
                 telefoneModel gs = new telefoneModel();
                 gs.setCodtelefone(rsrua.getInt("codtelefone"));
                 gs.setNumerotel(rsrua.getString("numerotel"));
-                
 
                 telefone.add(gs);
             }
@@ -84,8 +84,9 @@ public class ClienteCTR {
             Logger.getLogger(ClienteCTR.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-    }  
-               public List<CidadeModel> carregaCombocidade() {
+    }
+
+    public List<CidadeModel> carregaCombocidade() {
         List<CidadeModel> cidade = new ArrayList<>();
         ClienteDAO objdao = new ClienteDAO();
         ResultSet rscidade = objdao.listarcidade();
@@ -95,7 +96,6 @@ public class ClienteCTR {
                 CidadeModel gs = new CidadeModel();
                 gs.setCodcidade(rscidade.getInt("codcidade"));
                 gs.setNomecidade(rscidade.getString("nomecidade"));
-                
 
                 cidade.add(gs);
             }
@@ -106,67 +106,62 @@ public class ClienteCTR {
             return null;
         }
     }
-    public void InserecidadeCTR(String nome_cliente,String rg,String cpf,int fk_bairro,int fk_cidade,
-    int fk_codtelefone,int fk_codrua,String numerocasa)
-    {
+
+    public void InsereClienteCTR(String nome_cliente, String rg, String cpf, int fk_bairro, int fk_cidade,
+            int fk_codtelefone, int fk_codrua, String numerocasa) {
         // Cria um objeto da MODEL
         ClienteModel objprProdutoModel = new ClienteModel();
         //Envia por meio de SET o valor de nome
         objprProdutoModel.setNome_Cliente(nome_cliente);
         objprProdutoModel.setRg(rg);
-        objprProdutoModel.setRg(cpf);
-          objprProdutoModel.setFk_bairro(fk_bairro);
-           objprProdutoModel.setFk_cidade(fk_cidade);
-            objprProdutoModel.setFk_codtelefone(fk_codtelefone);
-             objprProdutoModel.setFk_codrua(fk_codrua);
-              objprProdutoModel.setNumerocasa(numerocasa);
+        objprProdutoModel.setCpf(cpf);
+        objprProdutoModel.setFk_bairro(fk_bairro);
+        objprProdutoModel.setFk_cidade(fk_cidade);
+        objprProdutoModel.setFk_codtelefone(fk_codtelefone);
+        objprProdutoModel.setFk_codrua(fk_codrua);
+        objprProdutoModel.setNumerocasa(numerocasa);
         //Declara objeto da DAO
         ClienteDAO objdao = new ClienteDAO();
         //Utiliza método insere e parametro MODEL
         objdao.Inseretelefone(objprProdutoModel);
-                
+
     }
-             public void AlteracidadeCTR(String nome_cliente,String rg,String cpf,int fk_bairro,int fk_cidade,
-    int fk_codtelefone,int fk_codrua,String numerocasa,int cod)
-    {
+
+    public void AlteraClienteCTR(String nome_cliente, String rg, String cpf, int fk_bairro, int fk_cidade,
+            int fk_codtelefone, int fk_codrua, String numerocasa, int cod) {
         // Cria um objeto da MODEL
         // Cria um objeto da MODEL
         ClienteModel objprProdutoModel = new ClienteModel();
         //Envia por meio de SET o valor de nome
         objprProdutoModel.setNome_Cliente(nome_cliente);
         objprProdutoModel.setRg(rg);
-        objprProdutoModel.setRg(cpf);
-          objprProdutoModel.setFk_bairro(fk_bairro);
-           objprProdutoModel.setFk_cidade(fk_cidade);
-            objprProdutoModel.setFk_codtelefone(fk_codtelefone);
-             objprProdutoModel.setFk_codrua(fk_codrua);
-              objprProdutoModel.setNumerocasa(numerocasa);
-    objprProdutoModel.setCod_Cliente(cod);
-   
+        objprProdutoModel.setCpf(cpf);
+        objprProdutoModel.setFk_bairro(fk_bairro);
+        objprProdutoModel.setFk_cidade(fk_cidade);
+        objprProdutoModel.setFk_codtelefone(fk_codtelefone);
+        objprProdutoModel.setFk_codrua(fk_codrua);
+        objprProdutoModel.setNumerocasa(numerocasa);
+        objprProdutoModel.setCod_Cliente(cod);
 
         //Declara objeto da DAO
-        ClienteDAO objdao = new  ClienteDAO();
+        ClienteDAO objdao = new ClienteDAO();
         //Utiliza método insere e parametro MODEL
         objdao.Alteratipotel(objprProdutoModel);
     }
-  
-     
-    
-      public void ExcluitelCTR(int idcliente)
-     {
+
+    public void ExcluiClienteCTR(int idcliente) {
         ClienteModel objfunc = new ClienteModel();
-         
-         
-         objfunc.setCod_Cliente(idcliente);
-         
-         ClienteDAO objdao = new ClienteDAO();
-         objdao.Excluitipotel(objfunc);
-     }
-     public ResultSet PesquisartelCTR(String cliente)
-    {
+
+        objfunc.setCod_Cliente(idcliente);
+
+        ClienteDAO objdao = new ClienteDAO();
+        objdao.Excluitipotel(objfunc);
+    }
+
+    public ResultSet PesquisarClienteCTR(String cliente) {
         ClienteDAO objfunc = new ClienteDAO();
-        
+
         return objfunc.PesquisarTodos(cliente);
-        
-    }  
+
+    }
 }
