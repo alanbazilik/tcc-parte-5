@@ -549,7 +549,7 @@ public class tela_Cliente extends javax.swing.JFrame {
     }
 
     public void preenche_item() {
-        String[] colunas = {"Codigo", "Cliente", "Rg", "Cpf", "Bairro", "Cidade", "Rua", "Telefone", "Nº.Casa"};
+        String[] colunas = {"Codigo", "Cliente", "Rg", "Cpf", "Bairro", "Cidade", "Telefone", "Rua", "Nº.Casa"};
 
         String[][] linhas = {};
 
@@ -569,10 +569,10 @@ public class tela_Cliente extends javax.swing.JFrame {
                 regVetor.add(rsfunc.getString("nome_cliente"));
                 regVetor.add(rsfunc.getString("rg"));
                 regVetor.add(rsfunc.getString("cpf"));
-                regVetor.add(rsfunc.getInt("fk_bairro"));
-                regVetor.add(rsfunc.getInt("fk_cidade"));
-                regVetor.add(rsfunc.getInt("fk_codtelefone"));
-                regVetor.add(rsfunc.getInt("fk_codrua"));
+                regVetor.add(rsfunc.getString("bairro"));
+                regVetor.add(rsfunc.getString("nomecidade"));
+                regVetor.add(rsfunc.getString("numerotel"));
+                regVetor.add(rsfunc.getString("nomerua"));
                 regVetor.add(rsfunc.getString("numerocasa"));
                 dados.add(regVetor);
                 tablemodel.addRow(regVetor);

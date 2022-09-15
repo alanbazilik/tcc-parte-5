@@ -19,149 +19,141 @@ import javax.swing.JOptionPane;
  * @author alang
  */
 public class ProdutoDAO {
-      Connection con;
+
+    Connection con;
     PreparedStatement pgsql;
     Statement st;
     ResultSet rs;
-    public ResultSet listamarca()
-    {
+
+    public ResultSet listamarca() {
         ConexaoDAO cb = new ConexaoDAO();
         con = cb.conectaPostgre();
-        
+
         ResultSet rs = null;
         String sql = "select * from marca";
-        
+
         try {
             st = con.createStatement(ResultSet.CONCUR_UPDATABLE,
                     ResultSet.TYPE_SCROLL_INSENSITIVE);
-            
-           rs = st.executeQuery(sql);
-                       
+
+            rs = st.executeQuery(sql);
+
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return rs;
-        
-        
+
     }
-   public ResultSet listatipo()
-    {
+
+    public ResultSet listatipo() {
         ConexaoDAO cb = new ConexaoDAO();
         con = cb.conectaPostgre();
-        
+
         ResultSet rs = null;
         String sql = "select * from tipos ";
-        
+
         try {
             st = con.createStatement(ResultSet.CONCUR_UPDATABLE,
                     ResultSet.TYPE_SCROLL_INSENSITIVE);
-            
-           rs = st.executeQuery(sql);
-                       
+
+            rs = st.executeQuery(sql);
+
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return rs;
-        
-        
-    }    
-    
-    
-   public void Insereproduto(ProdutoModel gs)
-    {
+
+    }
+
+    public void Insereproduto(ProdutoModel gs) {
         ConexaoDAO cb = new ConexaoDAO();
         con = cb.conectaPostgre();
-        
+
         String sql = "insert into produto"
-             + "(produto,quantidade,fk_tipo,fk_marca)"
+                + "(produto,quantidade,fk_tipo,fk_marca)"
                 + " values (?,?,?,?)";
-        
+
         try {
             pgsql = con.prepareStatement(sql);
             pgsql.setString(1, gs.getProduto());
             pgsql.setInt(2, gs.getQuantidade());
-             pgsql.setInt(3, gs.getFk_tipo());
-             pgsql.setInt(4, gs.getFk_marca());
-             
-            
+            pgsql.setInt(3, gs.getFk_tipo());
+            pgsql.setInt(4, gs.getFk_marca());
+
             pgsql.executeUpdate();
             JOptionPane.showMessageDialog(null, "Produto foi  Cadastrado com Sucesso");
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void Alteratipotel(ProdutoModel gs)
-    {
+
+    public void Alteratipotel(ProdutoModel gs) {
         ConexaoDAO cb = new ConexaoDAO();
         con = cb.conectaPostgre();
-        
+
         String sql = "UPDATE produto SET "
                 + "produto = ?,quantidade = ?,fk_tipo = ?,fk_marca = ?"
                 + "WHERE codigo_barras = ?";
-        
+
         try {
             pgsql = con.prepareStatement(sql);
-        pgsql.setString(1, gs.getProduto());
+            pgsql.setString(1, gs.getProduto());
             pgsql.setInt(2, gs.getQuantidade());
-             pgsql.setInt(3, gs.getFk_tipo());
-             pgsql.setInt(4, gs.getFk_marca());
+            pgsql.setInt(3, gs.getFk_tipo());
+            pgsql.setInt(4, gs.getFk_marca());
             pgsql.setInt(5, gs.getCodigo_barras());
-            
 
-            
             int rowsUpdated = pgsql.executeUpdate();
             if (rowsUpdated > 0) {
-            JOptionPane.showMessageDialog(null, "O Produto foi alterado com sucesso");
+                JOptionPane.showMessageDialog(null, "O Produto foi alterado com sucesso");
             }
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
- 
-    
-  public void Excluitipotel(ProdutoModel gs)
-    {
+
+    public void Excluitipotel(ProdutoModel gs) {
         ConexaoDAO cb = new ConexaoDAO();
         con = cb.conectaPostgre();
-        
-        String sql ="delete from produto where"
+
+        String sql = "delete from produto where"
                 + " codigo_barras = ?";
-        
+
         try {
             pgsql = con.prepareStatement(sql);
             pgsql.setInt(1, gs.getCodigo_barras());
             pgsql.executeUpdate();
             JOptionPane.showMessageDialog(null, "Produto foi Excluído com Sucesso");
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-     public ResultSet PesquisarTodosTelefone(String produtos)
-    {
-           ConexaoDAO cb = new ConexaoDAO();
+
+    public ResultSet PesquisarTodosTelefone(String produtos) {
+        ConexaoDAO cb = new ConexaoDAO();
         con = cb.conectaPostgre();
-       
-        
-        String sql = "select * from produto where "
-                + "upper(produto) like upper(?)";
-        
+
+        String sql = "SELECT P.codigo_barras, P.produto,P.quantidade, U.tipo, m.marca_produto "
+                + "FROM produto P, tipos U, marca m "
+                + "WHERE P.fk_tipo = U.cod_tipo_produto "
+                + "and  P.fk_marca = m.cod_marca_produto ";
+
         try {
             pgsql = con.prepareStatement(sql);
-            pgsql.setString(1,"%" + produtos + "%");
-            
+//            pgsql.setString(1, "%" + produtos + "%");
+
             st = con.createStatement(ResultSet.CONCUR_UPDATABLE,
-                                     ResultSet.TYPE_SCROLL_INSENSITIVE);
-            
+                    ResultSet.TYPE_SCROLL_INSENSITIVE);
+
             rs = st.executeQuery(pgsql.toString());
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return rs;
-        
-        
-    }    
-         
+
+    }
+
 }

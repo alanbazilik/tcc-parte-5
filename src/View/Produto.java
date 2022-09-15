@@ -62,8 +62,8 @@ public class Produto extends javax.swing.JFrame {
         tipos1 = new javax.swing.JLabel();
         tipos = new javax.swing.JLabel();
         quantidade = new javax.swing.JTextField();
-        tipo = new javax.swing.JComboBox<String>();
-        marca = new javax.swing.JComboBox<String>();
+        tipo = new javax.swing.JComboBox<>();
+        marca = new javax.swing.JComboBox<>();
         deletar = new javax.swing.JButton();
         alterar = new javax.swing.JButton();
         cadastrar2 = new javax.swing.JButton();
@@ -148,13 +148,13 @@ public class Produto extends javax.swing.JFrame {
         getContentPane().add(quantidade);
         quantidade.setBounds(110, 100, 110, 20);
 
-        tipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(tipo);
-        tipo.setBounds(70, 130, 150, 20);
+        tipo.setBounds(70, 130, 150, 24);
 
-        marca.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        marca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(marca);
-        marca.setBounds(70, 160, 150, 20);
+        marca.setBounds(70, 160, 150, 24);
 
         deletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar (1).png"))); // NOI18N
         deletar.addActionListener(new java.awt.event.ActionListener() {
@@ -199,9 +199,9 @@ public class Produto extends javax.swing.JFrame {
             }
         });
         getContentPane().add(refesh);
-        refesh.setBounds(170, 290, 50, 41);
+        refesh.setBounds(170, 290, 50, 42);
         getContentPane().add(Produto);
-        Produto.setBounds(80, 70, 140, 20);
+        Produto.setBounds(80, 70, 140, 19);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thumb2-program-code-black-backgrounds-programming-background-with-program-code-code.jpg"))); // NOI18N
         getContentPane().add(jLabel4);
@@ -475,8 +475,8 @@ public class Produto extends javax.swing.JFrame {
                 regVetor.add(rsfunc.getInt("codigo_barras"));
                 regVetor.add(rsfunc.getString("produto"));
                 regVetor.add(rsfunc.getInt("quantidade"));
-                regVetor.add(rsfunc.getInt("fk_marca"));
-                regVetor.add(rsfunc.getInt("fk_tipo"));
+                regVetor.add(rsfunc.getString("tipo"));
+                regVetor.add(rsfunc.getString("marca_produto"));
                 
                 dados.add(regVetor);
                 tablemodel.addRow(regVetor);

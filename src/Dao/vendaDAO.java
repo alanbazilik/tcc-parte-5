@@ -162,18 +162,19 @@ public class vendaDAO {
             Logger.getLogger(vendaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-     public ResultSet PesquisarTodosTelefone(String data)
+     public ResultSet PesquisarTodosvendas(String quantv)
     {
            ConexaoDAO cb = new ConexaoDAO();
         con = cb.conectaPostgre();
        
         
-        String sql = "select * from Venda where "
-                + "upper(datavenda) like upper(?)";
+        String sql = "SELECT v.codvenda, v.datavenda,v.quantv, v.valorv,c.nome_cliente,f.nome_funcionario,p.produto "+ 
+   "FROM Venda v, funcionario f, Cliente c, produto p "+
+     "WHERE v.fk_codcliente = c.cod_cliente ";
         
         try {
             pgsql = con.prepareStatement(sql);
-            pgsql.setString(1,"%" + data + "%");
+//            pgsql.setString(1,"%" + data + "%");
             
             st = con.createStatement(ResultSet.CONCUR_UPDATABLE,
                                      ResultSet.TYPE_SCROLL_INSENSITIVE);

@@ -559,9 +559,9 @@ public class venda extends javax.swing.JFrame {
 
                 regVetor.add(rsfunc.getInt("codvenda"));
                 regVetor.add(rsfunc.getString("datavenda"));
-                regVetor.add(rsfunc.getInt("fk_codfuncionario"));
-                regVetor.add(rsfunc.getInt("fk_codcliente"));
-                regVetor.add(rsfunc.getInt("fk_codproduto"));
+                regVetor.add(rsfunc.getString("nome_funcionario"));
+                regVetor.add(rsfunc.getString("nome_cliente"));
+                regVetor.add(rsfunc.getString("produto"));
                 regVetor.add(rsfunc.getFloat("quantv"));
                 regVetor.add(rsfunc.getFloat("valorv"));
                 dados.add(regVetor);

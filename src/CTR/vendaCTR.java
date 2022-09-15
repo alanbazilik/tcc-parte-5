@@ -137,11 +137,11 @@ public class vendaCTR {
          vendaDAO objdao = new vendaDAO();
          objdao.Excluitipotel(objfunc);
      }
-     public ResultSet PesquisartelCTR(String date)
+     public ResultSet PesquisartelCTR(String quantv)
     {
         vendaDAO objfunc = new vendaDAO();
         
-        return objfunc.PesquisarTodosTelefone(date);
+        return objfunc.PesquisarTodosvendas(quantv);
         
     }  
 }

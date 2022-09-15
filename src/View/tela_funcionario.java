@@ -314,7 +314,7 @@ public class tela_funcionario extends javax.swing.JFrame {
         // TODO add your handling code here:
         inserefuncionario();
         limparCampos();
-            desativarBotoes();
+        desativarBotoes();
         pesquisarfuncionaro();
     }//GEN-LAST:event_salvarActionPerformed
 
@@ -335,7 +335,7 @@ public class tela_funcionario extends javax.swing.JFrame {
         if (options[Integer.valueOf(ret.toString())].equals("Sim")) {
             excluirfuncionaro();
             limparCampos();
-                desativarBotoes();
+            desativarBotoes();
             pesquisarfuncionaro();
         }
     }//GEN-LAST:event_deletarActionPerformed
@@ -545,7 +545,7 @@ public class tela_funcionario extends javax.swing.JFrame {
     }
 
     public void preenche_item() {
-        String[] colunas = {"Codigo", "Funcionario", "Rg", "Cpf", "Bairro", "Cidade", "Rua", "Telefone", "Nº.Casa"};
+        String[] colunas = {"Codigo", "Cliente", "Rg", "Cpf", "Bairro", "Cidade", "Telefone", "Rua", "Nº.Casa"};
 
         String[][] linhas = {};
 
@@ -565,10 +565,10 @@ public class tela_funcionario extends javax.swing.JFrame {
                 regVetor.add(rsfunc.getString("nome_funcionario"));
                 regVetor.add(rsfunc.getString("rg"));
                 regVetor.add(rsfunc.getString("cpf"));
-                regVetor.add(rsfunc.getInt("fk_bairro"));
-                regVetor.add(rsfunc.getInt("fk_cidade"));
-                regVetor.add(rsfunc.getInt("fk_codtelefone"));
-                regVetor.add(rsfunc.getInt("fk_codrua"));
+                regVetor.add(rsfunc.getString("bairro"));
+                regVetor.add(rsfunc.getString("nomecidade"));
+                regVetor.add(rsfunc.getString("numerotel"));
+                regVetor.add(rsfunc.getString("nomerua"));
                 regVetor.add(rsfunc.getString("numerocasa"));
                 dados.add(regVetor);
                 tablemodel.addRow(regVetor);
