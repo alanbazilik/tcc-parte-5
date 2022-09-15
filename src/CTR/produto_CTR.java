@@ -114,7 +114,7 @@ public class produto_CTR {
     {
         ProdutoDAO objfunc = new ProdutoDAO();
         
-        return objfunc.PesquisarTodosTelefone(produto);
+        return objfunc.PesquisarTodosprodutos(produto);
         
     }  
 }

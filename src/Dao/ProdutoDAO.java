@@ -131,14 +131,16 @@ public class ProdutoDAO {
         }
     }
 
-    public ResultSet PesquisarTodosTelefone(String produtos) {
+    public ResultSet PesquisarTodosprodutos(String produtos) {
         ConexaoDAO cb = new ConexaoDAO();
         con = cb.conectaPostgre();
 
-        String sql = "SELECT P.codigo_barras, P.produto,P.quantidade, U.tipo, m.marca_produto "
-                + "FROM produto P, tipos U, marca m "
-                + "WHERE P.fk_tipo = U.cod_tipo_produto ";
-              
+        String sql = "SELECT  p.codigo_barras,p.produto,p.quantidade,u.tipo,m.marca_produto "
+                + "FROM produto p "
+                + "inner join tipos u on "
+                + "p.fk_tipo = u.cod_tipo_produto "
+                + "inner  join marca m on "
+                + "p.fk_marca = m.cod_marca_produto ";
 
         try {
             pgsql = con.prepareStatement(sql);
