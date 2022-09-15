@@ -137,8 +137,8 @@ public class ProdutoDAO {
 
         String sql = "SELECT P.codigo_barras, P.produto,P.quantidade, U.tipo, m.marca_produto "
                 + "FROM produto P, tipos U, marca m "
-                + "WHERE P.fk_tipo = U.cod_tipo_produto "
-                + "and  P.fk_marca = m.cod_marca_produto ";
+                + "WHERE P.fk_tipo = U.cod_tipo_produto ";
+              
 
         try {
             pgsql = con.prepareStatement(sql);

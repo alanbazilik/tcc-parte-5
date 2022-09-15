@@ -368,7 +368,7 @@ public void carregatelefonecmb()
                 
                 regVetor.add(rsfunc.getInt("codtelefone"));
                 regVetor.add(rsfunc.getString("numerotel"));
-                regVetor.add(rsfunc.getInt("fk_codtipotel"));
+                regVetor.add(rsfunc.getString("nometipotel"));
                 dados.add(regVetor);
                 tablemodel.addRow(regVetor);
             }
