@@ -76,8 +76,8 @@ public class UsuarioLoginVIEW extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Tela de login");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 70, 150, -1));
+        jLabel3.setText("LOGIN");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 150, -1));
 
         jButton2.setText("tela de cadastro");
         jButton2.addActionListener(new java.awt.event.ActionListener() {

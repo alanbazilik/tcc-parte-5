@@ -118,12 +118,14 @@ public class CidadeDAO {
         con = cb.conectaPostgre();
        
         
-        String sql = "select * from cidade where "
-                + "upper(nomecidade) like upper(?)";
+        String sql = "SELECT C.CODCIDADE, C.NOMECIDADE, U.NOME_ESTADO " +
+                      "FROM CIDADE C, ESTADO U " +
+                      "WHERE C.FK_UF = U.CODESTADO ";
+                
         
         try {
             pgsql = con.prepareStatement(sql);
-            pgsql.setString(1,"%" + cidade + "%");
+            //pgsql.setString(1,"%" + cidade + "%");
             
             st = con.createStatement(ResultSet.CONCUR_UPDATABLE,
                                      ResultSet.TYPE_SCROLL_INSENSITIVE);

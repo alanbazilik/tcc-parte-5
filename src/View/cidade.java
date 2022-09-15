@@ -57,7 +57,7 @@ public class cidade extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         cidade = new javax.swing.JTextField();
-        uf = new javax.swing.JComboBox<>();
+        uf = new javax.swing.JComboBox<String>();
         deletar = new javax.swing.JButton();
         cadastrar = new javax.swing.JButton();
         salvar = new javax.swing.JButton();
@@ -79,22 +79,23 @@ public class cidade extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Tela cadastro cidade");
+        jLabel1.setText("CADASTRO DE CIDADES");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(467, Short.MAX_VALUE))
+                .addGap(196, 196, 196)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(303, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(29, 29, 29))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1);
@@ -118,11 +119,11 @@ public class cidade extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cidade);
-        cidade.setBounds(70, 100, 140, 19);
+        cidade.setBounds(70, 100, 140, 20);
 
-        uf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        uf.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(uf);
-        uf.setBounds(70, 130, 140, 24);
+        uf.setBounds(70, 130, 140, 20);
 
         deletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar (1).png"))); // NOI18N
         deletar.addActionListener(new java.awt.event.ActionListener() {
@@ -369,7 +370,7 @@ public void carregaestadocmb()
                 
                 regVetor.add(rsfunc.getInt("codcidade"));
                 regVetor.add(rsfunc.getString("nomecidade"));
-                regVetor.add(rsfunc.getInt("fk_uf"));
+                regVetor.add(rsfunc.getString("nome_estado"));
                 dados.add(regVetor);
                 tablemodel.addRow(regVetor);
             }
