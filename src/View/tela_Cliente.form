@@ -306,8 +306,8 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace pref="276" max="32767" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="204" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="257" max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" pref="284" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="177" max="-2" attributes="0"/>
                   <Component id="tela_princial" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -333,7 +333,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Tela Cliente"/>
+            <Property name="text" type="java.lang.String" value="CADASTRO DE CLIENTE"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="tela_princial">
@@ -342,7 +342,7 @@
               <Image iconType="3" name="/img/icons8-reserva-64.png"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Padr&#xe3;o"/>
             </Property>
           </Properties>
           <Events>

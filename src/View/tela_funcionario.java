@@ -64,13 +64,13 @@ public class tela_funcionario extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         funcionario = new javax.swing.JTextField();
-        rua = new javax.swing.JComboBox<>();
+        rua = new javax.swing.JComboBox<String>();
         jLabel6 = new javax.swing.JLabel();
-        bairro = new javax.swing.JComboBox<>();
+        bairro = new javax.swing.JComboBox<String>();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        cidade = new javax.swing.JComboBox<>();
-        telefone = new javax.swing.JComboBox<>();
+        cidade = new javax.swing.JComboBox<String>();
+        telefone = new javax.swing.JComboBox<String>();
         jLabel9 = new javax.swing.JLabel();
         casa = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -125,11 +125,11 @@ public class tela_funcionario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(funcionario);
-        funcionario.setBounds(110, 70, 130, 19);
+        funcionario.setBounds(110, 70, 130, 20);
 
-        rua.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        rua.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(rua);
-        rua.setBounds(50, 210, 120, 24);
+        rua.setBounds(50, 210, 120, 20);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -137,9 +137,9 @@ public class tela_funcionario extends javax.swing.JFrame {
         getContentPane().add(jLabel6);
         jLabel6.setBounds(0, 180, 70, 25);
 
-        bairro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        bairro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(bairro);
-        bairro.setBounds(70, 150, 120, 24);
+        bairro.setBounds(70, 150, 120, 20);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -153,13 +153,13 @@ public class tela_funcionario extends javax.swing.JFrame {
         getContentPane().add(jLabel8);
         jLabel8.setBounds(0, 200, 50, 25);
 
-        cidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(cidade);
-        cidade.setBounds(70, 180, 120, 24);
+        cidade.setBounds(70, 180, 120, 20);
 
-        telefone.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        telefone.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(telefone);
-        telefone.setBounds(90, 240, 100, 24);
+        telefone.setBounds(90, 240, 100, 20);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -167,7 +167,7 @@ public class tela_funcionario extends javax.swing.JFrame {
         getContentPane().add(jLabel9);
         jLabel9.setBounds(0, 260, 80, 25);
         getContentPane().add(casa);
-        casa.setBounds(80, 270, 100, 19);
+        casa.setBounds(80, 270, 100, 20);
 
         funcionariotable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -199,7 +199,7 @@ public class tela_funcionario extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Tela funcionário");
+        jLabel1.setText("CADASTRO FUNCIONÁRIO");
 
         tela_princial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-reserva-64.png"))); // NOI18N
         tela_princial.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -214,9 +214,9 @@ public class tela_funcionario extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 449, Short.MAX_VALUE)
+                .addGap(197, 197, 197)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
                 .addComponent(tela_princial))
         );
         jPanel1Layout.setVerticalGroup(
@@ -265,7 +265,7 @@ public class tela_funcionario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(alterar);
-        alterar.setBounds(70, 340, 66, 40);
+        alterar.setBounds(70, 340, 65, 40);
 
         atualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/atualizar.png"))); // NOI18N
         atualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -282,7 +282,7 @@ public class tela_funcionario extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         getContentPane().add(rg);
-        rg.setBounds(40, 90, 120, 19);
+        rg.setBounds(40, 90, 120, 20);
 
         try {
             cpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));

@@ -63,15 +63,15 @@ public class venda extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        funcionario = new javax.swing.JComboBox<>();
-        clientes = new javax.swing.JComboBox<>();
+        funcionario = new javax.swing.JComboBox<String>();
+        clientes = new javax.swing.JComboBox<String>();
         atualizar = new javax.swing.JButton();
         alterar = new javax.swing.JButton();
         deletar = new javax.swing.JButton();
         cadastrar = new javax.swing.JButton();
         salvar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        produto = new javax.swing.JComboBox<>();
+        produto = new javax.swing.JComboBox<String>();
         jLabel8 = new javax.swing.JLabel();
         Quantv = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -93,7 +93,7 @@ public class venda extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Tela cradastro venda");
+        jLabel1.setText("CADASTRO DE VENDAS");
 
         tela_princial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-reserva-64.png"))); // NOI18N
         tela_princial.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -108,9 +108,9 @@ public class venda extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 215, Short.MAX_VALUE)
+                .addGap(119, 119, 119)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
                 .addComponent(tela_princial)
                 .addGap(188, 188, 188))
         );
@@ -144,23 +144,23 @@ public class venda extends javax.swing.JFrame {
         getContentPane().add(jLabel6);
         jLabel6.setBounds(0, 190, 80, 30);
 
-        funcionario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        funcionario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         funcionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 funcionarioActionPerformed(evt);
             }
         });
         getContentPane().add(funcionario);
-        funcionario.setBounds(110, 140, 110, 24);
+        funcionario.setBounds(110, 140, 110, 20);
 
-        clientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        clientes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         clientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clientesActionPerformed(evt);
             }
         });
         getContentPane().add(clientes);
-        clientes.setBounds(90, 110, 110, 24);
+        clientes.setBounds(90, 110, 110, 20);
 
         atualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/atualizar.png"))); // NOI18N
         atualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -178,7 +178,7 @@ public class venda extends javax.swing.JFrame {
             }
         });
         getContentPane().add(alterar);
-        alterar.setBounds(60, 290, 66, 40);
+        alterar.setBounds(60, 290, 65, 40);
 
         deletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar (1).png"))); // NOI18N
         deletar.addActionListener(new java.awt.event.ActionListener() {
@@ -213,9 +213,9 @@ public class venda extends javax.swing.JFrame {
         getContentPane().add(jLabel7);
         jLabel7.setBounds(0, 140, 110, 25);
 
-        produto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        produto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(produto);
-        produto.setBounds(90, 170, 120, 24);
+        produto.setBounds(90, 170, 120, 20);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -223,7 +223,7 @@ public class venda extends javax.swing.JFrame {
         getContentPane().add(jLabel8);
         jLabel8.setBounds(0, 165, 80, 30);
         getContentPane().add(Quantv);
-        Quantv.setBounds(80, 200, 120, 19);
+        Quantv.setBounds(80, 200, 120, 20);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -231,7 +231,7 @@ public class venda extends javax.swing.JFrame {
         getContentPane().add(jLabel9);
         jLabel9.setBounds(0, 220, 80, 30);
         getContentPane().add(Valorv);
-        Valorv.setBounds(80, 230, 120, 19);
+        Valorv.setBounds(80, 230, 120, 20);
 
         try {
             date.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -239,7 +239,7 @@ public class venda extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         getContentPane().add(date);
-        date.setBounds(70, 70, 120, 19);
+        date.setBounds(70, 70, 38, 20);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thumb2-program-code-black-backgrounds-programming-background-with-program-code-code.jpg"))); // NOI18N
         getContentPane().add(jLabel4);

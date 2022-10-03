@@ -55,9 +55,9 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="262" max="-2" attributes="0"/>
-                  <EmptySpace pref="215" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" pref="277" max="-2" attributes="0"/>
+                  <EmptySpace pref="165" max="32767" attributes="0"/>
                   <Component id="tela_princial" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="188" max="-2" attributes="0"/>
               </Group>
@@ -84,7 +84,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Tela cradastro venda"/>
+            <Property name="text" type="java.lang.String" value="CADASTRO DE VENDAS"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="tela_princial">
@@ -93,7 +93,7 @@
               <Image iconType="3" name="/img/icons8-reserva-64.png"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Padr&#xe3;o"/>
             </Property>
           </Properties>
           <Events>
@@ -361,7 +361,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="70" y="70" width="120" height="-1"/>
+          <AbsoluteConstraints x="70" y="70" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

@@ -58,7 +58,7 @@ public class tela_telefone extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         telefone = new javax.swing.JTextField();
-        jcomboxtel = new javax.swing.JComboBox<>();
+        jcomboxtel = new javax.swing.JComboBox<String>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtalbetel = new javax.swing.JTable();
         buscar = new javax.swing.JButton();
@@ -79,7 +79,7 @@ public class tela_telefone extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 3, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("cradastro telefone");
+        jLabel1.setText("CADASTRO DE TELEFONE");
 
         jToolBar8.setRollover(true);
         jToolBar8.setBorderPainted(false);
@@ -97,9 +97,9 @@ public class tela_telefone extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(277, 277, 277)
+                .addGap(136, 136, 136)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67)
                 .addComponent(tela_princial)
                 .addGap(156, 156, 156)
                 .addComponent(jToolBar8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -107,13 +107,13 @@ public class tela_telefone extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1)
             .addComponent(jToolBar8, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(tela_princial, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 833, 59);
+        jPanel1.setBounds(0, 0, 826, 59);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -133,16 +133,16 @@ public class tela_telefone extends javax.swing.JFrame {
             }
         });
         getContentPane().add(telefone);
-        telefone.setBounds(180, 110, 160, 19);
+        telefone.setBounds(180, 110, 160, 20);
 
-        jcomboxtel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcomboxtel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jcomboxtel.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jcomboxtelItemStateChanged(evt);
             }
         });
         getContentPane().add(jcomboxtel);
-        jcomboxtel.setBounds(230, 150, 120, 24);
+        jcomboxtel.setBounds(230, 150, 120, 20);
 
         jtalbetel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

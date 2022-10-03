@@ -54,9 +54,9 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="222" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="277" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" pref="380" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                   <Component id="tela_princial" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
                   <Component id="jToolBar8" min="-2" max="-2" attributes="0"/>
@@ -66,9 +66,9 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
               <Component id="jToolBar8" alignment="0" min="-2" pref="61" max="-2" attributes="0"/>
               <Component id="tela_princial" alignment="0" min="-2" pref="57" max="-2" attributes="0"/>
+              <Component id="jLabel1" alignment="0" min="-2" pref="27" max="-2" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -81,7 +81,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="cradastro telefone"/>
+            <Property name="text" type="java.lang.String" value="CADASTRO DE TELEFONE"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JToolBar" name="jToolBar8">
@@ -98,7 +98,7 @@
               <Image iconType="3" name="/img/icons8-reserva-64.png"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Padr&#xe3;o"/>
             </Property>
           </Properties>
           <Events>

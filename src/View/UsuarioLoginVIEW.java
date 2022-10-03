@@ -79,7 +79,7 @@ public class UsuarioLoginVIEW extends javax.swing.JFrame {
         jLabel3.setText("LOGIN");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 150, -1));
 
-        jButton2.setText("tela de cadastro");
+        jButton2.setText("Cadastro de usuario");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
