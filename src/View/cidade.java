@@ -101,17 +101,17 @@ public class cidade extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 813, 59);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Estado:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 130, 70, 25);
+        jLabel2.setBounds(0, 80, 70, 20);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Cidade:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(0, 100, 70, 25);
+        jLabel3.setBounds(0, 60, 70, 20);
 
         cidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,11 +119,11 @@ public class cidade extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cidade);
-        cidade.setBounds(70, 100, 140, 20);
+        cidade.setBounds(50, 60, 160, 20);
 
         uf.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(uf);
-        uf.setBounds(70, 130, 140, 20);
+        uf.setBounds(50, 80, 160, 20);
 
         deletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar (1).png"))); // NOI18N
         deletar.addActionListener(new java.awt.event.ActionListener() {

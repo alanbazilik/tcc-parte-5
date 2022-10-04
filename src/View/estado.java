@@ -97,11 +97,11 @@ public class estado extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 813, 59);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Estado:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(30, 60, 100, 25);
+        jLabel2.setBounds(0, 60, 70, 20);
 
         estados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,7 +109,7 @@ public class estado extends javax.swing.JFrame {
             }
         });
         getContentPane().add(estados);
-        estados.setBounds(0, 90, 210, 30);
+        estados.setBounds(50, 60, 160, 30);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED), "ações"));
 

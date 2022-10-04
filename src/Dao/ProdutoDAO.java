@@ -71,7 +71,7 @@ public class ProdutoDAO {
 
         String sql = "insert into produto"
                 + "(produto,quantidade,fk_tipo,fk_marca)"
-                + " values (?,?,?,?)";
+                + " values (upper(?),?,?,?)";
 
         try {
             pgsql = con.prepareStatement(sql);

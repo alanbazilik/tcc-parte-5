@@ -95,29 +95,29 @@ public class tela_Cliente extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(790, 410));
         getContentPane().setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Cliente:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 65, 110, 25);
+        jLabel2.setBounds(0, 65, 50, 20);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Rg:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(0, 90, 30, 25);
+        jLabel3.setBounds(0, 90, 30, 20);
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Cpf:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 120, 40, 25);
+        jLabel4.setBounds(0, 120, 40, 20);
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Bairro:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(0, 150, 60, 25);
+        jLabel5.setBounds(0, 150, 60, 20);
 
         funcionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,49 +125,49 @@ public class tela_Cliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(funcionario);
-        funcionario.setBounds(110, 70, 130, 20);
+        funcionario.setBounds(60, 60, 130, 20);
 
         rua.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(rua);
-        rua.setBounds(50, 210, 120, 20);
+        rua.setBounds(40, 210, 120, 20);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Cidade:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(0, 180, 70, 25);
+        jLabel6.setBounds(0, 180, 70, 20);
 
         bairro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(bairro);
-        bairro.setBounds(70, 150, 120, 20);
+        bairro.setBounds(50, 150, 120, 20);
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Telefone:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(0, 230, 90, 25);
+        jLabel7.setBounds(0, 240, 70, 20);
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Rua:");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(0, 200, 50, 25);
+        jLabel8.setBounds(0, 210, 40, 20);
 
         cidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(cidade);
-        cidade.setBounds(70, 180, 120, 20);
+        cidade.setBounds(50, 180, 120, 20);
 
         telefone.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(telefone);
-        telefone.setBounds(90, 240, 100, 20);
+        telefone.setBounds(60, 240, 100, 20);
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Nº.casa:");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(0, 260, 80, 25);
+        jLabel9.setBounds(0, 270, 60, 20);
         getContentPane().add(casa);
-        casa.setBounds(80, 270, 100, 20);
+        casa.setBounds(60, 270, 100, 20);
 
         funcionariotable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -282,7 +282,7 @@ public class tela_Cliente extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         getContentPane().add(rg);
-        rg.setBounds(40, 90, 120, 20);
+        rg.setBounds(30, 90, 110, 20);
 
         try {
             cpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -290,7 +290,7 @@ public class tela_Cliente extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         getContentPane().add(cpf);
-        cpf.setBounds(50, 119, 110, 20);
+        cpf.setBounds(30, 120, 110, 20);
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thumb2-program-code-black-backgrounds-programming-background-with-program-code-code.jpg"))); // NOI18N
         getContentPane().add(jLabel10);
