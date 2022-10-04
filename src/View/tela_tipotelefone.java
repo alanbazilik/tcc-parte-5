@@ -120,13 +120,13 @@ public class tela_tipotelefone extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(220, 60, 380, 210);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Nome tipo de telefone:");
+        jLabel3.setText("Tipo de telefone:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(0, 50, 200, 50);
+        jLabel3.setBounds(0, 60, 110, 20);
         getContentPane().add(tipotel);
-        tipotel.setBounds(0, 90, 220, 30);
+        tipotel.setBounds(110, 60, 110, 30);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED), "ações"));
 
@@ -362,7 +362,7 @@ public void desativarBotoes()
   
   public void preenche_item()
     {
-     String [] colunas = {"Codigo","Nome"};
+     String [] colunas = {"Codigo","Tipo_Telelefone"};
         
         String [][] linhas ={};
         

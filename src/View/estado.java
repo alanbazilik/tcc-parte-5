@@ -382,7 +382,7 @@ public class estado extends javax.swing.JFrame {
   
   public void preenche_item()
     {
-     String [] colunas = {"Codigo","Nome"};
+     String [] colunas = {"Codigo","Nome_estado"};
         
         String [][] linhas ={};
         

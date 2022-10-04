@@ -82,7 +82,7 @@ public class Tela_principal extends javax.swing.JFrame {
 
         funcionario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
         funcionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/eu-iria.png"))); // NOI18N
-        funcionario.setText("funcionario");
+        funcionario.setText("Funcionário");
         funcionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 funcionarioActionPerformed(evt);
@@ -92,7 +92,7 @@ public class Tela_principal extends javax.swing.JFrame {
 
         cliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/clientes.png"))); // NOI18N
-        cliente.setText("cliente");
+        cliente.setText("Cliente");
         cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clienteActionPerformed(evt);
@@ -112,7 +112,7 @@ public class Tela_principal extends javax.swing.JFrame {
 
         cidade.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         cidade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cidade.png"))); // NOI18N
-        cidade.setText("cidade");
+        cidade.setText("Cidade");
         cidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cidadeActionPerformed(evt);
@@ -122,7 +122,7 @@ public class Tela_principal extends javax.swing.JFrame {
 
         bairro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
         bairro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cidade-verde.png"))); // NOI18N
-        bairro.setText("bairro");
+        bairro.setText("Bairro");
         bairro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bairroActionPerformed(evt);
@@ -132,7 +132,7 @@ public class Tela_principal extends javax.swing.JFrame {
 
         rua.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
         rua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/rua.png"))); // NOI18N
-        rua.setText("rua");
+        rua.setText("Rua");
         rua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ruaActionPerformed(evt);
@@ -142,7 +142,7 @@ public class Tela_principal extends javax.swing.JFrame {
 
         telefone.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
         telefone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/telefones.png"))); // NOI18N
-        telefone.setText("telefone");
+        telefone.setText("Telefone");
         telefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 telefoneActionPerformed(evt);
@@ -167,7 +167,7 @@ public class Tela_principal extends javax.swing.JFrame {
 
         produto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         produto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/adicionar-produto.png"))); // NOI18N
-        produto.setText("produto");
+        produto.setText("Produto");
         produto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 produtoActionPerformed(evt);
@@ -177,7 +177,7 @@ public class Tela_principal extends javax.swing.JFrame {
 
         marca.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
         marca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-square-brackets-32.png"))); // NOI18N
-        marca.setText("marca");
+        marca.setText("Marca");
         marca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 marcaActionPerformed(evt);
@@ -187,7 +187,7 @@ public class Tela_principal extends javax.swing.JFrame {
 
         tipo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         tipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/menu-suspenso.png"))); // NOI18N
-        tipo.setText("tipo");
+        tipo.setText("Tipo");
         tipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tipoActionPerformed(evt);
@@ -197,7 +197,7 @@ public class Tela_principal extends javax.swing.JFrame {
 
         venda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         venda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-finalizar-pedido-32.png"))); // NOI18N
-        venda.setText("venda");
+        venda.setText("Venda");
         venda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vendaActionPerformed(evt);
@@ -209,7 +209,7 @@ public class Tela_principal extends javax.swing.JFrame {
 
         exit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_BACK_SPACE, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-exit-64.png"))); // NOI18N
-        exit.setText("deslogar");
+        exit.setText("Deslogar");
         exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitActionPerformed(evt);

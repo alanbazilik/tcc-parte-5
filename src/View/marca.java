@@ -203,11 +203,11 @@ public class marca extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(170, 60, 300, 230);
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Marca:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(0, 100, 150, 25);
+        jLabel5.setBounds(0, 60, 50, 20);
 
         produtos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,7 +215,7 @@ public class marca extends javax.swing.JFrame {
             }
         });
         getContentPane().add(produtos);
-        produtos.setBounds(0, 130, 170, 30);
+        produtos.setBounds(50, 60, 120, 20);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thumb2-program-code-black-backgrounds-programming-background-with-program-code-code.jpg"))); // NOI18N
         getContentPane().add(jLabel4);
@@ -422,7 +422,7 @@ public class marca extends javax.swing.JFrame {
   
   public void preenche_item()
     {
-     String [] colunas = {"Codigo","Nome"};
+     String [] colunas = {"Codigo","Marca_produto"};
         
         String [][] linhas ={};
         

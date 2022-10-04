@@ -347,7 +347,7 @@ public void carregatelefonecmb()
     
     public void preenche_item()
     {
-     String [] colunas = {"Codigo","Numero","TipoTelefone"};
+     String [] colunas = {"Codigo","Numero","Tipo_Telefone"};
         
         String [][] linhas ={};
         

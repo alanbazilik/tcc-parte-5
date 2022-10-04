@@ -122,29 +122,29 @@ public class Produto extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 813, 59);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Produto:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 70, 80, 25);
+        jLabel2.setBounds(0, 70, 80, 20);
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Quantidade:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(0, 100, 120, 25);
+        jLabel5.setBounds(0, 100, 120, 20);
 
-        tipos1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        tipos1.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         tipos1.setForeground(new java.awt.Color(255, 255, 255));
         tipos1.setText("Marca:");
         getContentPane().add(tipos1);
-        tipos1.setBounds(0, 160, 70, 25);
+        tipos1.setBounds(0, 160, 70, 20);
 
-        tipos.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        tipos.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         tipos.setForeground(new java.awt.Color(255, 255, 255));
         tipos.setText("Tipo:");
         getContentPane().add(tipos);
-        tipos.setBounds(0, 130, 60, 25);
+        tipos.setBounds(0, 130, 60, 20);
         getContentPane().add(quantidade);
         quantidade.setBounds(110, 100, 110, 20);
 

@@ -28,7 +28,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/img/eu-iria.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="funcionario"/>
+                    <Property name="text" type="java.lang.String" value="Funcion&#xe1;rio"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="funcionarioActionPerformed"/>
@@ -42,7 +42,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/img/clientes.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="cliente"/>
+                    <Property name="text" type="java.lang.String" value="Cliente"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clienteActionPerformed"/>
@@ -70,7 +70,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/img/cidade.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="cidade"/>
+                    <Property name="text" type="java.lang.String" value="Cidade"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cidadeActionPerformed"/>
@@ -84,7 +84,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/img/cidade-verde.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="bairro"/>
+                    <Property name="text" type="java.lang.String" value="Bairro"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bairroActionPerformed"/>
@@ -98,7 +98,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/img/rua.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="rua"/>
+                    <Property name="text" type="java.lang.String" value="Rua"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ruaActionPerformed"/>
@@ -112,7 +112,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/img/telefones.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="telefone"/>
+                    <Property name="text" type="java.lang.String" value="Telefone"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="telefoneActionPerformed"/>
@@ -150,7 +150,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/img/adicionar-produto.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="produto"/>
+                    <Property name="text" type="java.lang.String" value="Produto"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="produtoActionPerformed"/>
@@ -164,7 +164,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/img/icons8-square-brackets-32.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="marca"/>
+                    <Property name="text" type="java.lang.String" value="Marca"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="marcaActionPerformed"/>
@@ -178,7 +178,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/img/menu-suspenso.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="tipo"/>
+                    <Property name="text" type="java.lang.String" value="Tipo"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tipoActionPerformed"/>
@@ -192,7 +192,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/img/icons8-finalizar-pedido-32.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="venda"/>
+                    <Property name="text" type="java.lang.String" value="Venda"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vendaActionPerformed"/>
@@ -208,7 +208,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/img/icons8-exit-64.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="deslogar"/>
+                <Property name="text" type="java.lang.String" value="Deslogar"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitActionPerformed"/>

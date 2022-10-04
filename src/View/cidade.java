@@ -349,7 +349,7 @@ public void carregaestadocmb()
     }
  public void preenche_item()
     {
-     String [] colunas = {"Codigo","cidade","estado"};
+     String [] colunas = {"Codigo","Nome_cidade","Estado"};
         
         String [][] linhas ={};
         

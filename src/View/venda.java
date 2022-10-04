@@ -126,19 +126,19 @@ public class venda extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 813, 59);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Data:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 70, 50, 25);
+        jLabel2.setBounds(0, 70, 50, 20);
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Cliente:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(0, 110, 70, 25);
+        jLabel5.setBounds(0, 110, 70, 20);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Quantv:");
         getContentPane().add(jLabel6);
@@ -151,7 +151,7 @@ public class venda extends javax.swing.JFrame {
             }
         });
         getContentPane().add(funcionario);
-        funcionario.setBounds(110, 140, 110, 20);
+        funcionario.setBounds(80, 140, 110, 20);
 
         clientes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         clientes.addActionListener(new java.awt.event.ActionListener() {
@@ -160,7 +160,7 @@ public class venda extends javax.swing.JFrame {
             }
         });
         getContentPane().add(clientes);
-        clientes.setBounds(90, 110, 110, 20);
+        clientes.setBounds(50, 110, 110, 20);
 
         atualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/atualizar.png"))); // NOI18N
         atualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -207,31 +207,31 @@ public class venda extends javax.swing.JFrame {
         getContentPane().add(salvar);
         salvar.setBounds(60, 250, 70, 40);
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Funcionário:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(0, 140, 110, 25);
+        jLabel7.setBounds(0, 140, 110, 20);
 
         produto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(produto);
-        produto.setBounds(90, 170, 120, 20);
+        produto.setBounds(60, 170, 120, 20);
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Produto:");
         getContentPane().add(jLabel8);
         jLabel8.setBounds(0, 165, 80, 30);
         getContentPane().add(Quantv);
-        Quantv.setBounds(80, 200, 120, 20);
+        Quantv.setBounds(60, 200, 120, 20);
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Valorv:");
         getContentPane().add(jLabel9);
         jLabel9.setBounds(0, 220, 80, 30);
         getContentPane().add(Valorv);
-        Valorv.setBounds(80, 230, 120, 20);
+        Valorv.setBounds(50, 230, 120, 20);
 
         try {
             date.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -239,7 +239,7 @@ public class venda extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         getContentPane().add(date);
-        date.setBounds(70, 70, 38, 20);
+        date.setBounds(40, 70, 70, 20);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thumb2-program-code-black-backgrounds-programming-background-with-program-code-code.jpg"))); // NOI18N
         getContentPane().add(jLabel4);

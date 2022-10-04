@@ -97,11 +97,11 @@ public class rua extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 813, 59);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Rua:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(10, 70, 100, 25);
+        jLabel2.setBounds(0, 60, 100, 20);
 
         ruas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,7 +109,7 @@ public class rua extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ruas);
-        ruas.setBounds(10, 100, 200, 30);
+        ruas.setBounds(30, 60, 200, 30);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED), "ações"));
 
@@ -381,7 +381,7 @@ public class rua extends javax.swing.JFrame {
   
   public void preenche_item()
     {
-     String [] colunas = {"Codigo","Nome"};
+     String [] colunas = {"Codigo","Nome_Da_Rua "};
         
         String [][] linhas ={};
         

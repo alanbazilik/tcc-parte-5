@@ -75,7 +75,7 @@ public class tipo extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("CADASTRO TIPO DO PRODUTOS");
+        jLabel1.setText("CADASTRO TIPOS DO PRODUTOS");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -102,13 +102,13 @@ public class tipo extends javax.swing.JFrame {
             }
         });
         getContentPane().add(produtos);
-        produtos.setBounds(0, 90, 120, 30);
+        produtos.setBounds(10, 90, 120, 20);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Tipo do produtos");
+        jLabel3.setText("Tipo do produtos:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(0, 60, 160, 25);
+        jLabel3.setBounds(10, 60, 120, 20);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED), "açoês"));
 
