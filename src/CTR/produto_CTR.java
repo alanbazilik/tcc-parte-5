@@ -64,15 +64,15 @@ public class produto_CTR {
         }
     }
     
-    public void InsereprodutoCTR(String produto,int quantidade,int fkmarca,int fk_tipo)
+    public void InsereprodutoCTR(String produto,int quantidade,int fk_tipo, int fkmarca)
     {
         // Cria um objeto da MODEL
         ProdutoModel objprProdutoModel = new ProdutoModel();
         //Envia por meio de SET o valor de nome
         objprProdutoModel.setProduto(produto);
         objprProdutoModel.setQuantidade(quantidade);
-        objprProdutoModel.setFk_marca(fkmarca);
          objprProdutoModel.setFk_tipo(fk_tipo);
+         objprProdutoModel.setFk_marca(fkmarca);
          
         //Declara objeto da DAO
         ProdutoDAO objdao = new ProdutoDAO();

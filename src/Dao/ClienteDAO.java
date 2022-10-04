@@ -183,11 +183,11 @@ public class ClienteDAO {
         ConexaoDAO cb = new ConexaoDAO();
         con = cb.conectaPostgre();
 
-        String sql = "SELECT c.cod_cliente, c.nome_cliente,c.rg, c.cpf, c.numerocasa, b.bairro, cid.nomecidade,r.nomerua,t.numerotel "
+        String sql = "SELECT c.cod_cliente, c.nome_cliente,c.rg, c.cpf, c.numerocasa, b.bairro, cid.nomecidade,r.nomerua,t.numerotel"
                 + "FROM Cliente c, bairro b, cidade cid, Rua r,Telefone t "
-                + "WHERE c.fk_bairro = b.codbairro "; 
-  
-        
+                + "WHERE c.fk_bairro = b.codbairro and c.fk_cidade = cid.codcidade and c.fk_codrua = r.codrua and c.fk_codtelefone = t.codtelefone ";
+              
+
         try {
             pgsql = con.prepareStatement(sql);
 //            pgsql.setString(1, "%" + nome_cliente + "%");

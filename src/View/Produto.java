@@ -29,12 +29,13 @@ public class Produto extends javax.swing.JFrame {
     /**
      * Creates new form cidade
      */
-         public static int id_produto;
+    public static int id_produto;
     public static int fkmarca;
     ResultSet rsfunc;
     String opcao;
     List<tipoModel> liatipo;
     List<marca_model> liamarca;
+
     public Produto() {
         initComponents();
         desativarBotoes();
@@ -246,14 +247,14 @@ public class Produto extends javax.swing.JFrame {
 
     private void salvar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvar1ActionPerformed
         // TODO add your handling code here:
-       Inseriproduto();
-         limparCampos();
-          pesquisarproduto();
+        Inseriproduto();
+        limparCampos();
+        pesquisarproduto();
     }//GEN-LAST:event_salvar1ActionPerformed
 
     private void cadastrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrar2ActionPerformed
         // TODO add your handling code here:
-              ativarBotoes();
+        ativarBotoes();
         limparCampos();
         opcao = "Inserir";
         button = true;
@@ -261,25 +262,23 @@ public class Produto extends javax.swing.JFrame {
 
     private void deletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletarActionPerformed
         // TODO add your handling code here:
-                   String [] options = new String[] {"Sim","Não"};
+        String[] options = new String[]{"Sim", "Não"};
 
-        Object ret = JOptionPane.showOptionDialog
-        (null, "Tem certeza que deseja excluir: "
-            + Produto.getText() + "?","AVISO", JOptionPane.YES_NO_OPTION,
-            JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        Object ret = JOptionPane.showOptionDialog(null, "Tem certeza que deseja excluir: "
+                + Produto.getText() + "?", "AVISO", JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 
-        if(options[Integer.valueOf(ret.toString())].equals("Sim"))
-        {
+        if (options[Integer.valueOf(ret.toString())].equals("Sim")) {
             excluirproduto();
             limparCampos();
-              pesquisarproduto();
+            pesquisarproduto();
         }
     }//GEN-LAST:event_deletarActionPerformed
 
     private void alterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarActionPerformed
         // TODO add your handling code here:
-                alterarproduto();
-         limparCampos();
+        alterarproduto();
+        limparCampos();
         pesquisarproduto();
     }//GEN-LAST:event_alterarActionPerformed
 
@@ -290,33 +289,31 @@ public class Produto extends javax.swing.JFrame {
 
     private void produtableKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_produtableKeyPressed
         // TODO add your handling code here:
-             int linha = produtable.getSelectedRow();
-            
-           
-               this.Produto.setText((String) produtable.getValueAt(linha, 1));
-         quantidade.setText(""+produtable.getValueAt(produtable.getSelectedRow(), 2));
-            id_produto= (int) produtable.getValueAt(linha, 0);
-   
-            opcao="Alterar";
-            ativarBotoes();
+        int linha = produtable.getSelectedRow();
+
+        this.Produto.setText((String) produtable.getValueAt(linha, 1));
+        quantidade.setText("" + produtable.getValueAt(produtable.getSelectedRow(), 2));
+        id_produto = (int) produtable.getValueAt(linha, 0);
+
+        opcao = "Alterar";
+        ativarBotoes();
     }//GEN-LAST:event_produtableKeyPressed
 
     private void produtableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_produtableMouseClicked
         // TODO add your handling code here:
-             if(evt.getClickCount() == 2)
-        {
+        if (evt.getClickCount() == 2) {
             int linha = produtable.getSelectedRow();
-            
-       
+
             this.Produto.setText((String) produtable.getValueAt(linha, 1));
-         quantidade.setText(""+produtable.getValueAt(produtable.getSelectedRow(), 2));
-            
-            tela_tipotelefone.button = 
-           (boolean) produtable.getValueAt(linha, 0);
-                    
+            quantidade.setText("" + produtable.getValueAt(produtable.getSelectedRow(), 2));
+
+            tela_tipotelefone.button
+                    = (boolean) produtable.getValueAt(linha, 0);
+
             this.dispose();
     }//GEN-LAST:event_produtableMouseClicked
     }
+
     /**
      * @param args the command line arguments
      */
@@ -366,123 +363,121 @@ public class Produto extends javax.swing.JFrame {
             }
         });
     }
- public void desativarBotoes()
-    {
+
+    public void desativarBotoes() {
         deletar.setEnabled(false);
         Produto.setEnabled(false);
-      quantidade.setEnabled(false);
-      tipo.setEnabled(false);
-      marca.setEnabled(false);
+        quantidade.setEnabled(false);
+        tipo.setEnabled(false);
+        marca.setEnabled(false);
     }
-    
-    public void ativarBotoes()
-    {
-             deletar.setEnabled(true);
+
+    public void ativarBotoes() {
+        deletar.setEnabled(true);
         Produto.setEnabled(true);
-      quantidade.setEnabled(true);
-      tipo.setEnabled(true);
-      marca.setEnabled(true);
+        quantidade.setEnabled(true);
+        tipo.setEnabled(true);
+        marca.setEnabled(true);
     }
-      public void limparCampos()
-    {
-          Produto.setText("");
-             quantidade.setText("");
+
+    public void limparCampos() {
+        Produto.setText("");
+        quantidade.setText("");
     }
-      public void carregamarca()
-    {
+
+    public void carregamarca() {
         produto_CTR objtel = new produto_CTR();
         liamarca = objtel.carregaCombomarcaproduto();
-        
+
         marca.removeAllItems();
         int i = 0;
-        
-        while(i < liamarca.size())
-        {
+
+        while (i < liamarca.size()) {
             marca.addItem(liamarca.get(i).getMarca_produto());
             i++;
         }
-       
+
     }
-        public void carregatipo()
-    {
+
+    public void carregatipo() {
         produto_CTR objtel = new produto_CTR();
         liatipo = objtel.carregaCombotipoproduto();
-        
+
         tipo.removeAllItems();
         int i = 0;
-        
-        while(i < liatipo.size())
-        {
+
+        while (i < liatipo.size()) {
             tipo.addItem(liatipo.get(i).getTipo());
             i++;
         }
 
     }
-        public void Inseriproduto()
-    {
-        produto_CTR objcli = new  produto_CTR();
-        
-        objcli.InsereprodutoCTR(
-       Produto.getText(),Integer.parseInt(quantidade.getText()),
-               liatipo.get(tipo.getSelectedIndex()).getCod_tipo(),
-                liamarca.get(marca.getSelectedIndex()).getCod_marca_produto()); 
-    }
-                public void alterarproduto()
-    {
-        produto_CTR objcli = new  produto_CTR();
-        
-        objcli.AlteraprodutoCTR(
-       Produto.getText(),Integer.parseInt(quantidade.getText()),
-               liatipo.get(tipo.getSelectedIndex()).getCod_tipo(),
-                liamarca.get(marca.getSelectedIndex()).getCod_marca_produto(),id_produto); 
-    }
-                  public  void excluirproduto(){
-      int linha = produtable.getSelectedRow();
-        
+
+    public void Inseriproduto() {
         produto_CTR objcli = new produto_CTR();
-        
+
+        //JOptionPane.showMessageDialog(null, liatipo.get(tipo.getSelectedIndex()).getCod_tipo());
+        //JOptionPane.showMessageDialog(null, liamarca.get(marca.getSelectedIndex()).getCod_marca_produto());
+        objcli.InsereprodutoCTR(
+                Produto.getText(),
+                Integer.parseInt(quantidade.getText()),
+                liatipo.get(tipo.getSelectedIndex()).getCod_tipo(),
+                liamarca.get(marca.getSelectedIndex()).getCod_marca_produto());
+    }
+
+    public void alterarproduto() {
+        produto_CTR objcli = new produto_CTR();
+
+        objcli.AlteraprodutoCTR(
+                Produto.getText(), Integer.parseInt(quantidade.getText()),
+                liatipo.get(tipo.getSelectedIndex()).getCod_tipo(),
+                liamarca.get(marca.getSelectedIndex()).getCod_marca_produto(), id_produto);
+    }
+
+    public void excluirproduto() {
+        int linha = produtable.getSelectedRow();
+
+        produto_CTR objcli = new produto_CTR();
+
         objcli.ExcluiprodutoCTR(id_produto);
     }
-          public void pesquisarproduto()
-    {
-         produto_CTR objfunc = new produto_CTR();
+
+    public void pesquisarproduto() {
+        produto_CTR objfunc = new produto_CTR();
         rsfunc = objfunc.PesquisarprodutoCTR(Produto.getText());
-        
+
         preenche_item();
-        
+
     }
-          public void preenche_item()
-    {
-     String [] colunas = {"Codigo de barras","Produto","quantidade","tipo","marca"};
-        
-        String [][] linhas ={};
-        
-        DefaultTableModel tablemodel = new DefaultTableModel(linhas,colunas)
-        {
-            public boolean CelulaEditavel(int rowIndex, int mColIndex)
-            {
+
+    public void preenche_item() {
+        String[] colunas = {"Codigo de barras", "Produto", "quantidade", "tipo", "marca"};
+
+        String[][] linhas = {};
+
+        DefaultTableModel tablemodel = new DefaultTableModel(linhas, colunas) {
+            public boolean CelulaEditavel(int rowIndex, int mColIndex) {
                 return true;
             }
         };
-        
-        Vector <Vector> dados = new Vector();
-        
+
+        Vector<Vector> dados = new Vector();
+
         try {
-            while(rsfunc.next())
-            {
+            while (rsfunc.next()) {
                 Vector regVetor = new Vector();
-                
+
                 regVetor.add(rsfunc.getInt("codigo_barras"));
                 regVetor.add(rsfunc.getString("produto"));
                 regVetor.add(rsfunc.getInt("quantidade"));
                 regVetor.add(rsfunc.getString("tipo"));
                 regVetor.add(rsfunc.getString("marca_produto"));
-                
+
                 dados.add(regVetor);
                 tablemodel.addRow(regVetor);
             }
             produtable.setModel(tablemodel);
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(Produto.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -183,9 +183,11 @@ public class FuncionarioDAO {
         ConexaoDAO cb = new ConexaoDAO();
         con = cb.conectaPostgre();
 
-        String sql = "SELECT f.cod_funcionario, f.nome_funcionario,f.rg, f.cpf, f.numerocasa, b.bairro, cid.nomecidade,r.nomerua,t.numerotel "
+        String sql = "SELECT f.cod_funcionario, f.nome_funcionario,f.rg, f.cpf, f.numerocasa, b.bairro, cid.nomecidade, "
+                + "r.nomerua,t.numerotel "
                 + "FROM funcionario f, bairro b, cidade cid, Rua r,Telefone t "
-                + "WHERE f.fk_bairro = b.codbairro "; 
+                + "WHERE f.fk_bairro = b.codbairro and f.fk_cidade = cid.codcidade and f.fk_codrua = r.codrua and "
+                + "f.fk_codtelefone = t.codtelefone";
         try {
             pgsql = con.prepareStatement(sql);
 //            pgsql.setString(1, "%" + nome_funcionario + "%");
