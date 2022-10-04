@@ -95,7 +95,7 @@ public class Bairros extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 59));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Bairro:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, -1, -1));
@@ -105,7 +105,7 @@ public class Bairros extends javax.swing.JFrame {
                 bairroActionPerformed(evt);
             }
         });
-        getContentPane().add(bairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 160, 30));
+        getContentPane().add(bairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 110, 30));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED), "açoês"));
 
@@ -362,7 +362,7 @@ public class Bairros extends javax.swing.JFrame {
   
   public void preenche_item()
     {
-     String [] colunas = {"Codigo","Nome"};
+     String [] colunas = {"Codigo","Bairro"};
         
         String [][] linhas ={};
         
