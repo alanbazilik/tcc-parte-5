@@ -30,7 +30,7 @@ public class ClienteDAO {
         con = cb.conectaPostgre();
 
         ResultSet rs = null;
-        String sql = "select * from Cliente";
+        String sql = "select * from bairro";
 
         try {
             st = con.createStatement(ResultSet.CONCUR_UPDATABLE,
@@ -50,7 +50,7 @@ public class ClienteDAO {
         con = cb.conectaPostgre();
 
         ResultSet rs = null;
-        String sql = "select * from Cliente";
+        String sql = "select * from cidade";
 
         try {
             st = con.createStatement(ResultSet.CONCUR_UPDATABLE,
@@ -70,7 +70,7 @@ public class ClienteDAO {
         con = cb.conectaPostgre();
 
         ResultSet rs = null;
-        String sql = "select * from Cliente";
+        String sql = "select * from telefone";
 
         try {
             st = con.createStatement(ResultSet.CONCUR_UPDATABLE,
@@ -90,7 +90,7 @@ public class ClienteDAO {
         con = cb.conectaPostgre();
 
         ResultSet rs = null;
-        String sql = "select * from Cliente";
+        String sql = "select * from rua";
 
         try {
             st = con.createStatement(ResultSet.CONCUR_UPDATABLE,
@@ -184,8 +184,11 @@ public class ClienteDAO {
         con = cb.conectaPostgre();
 
         String sql = "SELECT c.cod_cliente, c.nome_cliente,c.rg, c.cpf, c.numerocasa, b.bairro, cid.nomecidade,r.nomerua,t.numerotel"
-                + "FROM Cliente c, bairro b, cidade cid, Rua r,Telefone t "
-                + "WHERE c.fk_bairro = b.codbairro and c.fk_cidade = cid.codcidade and c.fk_codrua = r.codrua and c.fk_codtelefone = t.codtelefone ";
+                + "                FROM Cliente c, bairro b, cidade cid, Rua r,Telefone t"
+                + "                WHERE c.fk_bairro = b.codbairro"
+                + "				and c.fk_cidade = cid.codcidade"
+                + "				and c.fk_codrua = r.codrua"
+                + "				and c.fk_codtelefone = t.codtelefone ";
               
 
         try {

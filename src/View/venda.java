@@ -239,7 +239,7 @@ public class venda extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         getContentPane().add(date);
-        date.setBounds(40, 70, 70, 20);
+        date.setBounds(40, 70, 80, 20);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thumb2-program-code-black-backgrounds-programming-background-with-program-code-code.jpg"))); // NOI18N
         getContentPane().add(jLabel4);

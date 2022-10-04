@@ -80,15 +80,16 @@ public class produto_CTR {
         objdao.Insereproduto(objprProdutoModel);
                 
     }
-             public void AlteraprodutoCTR(String marca,int quantidade,int fkmarca,int tipo,int id_prod)
+             public void AlteraprodutoCTR(String produto,int quantidade,int fk_tipo, int fkmarca,int id_prod)
     {
         // Cria um objeto da MODEL
         ProdutoModel objrua = new ProdutoModel();
         //Envia por meio de SET o valor de nome
-        objrua.setProduto(marca);
+        objrua.setProduto(produto);
           objrua.setQuantidade(quantidade);
-          objrua.setFk_tipo(tipo);
-       objrua.setFk_marca(fkmarca);
+           objrua.setFk_marca(fkmarca);
+          objrua.setFk_tipo(fk_tipo);
+      
     objrua.setCodigo_barras(id_prod);
    
 
