@@ -9,6 +9,8 @@ import CTR.TelefoneTipoCTR;
 import Model.TelefoneTipomodel;
 import Model.telefoneModel;
 import Sistemas_login.utilitarios;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -35,6 +37,10 @@ public class tela_telefone extends javax.swing.JFrame {
     public static boolean button;
     public tela_telefone() {
         initComponents();
+            Toolkit tk = Toolkit.getDefaultToolkit();
+        Dimension d = tk.getScreenSize();
+        
+        this.setBounds(0, 0, d.width = 800, d.height  = 600);
         carregatelefonecmb();
         pesquisartel();
         desativarBotoes();
@@ -66,13 +72,12 @@ public class tela_telefone extends javax.swing.JFrame {
         cradastrar = new javax.swing.JButton();
         excluir = new javax.swing.JButton();
         Alterar = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(651, 325));
-        setMinimumSize(new java.awt.Dimension(651, 325));
-        setPreferredSize(new java.awt.Dimension(651, 325));
-        setSize(new java.awt.Dimension(651, 325));
+        setMaximumSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 600));
+        setSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 255));
@@ -99,9 +104,9 @@ public class tela_telefone extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(136, 136, 136)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67)
+                .addGap(205, 205, 205)
                 .addComponent(tela_princial)
-                .addGap(156, 156, 156)
+                .addGap(18, 18, 18)
                 .addComponent(jToolBar8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -116,16 +121,14 @@ public class tela_telefone extends javax.swing.JFrame {
         jPanel1.setBounds(0, 0, 826, 59);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Tipo de telefone:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(10, 150, 220, 25);
+        jLabel3.setBounds(0, 120, 150, 25);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Numero telefone:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(10, 110, 160, 25);
+        jLabel4.setBounds(0, 70, 160, 25);
 
         telefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,7 +136,7 @@ public class tela_telefone extends javax.swing.JFrame {
             }
         });
         getContentPane().add(telefone);
-        telefone.setBounds(180, 110, 160, 20);
+        telefone.setBounds(150, 70, 120, 20);
 
         jcomboxtel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jcomboxtel.addItemListener(new java.awt.event.ItemListener() {
@@ -142,7 +145,7 @@ public class tela_telefone extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jcomboxtel);
-        jcomboxtel.setBounds(230, 150, 120, 20);
+        jcomboxtel.setBounds(150, 120, 120, 20);
 
         jtalbetel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -168,22 +171,25 @@ public class tela_telefone extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jtalbetel);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(360, 60, 290, 240);
+        jScrollPane1.setBounds(290, 60, 510, 540);
 
-        buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/lupa.png"))); // NOI18N
+        buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/atualizar.png"))); // NOI18N
+        buscar.setText("Atualizar dados");
         getContentPane().add(buscar);
-        buscar.setBounds(130, 180, 40, 40);
+        buscar.setBounds(20, 410, 150, 40);
 
         salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salvar.png"))); // NOI18N
+        salvar.setText("Salvar");
         salvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salvarActionPerformed(evt);
             }
         });
         getContentPane().add(salvar);
-        salvar.setBounds(80, 180, 40, 40);
+        salvar.setBounds(20, 290, 150, 40);
 
         cradastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/addition.png"))); // NOI18N
+        cradastrar.setText("Novo");
         cradastrar.setToolTipText("");
         cradastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,31 +197,29 @@ public class tela_telefone extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cradastrar);
-        cradastrar.setBounds(30, 180, 40, 40);
+        cradastrar.setBounds(20, 250, 150, 40);
 
         excluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar (1).png"))); // NOI18N
+        excluir.setText("excluir");
         excluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 excluirActionPerformed(evt);
             }
         });
         getContentPane().add(excluir);
-        excluir.setBounds(30, 230, 40, 40);
+        excluir.setBounds(20, 370, 150, 40);
 
         Alterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar (1).png"))); // NOI18N
+        Alterar.setText("Alterar");
         Alterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AlterarActionPerformed(evt);
             }
         });
         getContentPane().add(Alterar);
-        Alterar.setBounds(80, 230, 40, 40);
+        Alterar.setBounds(20, 330, 150, 40);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thumb2-program-code-black-backgrounds-programming-background-with-program-code-code.jpg"))); // NOI18N
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(2, 58, 360, 240);
-
-        setSize(new java.awt.Dimension(667, 338));
+        setSize(new java.awt.Dimension(816, 639));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -432,7 +436,6 @@ public void carregatelefonecmb()
     private javax.swing.JButton cradastrar;
     private javax.swing.JButton excluir;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;

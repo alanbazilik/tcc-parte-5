@@ -85,39 +85,34 @@ public class tela_funcionario extends javax.swing.JFrame {
         atualizar = new javax.swing.JButton();
         rg = new javax.swing.JFormattedTextField();
         cpf = new javax.swing.JFormattedTextField();
-        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(790, 410));
-        setMinimumSize(new java.awt.Dimension(790, 410));
-        setPreferredSize(new java.awt.Dimension(790, 410));
+        setMaximumSize(new java.awt.Dimension(814, 600));
+        setMinimumSize(new java.awt.Dimension(814, 600));
+        setPreferredSize(new java.awt.Dimension(814, 600));
         setResizable(false);
-        setSize(new java.awt.Dimension(790, 410));
+        setSize(new java.awt.Dimension(814, 600));
         getContentPane().setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Funcionario:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 65, 90, 20);
+        jLabel2.setBounds(0, 60, 90, 20);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Rg:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(0, 90, 30, 20);
+        jLabel3.setBounds(0, 110, 30, 20);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Cpf:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 120, 40, 20);
+        jLabel4.setBounds(0, 140, 40, 20);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Bairro:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(0, 150, 60, 20);
+        jLabel5.setBounds(0, 170, 60, 20);
 
         funcionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,50 +120,47 @@ public class tela_funcionario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(funcionario);
-        funcionario.setBounds(80, 70, 130, 20);
+        funcionario.setBounds(0, 80, 120, 20);
 
         rua.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(rua);
-        rua.setBounds(40, 210, 120, 20);
+        rua.setBounds(40, 230, 70, 20);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Cidade:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(0, 180, 70, 20);
+        jLabel6.setBounds(0, 200, 70, 20);
 
         bairro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(bairro);
-        bairro.setBounds(50, 150, 120, 20);
+        bairro.setBounds(50, 170, 90, 20);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Telefone:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(0, 240, 70, 20);
+        jLabel7.setBounds(0, 250, 60, 20);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Rua:");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(0, 210, 40, 20);
+        jLabel8.setBounds(0, 230, 40, 20);
 
         cidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(cidade);
-        cidade.setBounds(50, 180, 120, 20);
+        cidade.setBounds(50, 200, 90, 20);
 
         telefone.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(telefone);
-        telefone.setBounds(70, 240, 100, 20);
+        telefone.setBounds(60, 250, 90, 20);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Nº.casa:");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(0, 270, 60, 20);
+        jLabel9.setBounds(0, 280, 60, 20);
         getContentPane().add(casa);
-        casa.setBounds(60, 270, 100, 20);
+        casa.setBounds(60, 280, 80, 20);
 
+        funcionariotable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         funcionariotable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -180,6 +172,10 @@ public class tela_funcionario extends javax.swing.JFrame {
 
             }
         ));
+        funcionariotable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        funcionariotable.setEditingColumn(1);
+        funcionariotable.setEditingRow(1);
+        funcionariotable.setIntercellSpacing(new java.awt.Dimension(0, 0));
         funcionariotable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 funcionariotableMouseClicked(evt);
@@ -193,7 +189,7 @@ public class tela_funcionario extends javax.swing.JFrame {
         jScrollPane1.setViewportView(funcionariotable);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(240, 60, 560, 350);
+        jScrollPane1.setBounds(160, 60, 650, 540);
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 255));
 
@@ -216,8 +212,9 @@ public class tela_funcionario extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(197, 197, 197)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
-                .addComponent(tela_princial))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
+                .addComponent(tela_princial)
+                .addGap(34, 34, 34))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,52 +226,57 @@ public class tela_funcionario extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 801, 59);
+        jPanel1.setBounds(0, 0, 830, 59);
 
         cadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/addition.png"))); // NOI18N
+        cadastrar.setText("Novo");
         cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cadastrarActionPerformed(evt);
             }
         });
         getContentPane().add(cadastrar);
-        cadastrar.setBounds(10, 300, 60, 40);
+        cadastrar.setBounds(0, 330, 150, 40);
 
         salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salvar.png"))); // NOI18N
+        salvar.setText("Salvar");
         salvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salvarActionPerformed(evt);
             }
         });
         getContentPane().add(salvar);
-        salvar.setBounds(66, 300, 70, 40);
+        salvar.setBounds(0, 370, 150, 40);
 
         deletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar (1).png"))); // NOI18N
+        deletar.setText("excluir");
         deletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deletarActionPerformed(evt);
             }
         });
         getContentPane().add(deletar);
-        deletar.setBounds(10, 340, 60, 40);
+        deletar.setBounds(0, 450, 150, 40);
 
         alterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar (1).png"))); // NOI18N
+        alterar.setText("Alterar");
         alterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 alterarActionPerformed(evt);
             }
         });
         getContentPane().add(alterar);
-        alterar.setBounds(70, 340, 65, 40);
+        alterar.setBounds(0, 410, 150, 40);
 
         atualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/atualizar.png"))); // NOI18N
+        atualizar.setText("Atualizardados");
         atualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 atualizarActionPerformed(evt);
             }
         });
         getContentPane().add(atualizar);
-        atualizar.setBounds(190, 360, 50, 50);
+        atualizar.setBounds(0, 490, 160, 40);
 
         try {
             rg.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###-##")));
@@ -282,7 +284,7 @@ public class tela_funcionario extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         getContentPane().add(rg);
-        rg.setBounds(30, 90, 120, 20);
+        rg.setBounds(30, 110, 100, 20);
 
         try {
             cpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -290,13 +292,9 @@ public class tela_funcionario extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         getContentPane().add(cpf);
-        cpf.setBounds(30, 120, 110, 20);
+        cpf.setBounds(40, 140, 90, 20);
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thumb2-program-code-black-backgrounds-programming-background-with-program-code-code.jpg"))); // NOI18N
-        getContentPane().add(jLabel10);
-        jLabel10.setBounds(0, 0, 710, 444);
-
-        setSize(new java.awt.Dimension(817, 449));
+        setSize(new java.awt.Dimension(830, 639));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -591,7 +589,6 @@ public class tela_funcionario extends javax.swing.JFrame {
     private javax.swing.JTextField funcionario;
     private javax.swing.JTable funcionariotable;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

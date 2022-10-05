@@ -9,6 +9,9 @@ import Model.ClienteModel;
 import Model.ProdutoModel;
 import CTR.vendaCTR;
 import Sistemas_login.utilitarios;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -39,6 +42,10 @@ public class venda extends javax.swing.JFrame {
 
     public venda() {
         initComponents();
+           Toolkit tk = Toolkit.getDefaultToolkit();
+        Dimension d = tk.getScreenSize();
+        
+        this.setBounds(0, 0, d.width = 800, d.height  = 600);
         desativarBotoes();
         pesquisarvenda();
         carregaclintecmb();
@@ -77,16 +84,15 @@ public class venda extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         Valorv = new javax.swing.JTextField();
         date = new javax.swing.JFormattedTextField();
-        jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         vendaTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setFocusCycleRoot(false);
-        setMaximumSize(new java.awt.Dimension(650, 340));
-        setMinimumSize(new java.awt.Dimension(650, 340));
-        setPreferredSize(new java.awt.Dimension(650, 340));
-        setSize(new java.awt.Dimension(650, 340));
+        setMaximumSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 600));
+        setSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 255));
@@ -110,36 +116,32 @@ public class venda extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(119, 119, 119)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 334, Short.MAX_VALUE)
                 .addComponent(tela_princial)
-                .addGap(188, 188, 188))
+                .addGap(19, 19, 19))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(tela_princial, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4))
+                .addComponent(jLabel1)
+                .addGap(29, 29, 29))
+            .addComponent(tela_princial, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 813, 59);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Data:");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, 70, 50, 20);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Cliente:");
         getContentPane().add(jLabel5);
         jLabel5.setBounds(0, 110, 70, 20);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Quantv:");
         getContentPane().add(jLabel6);
         jLabel6.setBounds(0, 190, 80, 30);
@@ -151,7 +153,7 @@ public class venda extends javax.swing.JFrame {
             }
         });
         getContentPane().add(funcionario);
-        funcionario.setBounds(80, 140, 110, 20);
+        funcionario.setBounds(80, 140, 90, 20);
 
         clientes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         clientes.addActionListener(new java.awt.event.ActionListener() {
@@ -160,78 +162,80 @@ public class venda extends javax.swing.JFrame {
             }
         });
         getContentPane().add(clientes);
-        clientes.setBounds(50, 110, 110, 20);
+        clientes.setBounds(50, 110, 120, 20);
 
         atualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/atualizar.png"))); // NOI18N
+        atualizar.setText("Atualizar dados");
         atualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 atualizarActionPerformed(evt);
             }
         });
         getContentPane().add(atualizar);
-        atualizar.setBounds(170, 280, 50, 50);
+        atualizar.setBounds(0, 500, 170, 40);
 
         alterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar (1).png"))); // NOI18N
+        alterar.setText("Alterar");
         alterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 alterarActionPerformed(evt);
             }
         });
         getContentPane().add(alterar);
-        alterar.setBounds(60, 290, 65, 40);
+        alterar.setBounds(0, 460, 170, 40);
 
         deletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar (1).png"))); // NOI18N
+        deletar.setText("Excluir");
         deletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deletarActionPerformed(evt);
             }
         });
         getContentPane().add(deletar);
-        deletar.setBounds(0, 290, 60, 40);
+        deletar.setBounds(0, 420, 170, 40);
 
         cadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/addition.png"))); // NOI18N
+        cadastrar.setText("Novo");
         cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cadastrarActionPerformed(evt);
             }
         });
         getContentPane().add(cadastrar);
-        cadastrar.setBounds(0, 250, 60, 40);
+        cadastrar.setBounds(0, 340, 170, 40);
 
         salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salvar.png"))); // NOI18N
+        salvar.setText("Salvar");
         salvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salvarActionPerformed(evt);
             }
         });
         getContentPane().add(salvar);
-        salvar.setBounds(60, 250, 70, 40);
+        salvar.setBounds(0, 380, 170, 40);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Funcionário:");
         getContentPane().add(jLabel7);
         jLabel7.setBounds(0, 140, 110, 20);
 
         produto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(produto);
-        produto.setBounds(60, 170, 120, 20);
+        produto.setBounds(60, 170, 90, 20);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Produto:");
         getContentPane().add(jLabel8);
         jLabel8.setBounds(0, 165, 80, 30);
         getContentPane().add(Quantv);
-        Quantv.setBounds(60, 200, 120, 20);
+        Quantv.setBounds(60, 200, 90, 20);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Valorv:");
         getContentPane().add(jLabel9);
         jLabel9.setBounds(0, 220, 80, 30);
         getContentPane().add(Valorv);
-        Valorv.setBounds(50, 230, 120, 20);
+        Valorv.setBounds(50, 230, 100, 20);
 
         try {
             date.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -241,12 +245,12 @@ public class venda extends javax.swing.JFrame {
         getContentPane().add(date);
         date.setBounds(40, 70, 80, 20);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thumb2-program-code-black-backgrounds-programming-background-with-program-code-code.jpg"))); // NOI18N
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 60, 220, 350);
-
+        vendaTable.setAutoCreateRowSorter(true);
+        vendaTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         vendaTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {},
+                {},
                 {},
                 {},
                 {},
@@ -256,6 +260,13 @@ public class venda extends javax.swing.JFrame {
 
             }
         ));
+        vendaTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        vendaTable.setColumnSelectionAllowed(true);
+        vendaTable.setDebugGraphicsOptions(javax.swing.DebugGraphics.BUFFERED_OPTION);
+        vendaTable.setEditingColumn(1);
+        vendaTable.setEditingRow(1);
+        vendaTable.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        vendaTable.setRowHeight(12);
         vendaTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 vendaTableMouseClicked(evt);
@@ -269,9 +280,9 @@ public class venda extends javax.swing.JFrame {
         jScrollPane1.setViewportView(vendaTable);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(220, 60, 410, 280);
+        jScrollPane1.setBounds(170, 60, 630, 540);
 
-        setSize(new java.awt.Dimension(645, 380));
+        setSize(new java.awt.Dimension(800, 600));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -541,14 +552,15 @@ public class venda extends javax.swing.JFrame {
     }
 
     public void preenche_item() {
-        String[] colunas = {"Codigo", "Data", "Funcionario", "Cliente", "Produto", "Quantidade", "Valor"};
+        String[] colunas = {"Codigo","Data","Funcionario","Cliente","Produto","Quantv","Valor"};
 
         String[][] linhas = {};
-
+       
         DefaultTableModel tablemodel = new DefaultTableModel(linhas, colunas) {
             public boolean CelulaEditavel(int rowIndex, int mColIndex) {
                 return true;
             }
+            
         };
 
         Vector<Vector> dados = new Vector();
@@ -585,7 +597,6 @@ public class venda extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> funcionario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
