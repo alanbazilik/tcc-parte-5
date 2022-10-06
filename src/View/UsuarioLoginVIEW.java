@@ -11,14 +11,15 @@ import Sistemas_login.utilitarios;
 
 /**
  *
- * @author Codinhoto
+ * @author alan
  */
-public class UsuarioLoginVIEW extends javax.swing.JFrame {
+public class UsuarioLoginVIEW extends javax.swing.JDialog {
 
     /**
      * Creates new form UsuarioLOginVIEW
      */
-    public UsuarioLoginVIEW() {
+    public UsuarioLoginVIEW(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         
         
@@ -47,7 +48,7 @@ public class UsuarioLoginVIEW extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText(" Login");
@@ -106,7 +107,7 @@ public class UsuarioLoginVIEW extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
 
-        UsuarioVIEW SEUFRAME = new UsuarioVIEW();
+        UsuarioVIEW SEUFRAME = new UsuarioVIEW(null,true);
         SEUFRAME.setVisible(true);
         this.dispose();
 
@@ -124,7 +125,7 @@ public class UsuarioLoginVIEW extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        tela_recuperar_senha senhas = new tela_recuperar_senha();
+        tela_recuperar_senha senhas = new tela_recuperar_senha(null,true);
         senhas.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -162,7 +163,14 @@ public class UsuarioLoginVIEW extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UsuarioLoginVIEW().setVisible(true);
+                UsuarioLoginVIEW dialog = new UsuarioLoginVIEW(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }

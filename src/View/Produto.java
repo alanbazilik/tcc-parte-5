@@ -24,7 +24,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Alanbazilio
  */
-public class Produto extends javax.swing.JFrame {
+public class Produto extends javax.swing.JDialog {
 
     /**
      * Creates new form cidade
@@ -36,7 +36,8 @@ public class Produto extends javax.swing.JFrame {
     List<tipoModel> liatipo;
     List<marca_model> liamarca;
 
-    public Produto() {
+    public Produto(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         desativarBotoes();
         carregamarca();
@@ -240,7 +241,7 @@ public class Produto extends javax.swing.JFrame {
 
     private void tela_princialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tela_princialMouseClicked
         // TODO add your handling code here:
-        Tela_principal objtel = new Tela_principal();
+        Tela_principal objtel = new Tela_principal(null,true);
         objtel.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_tela_princialMouseClicked
@@ -357,9 +358,16 @@ public class Produto extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+           java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Produto().setVisible(true);
+                Produto dialog = new Produto(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }

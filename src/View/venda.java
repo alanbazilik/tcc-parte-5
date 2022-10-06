@@ -26,7 +26,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Alanbazilio
  */
-public class venda extends javax.swing.JFrame {
+public class venda extends javax.swing.JDialog {
 
     /**
      * Creates new form cidade
@@ -40,7 +40,8 @@ public class venda extends javax.swing.JFrame {
     List<ProdutoModel> listpProdutoModels;
     static boolean button;
 
-    public venda() {
+    public venda(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
            Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension d = tk.getScreenSize();
@@ -288,7 +289,7 @@ public class venda extends javax.swing.JFrame {
 
     private void tela_princialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tela_princialMouseClicked
         // TODO add your handling code here:
-        Tela_principal objtel = new Tela_principal();
+        Tela_principal objtel = new Tela_principal(null,true);
         objtel.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_tela_princialMouseClicked
@@ -429,9 +430,16 @@ public class venda extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new venda().setVisible(true);
+                venda dialog = new venda(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }

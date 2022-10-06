@@ -75,7 +75,7 @@ public class UsuarioDAO {
                pgsql.setString(2, gs.getSenha_usuario());
             rs = pgsql.executeQuery();
             if(rs.next()){
-      Tela_principal objtel = new Tela_principal();
+      Tela_principal objtel = new Tela_principal(null,true);
       objtel.setVisible(true);
       
   
@@ -84,7 +84,7 @@ public class UsuarioDAO {
             }
             else{
   JOptionPane.showMessageDialog(null,"login incorreto","incorreto", JOptionPane.ERROR_MESSAGE);
-  Tela_principal objtel = new Tela_principal();
+  Tela_principal objtel = new Tela_principal(null,false);
       objtel.setVisible(false);
              return status = false;
             }
@@ -119,7 +119,7 @@ public class UsuarioDAO {
     JOptionPane.showMessageDialog(null,"seu codigo: " + rs.getString("senha_user"));
                 
                 
-      UsuarioLoginVIEW objtel1 = new UsuarioLoginVIEW();
+      UsuarioLoginVIEW objtel1 = new UsuarioLoginVIEW(null,true);
       objtel1.setVisible(true);
       
   
@@ -128,7 +128,7 @@ public class UsuarioDAO {
             }
             else{
   JOptionPane.showMessageDialog(null,"não tem nem uma senha registrada","Aviso", JOptionPane.ERROR_MESSAGE);
-  Tela_principal objtel = new Tela_principal();
+  Tela_principal objtel = new Tela_principal(null,true);
       objtel.setVisible(false);
              return status = false;
             }

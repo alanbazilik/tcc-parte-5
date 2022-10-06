@@ -24,7 +24,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Alanbazilio
  */
-public class tela_telefone extends javax.swing.JFrame {
+public class tela_telefone extends javax.swing.JDialog {
 
     /**
      * Creates new form tela_telefone
@@ -35,7 +35,8 @@ public class tela_telefone extends javax.swing.JFrame {
     String opcao;
     List<TelefoneTipomodel> listtipotelefone;
     public static boolean button;
-    public tela_telefone() {
+    public tela_telefone(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
             Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension d = tk.getScreenSize();
@@ -72,6 +73,7 @@ public class tela_telefone extends javax.swing.JFrame {
         cradastrar = new javax.swing.JButton();
         excluir = new javax.swing.JButton();
         Alterar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(800, 600));
@@ -120,15 +122,15 @@ public class tela_telefone extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 826, 59);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel3.setText("Tipo de telefone:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(0, 120, 150, 25);
+        jLabel3.setBounds(0, 110, 150, 14);
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel4.setText("Numero telefone:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 70, 160, 25);
+        jLabel4.setBounds(0, 70, 160, 14);
 
         telefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,16 +138,15 @@ public class tela_telefone extends javax.swing.JFrame {
             }
         });
         getContentPane().add(telefone);
-        telefone.setBounds(150, 70, 120, 20);
+        telefone.setBounds(100, 70, 120, 20);
 
-        jcomboxtel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jcomboxtel.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jcomboxtelItemStateChanged(evt);
             }
         });
         getContentPane().add(jcomboxtel);
-        jcomboxtel.setBounds(150, 120, 120, 20);
+        jcomboxtel.setBounds(100, 110, 120, 20);
 
         jtalbetel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -171,12 +172,12 @@ public class tela_telefone extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jtalbetel);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(290, 60, 510, 540);
+        jScrollPane1.setBounds(220, 60, 580, 540);
 
         buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/atualizar.png"))); // NOI18N
         buscar.setText("Atualizar dados");
         getContentPane().add(buscar);
-        buscar.setBounds(20, 410, 150, 40);
+        buscar.setBounds(0, 510, 150, 40);
 
         salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salvar.png"))); // NOI18N
         salvar.setText("Salvar");
@@ -186,7 +187,7 @@ public class tela_telefone extends javax.swing.JFrame {
             }
         });
         getContentPane().add(salvar);
-        salvar.setBounds(20, 290, 150, 40);
+        salvar.setBounds(0, 390, 150, 40);
 
         cradastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/addition.png"))); // NOI18N
         cradastrar.setText("Novo");
@@ -197,7 +198,7 @@ public class tela_telefone extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cradastrar);
-        cradastrar.setBounds(20, 250, 150, 40);
+        cradastrar.setBounds(0, 350, 150, 40);
 
         excluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar (1).png"))); // NOI18N
         excluir.setText("excluir");
@@ -207,7 +208,7 @@ public class tela_telefone extends javax.swing.JFrame {
             }
         });
         getContentPane().add(excluir);
-        excluir.setBounds(20, 370, 150, 40);
+        excluir.setBounds(0, 470, 150, 40);
 
         Alterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar (1).png"))); // NOI18N
         Alterar.setText("Alterar");
@@ -217,7 +218,11 @@ public class tela_telefone extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Alterar);
-        Alterar.setBounds(20, 330, 150, 40);
+        Alterar.setBounds(0, 430, 150, 40);
+
+        jButton1.setText("+");
+        getContentPane().add(jButton1);
+        jButton1.setBounds(180, 90, 40, 20);
 
         setSize(new java.awt.Dimension(816, 639));
         setLocationRelativeTo(null);
@@ -225,7 +230,7 @@ public class tela_telefone extends javax.swing.JFrame {
 
     private void tela_princialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tela_princialMouseClicked
         // TODO add your handling code here:
-        Tela_principal objtel = new Tela_principal();
+        Tela_principal objtel = new Tela_principal(null,true);
         objtel.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_tela_princialMouseClicked
@@ -327,9 +332,16 @@ public class tela_telefone extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new tela_telefone().setVisible(true);
+                tela_telefone dialog = new tela_telefone(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
@@ -435,6 +447,7 @@ public void carregatelefonecmb()
     private javax.swing.JButton buscar;
     private javax.swing.JButton cradastrar;
     private javax.swing.JButton excluir;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

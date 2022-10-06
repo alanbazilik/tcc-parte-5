@@ -6,6 +6,7 @@ package Sistemas_login;
 
 
 import java.awt.Toolkit;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 
 /**
@@ -14,7 +15,7 @@ import javax.swing.JFrame;
  */
 public class utilitarios {
     
-     public void inserirIcone(JFrame frm){
+     public void inserirIcone(JDialog frm){
         try {
             
             frm.setIconImage(Toolkit.getDefaultToolkit().getImage("src/img/logo.png"));

@@ -21,7 +21,7 @@ public class Sistemas_login {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        UsuarioLoginVIEW SEUFRAME= new UsuarioLoginVIEW();
+        UsuarioLoginVIEW SEUFRAME= new UsuarioLoginVIEW(null,true);
 SEUFRAME.setVisible(true);
     }
   

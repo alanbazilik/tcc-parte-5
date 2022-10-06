@@ -24,18 +24,22 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Alanbazilio
  */
-public class cidade extends javax.swing.JFrame {
+public class cidade extends javax.swing.JDialog {
 
     /**
      * Creates new form cidade
      */
+    boolean estado;
         public static int id_cidade;
     public static int fkcod_cidade;
     ResultSet rsfunc;
     String opcao;
     List<EstadoModel> listcidade;
-    public cidade() {
+    public cidade(java.awt.Frame parent, boolean modal) {
+        
+        super(parent, modal);
         initComponents();
+        estado = false;
         carregaestadocmb();
         desativarBotoes();
          pesquisartel();
@@ -63,6 +67,7 @@ public class cidade extends javax.swing.JFrame {
         salvar = new javax.swing.JButton();
         alterar = new javax.swing.JButton();
         atualizar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         cidadetabela = new javax.swing.JTable();
@@ -73,6 +78,11 @@ public class cidade extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(704, 331));
         setPreferredSize(new java.awt.Dimension(704, 331));
         setSize(new java.awt.Dimension(704, 331));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 255));
@@ -101,17 +111,17 @@ public class cidade extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 813, 59);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Estado:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 80, 70, 20);
+        jLabel2.setBounds(0, 100, 70, 14);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Cidade:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(0, 60, 70, 20);
+        jLabel3.setBounds(0, 60, 70, 14);
 
         cidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,11 +129,10 @@ public class cidade extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cidade);
-        cidade.setBounds(50, 60, 160, 20);
+        cidade.setBounds(20, 80, 160, 20);
 
-        uf.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(uf);
-        uf.setBounds(50, 80, 160, 20);
+        uf.setBounds(20, 120, 160, 20);
 
         deletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar (1).png"))); // NOI18N
         deletar.addActionListener(new java.awt.event.ActionListener() {
@@ -172,6 +181,15 @@ public class cidade extends javax.swing.JFrame {
         });
         getContentPane().add(atualizar);
         atualizar.setBounds(160, 240, 50, 50);
+
+        jButton1.setText("+");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(140, 100, 40, 20);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thumb2-program-code-black-backgrounds-programming-background-with-program-code-code.jpg"))); // NOI18N
         getContentPane().add(jLabel4);
@@ -281,6 +299,21 @@ public class cidade extends javax.swing.JFrame {
             ativarBotoes();
     }//GEN-LAST:event_cidadetabelaKeyPressed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        estado = true;
+       estado est = new estado(null,true);
+        est.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+        if(estado==true){
+            carregaestadocmb();
+            estado = false;
+        }
+    }//GEN-LAST:event_formWindowActivated
+
     /**
      * @param args the command line arguments
      */
@@ -311,7 +344,14 @@ public class cidade extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new cidade().setVisible(true);
+                cidade dialog = new cidade(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
@@ -417,6 +457,7 @@ public void carregaestadocmb()
     private javax.swing.JTextField cidade;
     private javax.swing.JTable cidadetabela;
     private javax.swing.JButton deletar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

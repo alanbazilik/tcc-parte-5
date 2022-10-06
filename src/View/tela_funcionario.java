@@ -24,11 +24,15 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author User
  */
-public class tela_funcionario extends javax.swing.JFrame {
+public class tela_funcionario extends javax.swing.JDialog {
 
     /**
      * Creates new form tela_funcionario
      */
+    boolean cb;
+    boolean cids;
+    boolean ruas;
+    boolean telefones;
     public static int id_funcionario;
     public static int fkcod_cidade;
     ResultSet rsfunc;
@@ -39,8 +43,11 @@ public class tela_funcionario extends javax.swing.JFrame {
     List<RuaModel> listrua;
     static boolean button;
 
-    public tela_funcionario() {
+    public tela_funcionario(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
+        cb = false;
+        cids = false;
         desativarBotoes();
         carregabairrocmb();
         carregacidadecmb();
@@ -85,6 +92,10 @@ public class tela_funcionario extends javax.swing.JFrame {
         atualizar = new javax.swing.JButton();
         rg = new javax.swing.JFormattedTextField();
         cpf = new javax.swing.JFormattedTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(814, 600));
@@ -92,27 +103,32 @@ public class tela_funcionario extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(814, 600));
         setResizable(false);
         setSize(new java.awt.Dimension(814, 600));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel2.setText("Funcionario:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 60, 90, 20);
+        jLabel2.setBounds(0, 60, 70, 20);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel3.setText("Rg:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(0, 110, 30, 20);
+        jLabel3.setBounds(0, 100, 30, 20);
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel4.setText("Cpf:");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(0, 140, 40, 20);
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel5.setText("Bairro:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(0, 170, 60, 20);
+        jLabel5.setBounds(0, 180, 40, 20);
 
         funcionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,45 +136,46 @@ public class tela_funcionario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(funcionario);
-        funcionario.setBounds(0, 80, 120, 20);
+        funcionario.setBounds(0, 80, 160, 20);
 
-        rua.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        rua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ruaActionPerformed(evt);
+            }
+        });
         getContentPane().add(rua);
-        rua.setBounds(40, 230, 70, 20);
+        rua.setBounds(0, 280, 160, 20);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel6.setText("Cidade:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(0, 200, 70, 20);
+        jLabel6.setBounds(0, 220, 70, 20);
 
-        bairro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(bairro);
-        bairro.setBounds(50, 170, 90, 20);
+        bairro.setBounds(0, 200, 160, 20);
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel7.setText("Telefone:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(0, 250, 60, 20);
+        jLabel7.setBounds(0, 300, 60, 20);
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel8.setText("Rua:");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(0, 230, 40, 20);
+        jLabel8.setBounds(0, 260, 40, 20);
 
-        cidade.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(cidade);
-        cidade.setBounds(50, 200, 90, 20);
+        cidade.setBounds(0, 240, 160, 20);
 
-        telefone.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(telefone);
-        telefone.setBounds(60, 250, 90, 20);
+        telefone.setBounds(0, 320, 160, 20);
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel9.setText("Nº.casa:");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(0, 280, 60, 20);
+        jLabel9.setBounds(0, 340, 60, 20);
         getContentPane().add(casa);
-        casa.setBounds(60, 280, 80, 20);
+        casa.setBounds(0, 360, 160, 20);
 
         funcionariotable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         funcionariotable.setModel(new javax.swing.table.DefaultTableModel(
@@ -236,7 +253,7 @@ public class tela_funcionario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cadastrar);
-        cadastrar.setBounds(0, 330, 150, 40);
+        cadastrar.setBounds(0, 390, 150, 40);
 
         salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salvar.png"))); // NOI18N
         salvar.setText("Salvar");
@@ -246,7 +263,7 @@ public class tela_funcionario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(salvar);
-        salvar.setBounds(0, 370, 150, 40);
+        salvar.setBounds(0, 430, 150, 40);
 
         deletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar (1).png"))); // NOI18N
         deletar.setText("excluir");
@@ -256,7 +273,7 @@ public class tela_funcionario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(deletar);
-        deletar.setBounds(0, 450, 150, 40);
+        deletar.setBounds(0, 510, 150, 40);
 
         alterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar (1).png"))); // NOI18N
         alterar.setText("Alterar");
@@ -266,7 +283,7 @@ public class tela_funcionario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(alterar);
-        alterar.setBounds(0, 410, 150, 40);
+        alterar.setBounds(0, 470, 150, 40);
 
         atualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/atualizar.png"))); // NOI18N
         atualizar.setText("Atualizardados");
@@ -276,7 +293,7 @@ public class tela_funcionario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(atualizar);
-        atualizar.setBounds(0, 490, 160, 40);
+        atualizar.setBounds(0, 550, 150, 40);
 
         try {
             rg.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###-##")));
@@ -284,7 +301,7 @@ public class tela_funcionario extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         getContentPane().add(rg);
-        rg.setBounds(30, 110, 100, 20);
+        rg.setBounds(0, 120, 160, 20);
 
         try {
             cpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -292,15 +309,55 @@ public class tela_funcionario extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         getContentPane().add(cpf);
-        cpf.setBounds(40, 140, 90, 20);
+        cpf.setBounds(0, 160, 160, 20);
 
-        setSize(new java.awt.Dimension(830, 639));
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        jButton1.setText("+");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(120, 180, 40, 20);
+
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        jButton2.setText("+");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(120, 220, 40, 20);
+
+        jButton3.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        jButton3.setText("+");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3);
+        jButton3.setBounds(120, 260, 40, 20);
+
+        jButton4.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        jButton4.setText("+");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4);
+        jButton4.setBounds(120, 300, 40, 20);
+
+        setSize(new java.awt.Dimension(814, 600));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tela_princialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tela_princialMouseClicked
         // TODO add your handling code here:
-        Tela_principal telasp = new Tela_principal();
+        Tela_principal telasp = new Tela_principal(null,true);
         telasp.setVisible(true);
     }//GEN-LAST:event_tela_princialMouseClicked
 
@@ -379,6 +436,58 @@ public class tela_funcionario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_funcionariotableMouseClicked
 
+    private void ruaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ruaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ruaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        cb = true;
+        Bairros bairros = new Bairros(null,true);
+        bairros.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        cids = true;
+        cidade cid = new cidade(null,true);
+        cid.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+         ruas = true;
+        rua ru = new rua(null,true);
+        ru.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+        if(cb==true){
+            carregabairrocmb();
+            cb = false;
+        }
+          if(cids==true){
+            carregacidadecmb();
+            cids = false;
+        }
+            if(ruas==true){
+            carregaruacmb();
+            ruas = false;
+        }
+              if(telefones==true){
+            carregatelefonecmb();
+            telefones = false;
+        }
+    }//GEN-LAST:event_formWindowActivated
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+           telefones = true;
+        tela_telefone cid = new tela_telefone(null,true);
+        cid.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -388,28 +497,22 @@ public class tela_funcionario extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(tela_funcionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(tela_funcionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(tela_funcionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(tela_funcionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        
+        
+        
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new tela_funcionario().setVisible(true);
+                tela_funcionario dialog = new tela_funcionario(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
 
@@ -588,6 +691,10 @@ public class tela_funcionario extends javax.swing.JFrame {
     private javax.swing.JButton deletar;
     private javax.swing.JTextField funcionario;
     private javax.swing.JTable funcionariotable;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

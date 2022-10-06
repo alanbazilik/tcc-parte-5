@@ -13,14 +13,14 @@ import java.awt.Toolkit;
  *
  * @author User
  */
-public class Tela_principal extends javax.swing.JFrame {
+public class Tela_principal extends javax.swing.JDialog {
 
     /**
      * Creates new form Tela_principal
      */
-    public Tela_principal() {
+    public Tela_principal(java.awt.Frame parent, boolean modal) {
    
-        
+        super(parent, modal);
         initComponents();
         Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension d = tk.getScreenSize();
@@ -235,83 +235,83 @@ public class Tela_principal extends javax.swing.JFrame {
 
     private void funcionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funcionarioActionPerformed
         // TODO add your handling code here:
-        tela_funcionario SEUFRAME = new  tela_funcionario();
+        tela_funcionario SEUFRAME = new  tela_funcionario(null,true);
         SEUFRAME.setVisible(true);
        
     }//GEN-LAST:event_funcionarioActionPerformed
 
     private void clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clienteActionPerformed
         // TODO add your handling code here:
-        tela_Cliente SEUFRAME1 = new  tela_Cliente();
+        tela_Cliente SEUFRAME1 = new  tela_Cliente(null,true);
         SEUFRAME1.setVisible(true);
        
     }//GEN-LAST:event_clienteActionPerformed
 
     private void cidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cidadeActionPerformed
-        cidade cidade = new  cidade();
+        cidade cidade = new  cidade(null,true);
         cidade.setVisible(true);
     }//GEN-LAST:event_cidadeActionPerformed
 
     private void bairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bairroActionPerformed
         // TODO add your handling code here:
-     Bairros Bairro = new Bairros();
+     Bairros Bairro = new Bairros(null,true);
         Bairro.setVisible(true);
      
     }//GEN-LAST:event_bairroActionPerformed
 
     private void vendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendaActionPerformed
         // TODO add your handling code here:
-        venda vendas = new venda();
+        venda vendas = new venda(null,true);
        vendas.setVisible(true);
     }//GEN-LAST:event_vendaActionPerformed
 
     private void telefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telefoneActionPerformed
         // TODO add your handling code here:
-        tela_telefone tef = new tela_telefone();
+        tela_telefone tef = new tela_telefone(null,true);
         tef.setVisible(true);
     }//GEN-LAST:event_telefoneActionPerformed
 
     private void estadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoActionPerformed
         // TODO add your handling code here:
-        estado es = new estado();
+        estado es = new estado(null,true);
         es.setVisible(true);
        
     }//GEN-LAST:event_estadoActionPerformed
 
     private void produtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_produtoActionPerformed
         // TODO add your handling code here:
-        Produto es1 = new Produto();
+        Produto es1 = new Produto(null,true);
         es1.setVisible(true);
     }//GEN-LAST:event_produtoActionPerformed
 
     private void ruaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ruaActionPerformed
         // TODO add your handling code here:
-        rua ruas = new rua();
+        rua ruas = new rua(null,true);
         ruas.setVisible(true);
     }//GEN-LAST:event_ruaActionPerformed
 
     private void tipo_telefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipo_telefoneActionPerformed
         // TODO add your handling code here:
-        tela_tipotelefone tef1 = new tela_tipotelefone();
+        tela_tipotelefone tef1 = new tela_tipotelefone(null,true);
         tef1.setVisible(true);
     }//GEN-LAST:event_tipo_telefoneActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         // TODO add your handling code here:
-       UsuarioLoginVIEW exits = new UsuarioLoginVIEW();
+       UsuarioLoginVIEW exits = new UsuarioLoginVIEW(null,true);
         exits.setVisible(true);
               this.dispose();
     }//GEN-LAST:event_exitActionPerformed
 
     private void marcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marcaActionPerformed
         // TODO add your handling code here:
-        marca mar = new marca();
+        marca mar = new marca(null,true);
         mar.setVisible(true);
     }//GEN-LAST:event_marcaActionPerformed
 
     private void tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoActionPerformed
         // TODO add your handling code here:
-       tipo tipos = new tipo();
+       tipo tipos = new tipo(null,true);
        tipos.setVisible(true);
     }//GEN-LAST:event_tipoActionPerformed
 
@@ -348,9 +348,16 @@ public class Tela_principal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+      java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Tela_principal().setVisible(true);
+                Tela_principal dialog = new Tela_principal(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }

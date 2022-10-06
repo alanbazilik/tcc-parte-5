@@ -13,12 +13,13 @@ import java.util.logging.Logger;
  *
  * @author Alanbazilio
  */
-public class tela_recuperar_senha extends javax.swing.JFrame {
+public class tela_recuperar_senha extends javax.swing.JDialog {
 
     /**
      * Creates new form tela_recuperar_senha
      */
-    public tela_recuperar_senha() {
+    public tela_recuperar_senha(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
@@ -144,7 +145,7 @@ public class tela_recuperar_senha extends javax.swing.JFrame {
     }//GEN-LAST:event_mostar_a_senhaActionPerformed
 
     private void exitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMouseClicked
-        UsuarioLoginVIEW objlogin = new UsuarioLoginVIEW();
+        UsuarioLoginVIEW objlogin = new UsuarioLoginVIEW(null,true);
         objlogin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_exitMouseClicked
@@ -177,9 +178,16 @@ public class tela_recuperar_senha extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new tela_recuperar_senha().setVisible(true);
+                tela_recuperar_senha dialog = new tela_recuperar_senha(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }

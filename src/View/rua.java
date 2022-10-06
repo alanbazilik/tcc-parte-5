@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Alanbazilio
  */
-public class rua extends javax.swing.JFrame {
+public class rua extends javax.swing.JDialog {
 
     /**
      * Creates new form cidade
@@ -31,8 +31,8 @@ public class rua extends javax.swing.JFrame {
      public static boolean button;
      int a = 1;
     RuaModel objestado = new RuaModel();
-    public rua() {
-        
+    public rua(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
          pesquisarrua();       
          desativarBotoes();
@@ -330,9 +330,16 @@ public class rua extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+     java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new rua().setVisible(true);
+                rua dialog = new rua(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }

@@ -10,14 +10,15 @@ import Sistemas_login.utilitarios;
 
 /**
  *
- * @author Codinhoto
+ * @author alan
  */
-public class UsuarioVIEW extends javax.swing.JFrame {
+public class UsuarioVIEW extends javax.swing.JDialog {
 
     /**
      * Creates new form UsuarioVIEW
      */
-    public UsuarioVIEW() {
+    public UsuarioVIEW(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
          utilitarios u = new utilitarios();
     u.inserirIcone(this);
@@ -117,7 +118,7 @@ public class UsuarioVIEW extends javax.swing.JFrame {
       
       objusu.cadastrarUsuarioCTR(txtusuario.getText(),txtemail.getText(),txttelefone.getText(),
               txtsenha.getText());
-            UsuarioLoginVIEW SEUFRAME= new UsuarioLoginVIEW();
+            UsuarioLoginVIEW SEUFRAME= new UsuarioLoginVIEW(null,true);
 SEUFRAME.setVisible(true);
 this.dispose();
       
@@ -125,7 +126,7 @@ this.dispose();
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-            UsuarioLoginVIEW SEUFRAME= new UsuarioLoginVIEW();
+            UsuarioLoginVIEW SEUFRAME= new UsuarioLoginVIEW(null,true);
 SEUFRAME.setVisible(true);
 this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -169,7 +170,14 @@ this.dispose();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UsuarioVIEW().setVisible(true);
+                UsuarioVIEW dialog = new UsuarioVIEW(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }

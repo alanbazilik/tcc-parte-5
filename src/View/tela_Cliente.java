@@ -25,7 +25,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author User
  */
-public class tela_Cliente extends javax.swing.JFrame {
+public class tela_Cliente extends javax.swing.JDialog {
 
     /**
      * Creates new form tela_funcionario
@@ -40,7 +40,8 @@ public class tela_Cliente extends javax.swing.JFrame {
     List<RuaModel> listrua;
     static boolean button;
 
-    public tela_Cliente() {
+    public tela_Cliente(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         pesquisarfuncionaro();
         desativarBotoes();
@@ -302,7 +303,7 @@ public class tela_Cliente extends javax.swing.JFrame {
 
     private void tela_princialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tela_princialMouseClicked
         // TODO add your handling code here:
-        Tela_principal telasp = new Tela_principal();
+        Tela_principal telasp = new Tela_principal(null,true);
         telasp.setVisible(true);
     }//GEN-LAST:event_tela_princialMouseClicked
 
@@ -413,9 +414,16 @@ public class tela_Cliente extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+             java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new tela_Cliente().setVisible(true);
+                tela_Cliente dialog = new tela_Cliente(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
 

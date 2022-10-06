@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
  */
   
     
-public class tipo extends javax.swing.JFrame {
+public class tipo extends javax.swing.JDialog {
 
     /**
      * Creates new form cidade
@@ -32,7 +32,8 @@ public class tipo extends javax.swing.JFrame {
     String opcao;
      public static boolean button;
      int a = 1;
-    public tipo() {
+    public tipo(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         pesquisarMarca();      
         desativarBotoes();
@@ -397,9 +398,16 @@ public class tipo extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+           java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new tipo().setVisible(true);
+                tipo dialog = new tipo(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
