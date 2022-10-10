@@ -21,7 +21,7 @@ public class UsuarioLoginVIEW extends javax.swing.JDialog {
     public UsuarioLoginVIEW(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
+         setLocationRelativeTo(null);
         
         utilitarios u = new utilitarios();
         
@@ -48,7 +48,7 @@ public class UsuarioLoginVIEW extends javax.swing.JDialog {
         jButton3 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText(" Login");
@@ -100,7 +100,7 @@ public class UsuarioLoginVIEW extends javax.swing.JDialog {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Design sem nome1 (1).png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 280));
 
-        setSize(new java.awt.Dimension(394, 318));
+        setSize(new java.awt.Dimension(394, 287));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -109,13 +109,14 @@ public class UsuarioLoginVIEW extends javax.swing.JDialog {
 
         UsuarioVIEW SEUFRAME = new UsuarioVIEW(null,true);
         SEUFRAME.setVisible(true);
-        this.dispose();
-
+         setDefaultCloseOperation(SEUFRAME.HIDE_ON_CLOSE);
+SEUFRAME.setVisible(false);
+       
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+       this.dispose();
         UsuarioCTR objusu = new UsuarioCTR();
         objusu.loginUsuarioCTR(txtusuario.getText(), txtsenha.getText());
         limpar();
@@ -127,7 +128,8 @@ public class UsuarioLoginVIEW extends javax.swing.JDialog {
         // TODO add your handling code here:
         tela_recuperar_senha senhas = new tela_recuperar_senha(null,true);
         senhas.setVisible(true);
-        this.dispose();
+      setDefaultCloseOperation(senhas.HIDE_ON_CLOSE);
+senhas.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

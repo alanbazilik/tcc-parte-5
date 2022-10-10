@@ -35,15 +35,20 @@ public class tela_telefone extends javax.swing.JDialog {
     String opcao;
     List<TelefoneTipomodel> listtipotelefone;
     public static boolean button;
+    boolean tipotel;
     public tela_telefone(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        tipotel = false;
         initComponents();
             Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension d = tk.getScreenSize();
         
         this.setBounds(0, 0, d.width = 800, d.height  = 600);
-        carregatelefonecmb();
+            setResizable(false);
+        setFocusable(true);
+         setLocationRelativeTo(null);
         pesquisartel();
+        carregatelefonecmb();
         desativarBotoes();
         utilitarios u = new utilitarios();
     u.inserirIcone(this);
@@ -65,7 +70,7 @@ public class tela_telefone extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         telefone = new javax.swing.JTextField();
-        jcomboxtel = new javax.swing.JComboBox<String>();
+        jcomboxtel = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtalbetel = new javax.swing.JTable();
         buscar = new javax.swing.JButton();
@@ -80,6 +85,11 @@ public class tela_telefone extends javax.swing.JDialog {
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
         setSize(new java.awt.Dimension(800, 600));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 255));
@@ -120,12 +130,12 @@ public class tela_telefone extends javax.swing.JDialog {
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 826, 59);
+        jPanel1.setBounds(0, 0, 813, 59);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel3.setText("Tipo de telefone:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(0, 110, 150, 14);
+        jLabel3.setBounds(0, 100, 90, 14);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel4.setText("Numero telefone:");
@@ -138,7 +148,7 @@ public class tela_telefone extends javax.swing.JDialog {
             }
         });
         getContentPane().add(telefone);
-        telefone.setBounds(100, 70, 120, 20);
+        telefone.setBounds(100, 60, 120, 22);
 
         jcomboxtel.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -146,7 +156,7 @@ public class tela_telefone extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jcomboxtel);
-        jcomboxtel.setBounds(100, 110, 120, 20);
+        jcomboxtel.setBounds(100, 100, 120, 22);
 
         jtalbetel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -221,8 +231,13 @@ public class tela_telefone extends javax.swing.JDialog {
         Alterar.setBounds(0, 430, 150, 40);
 
         jButton1.setText("+");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1);
-        jButton1.setBounds(180, 90, 40, 20);
+        jButton1.setBounds(200, 80, 23, 20);
 
         setSize(new java.awt.Dimension(816, 639));
         setLocationRelativeTo(null);
@@ -302,6 +317,20 @@ public class tela_telefone extends javax.swing.JDialog {
         alterarTelefone();
         pesquisartel();
     }//GEN-LAST:event_AlterarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        tipotel = true; 
+        tela_tipotelefone objtel = new tela_tipotelefone(null,true);
+        objtel.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+         if(tipotel==true){
+            carregatelefonecmb();
+            tipotel = false;
+        }
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments

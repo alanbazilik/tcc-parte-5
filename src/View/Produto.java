@@ -35,14 +35,23 @@ public class Produto extends javax.swing.JDialog {
     String opcao;
     List<tipoModel> liatipo;
     List<marca_model> liamarca;
-
+    boolean tipos12;
+    boolean marcas;
+    float avisos;
     public Produto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         desativarBotoes();
-        carregamarca();
-        carregatipo();
+          tipos12 = false;
+        marcas = false;
         pesquisarproduto();
+               Toolkit tk = Toolkit.getDefaultToolkit();
+        Dimension d = tk.getScreenSize();
+        
+        this.setBounds(0, 0, d.width = 800, d.height  = 600);
+        setResizable(false);
+        setFocusable(true);
+         setLocationRelativeTo(null);
         utilitarios u = new utilitarios();
         u.inserirIcone(this);
     }
@@ -64,24 +73,30 @@ public class Produto extends javax.swing.JDialog {
         tipos1 = new javax.swing.JLabel();
         tipos = new javax.swing.JLabel();
         quantidade = new javax.swing.JTextField();
-        tipo = new javax.swing.JComboBox<String>();
-        marca = new javax.swing.JComboBox<String>();
+        tipo = new javax.swing.JComboBox<>();
+        marca = new javax.swing.JComboBox<>();
         deletar = new javax.swing.JButton();
         alterar = new javax.swing.JButton();
         cadastrar2 = new javax.swing.JButton();
         salvar1 = new javax.swing.JButton();
         refesh = new javax.swing.JButton();
         Produto = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         produtable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setFocusCycleRoot(false);
-        setMaximumSize(new java.awt.Dimension(645, 380));
-        setMinimumSize(new java.awt.Dimension(645, 380));
-        setPreferredSize(new java.awt.Dimension(645, 380));
-        setSize(new java.awt.Dimension(645, 380));
+        setMaximumSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 600));
+        setSize(new java.awt.Dimension(800, 600));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 255));
@@ -104,11 +119,11 @@ public class Produto extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(140, Short.MAX_VALUE)
+                .addContainerGap(209, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(121, 121, 121)
+                .addGap(201, 201, 201)
                 .addComponent(tela_princial)
-                .addGap(188, 188, 188))
+                .addGap(39, 39, 39))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,90 +139,103 @@ public class Produto extends javax.swing.JDialog {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 813, 59);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel2.setText("Produto:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 70, 80, 20);
+        jLabel2.setBounds(0, 70, 80, 14);
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel5.setText("Quantidade:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(0, 100, 120, 20);
+        jLabel5.setBounds(0, 100, 120, 14);
 
-        tipos1.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        tipos1.setForeground(new java.awt.Color(255, 255, 255));
+        tipos1.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         tipos1.setText("Marca:");
         getContentPane().add(tipos1);
-        tipos1.setBounds(0, 160, 70, 20);
+        tipos1.setBounds(0, 180, 70, 14);
 
-        tipos.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        tipos.setForeground(new java.awt.Color(255, 255, 255));
+        tipos.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         tipos.setText("Tipo:");
         getContentPane().add(tipos);
-        tipos.setBounds(0, 130, 60, 20);
+        tipos.setBounds(0, 140, 60, 14);
         getContentPane().add(quantidade);
         quantidade.setBounds(110, 100, 110, 20);
 
-        tipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(tipo);
-        tipo.setBounds(70, 130, 150, 20);
+        tipo.setBounds(70, 140, 150, 22);
 
-        marca.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(marca);
-        marca.setBounds(70, 160, 150, 20);
+        marca.setBounds(70, 180, 150, 22);
 
         deletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar (1).png"))); // NOI18N
+        deletar.setText("Excluir");
         deletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deletarActionPerformed(evt);
             }
         });
         getContentPane().add(deletar);
-        deletar.setBounds(0, 290, 40, 40);
+        deletar.setBounds(30, 420, 170, 40);
 
         alterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar (1).png"))); // NOI18N
+        alterar.setText("Alterar");
         alterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 alterarActionPerformed(evt);
             }
         });
         getContentPane().add(alterar);
-        alterar.setBounds(40, 290, 40, 40);
+        alterar.setBounds(30, 380, 170, 40);
 
         cadastrar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/addition.png"))); // NOI18N
+        cadastrar2.setText("Novo");
         cadastrar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cadastrar2ActionPerformed(evt);
             }
         });
         getContentPane().add(cadastrar2);
-        cadastrar2.setBounds(0, 250, 40, 40);
+        cadastrar2.setBounds(30, 300, 170, 40);
 
         salvar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salvar.png"))); // NOI18N
+        salvar1.setText("Salvar");
         salvar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salvar1ActionPerformed(evt);
             }
         });
         getContentPane().add(salvar1);
-        salvar1.setBounds(40, 250, 40, 40);
+        salvar1.setBounds(30, 340, 170, 40);
 
         refesh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/atualizar.png"))); // NOI18N
+        refesh.setText("Atualizar dados");
         refesh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refeshActionPerformed(evt);
             }
         });
         getContentPane().add(refesh);
-        refesh.setBounds(170, 290, 50, 41);
+        refesh.setBounds(30, 460, 170, 39);
         getContentPane().add(Produto);
-        Produto.setBounds(80, 70, 140, 20);
+        Produto.setBounds(80, 70, 140, 22);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thumb2-program-code-black-backgrounds-programming-background-with-program-code-code.jpg"))); // NOI18N
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 60, 220, 280);
+        jButton1.setText("+");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(190, 160, 23, 20);
+
+        jButton2.setText("+");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(190, 120, 23, 20);
 
         produtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -233,9 +261,9 @@ public class Produto extends javax.swing.JDialog {
         jScrollPane1.setViewportView(produtable);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(220, 60, 410, 280);
+        jScrollPane1.setBounds(220, 60, 590, 540);
 
-        setSize(new java.awt.Dimension(645, 380));
+        setSize(new java.awt.Dimension(825, 608));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -314,6 +342,32 @@ public class Produto extends javax.swing.JDialog {
             this.dispose();
     }//GEN-LAST:event_produtableMouseClicked
     }
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+         if(marcas==true){
+            carregamarca();
+            marcas = false;
+        }
+          if(tipos12==true){
+            carregatipo();
+            tipos12 = false;
+        }
+    }//GEN-LAST:event_formWindowActivated
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        marcas = true;
+        marca marca = new marca(null,true);
+        marca.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+         tipos12 = true;
+        tipo tipo = new tipo(null,true);
+        tipo.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+  
 
     /**
      * @param args the command line arguments
@@ -480,6 +534,8 @@ public class Produto extends javax.swing.JDialog {
                 regVetor.add(rsfunc.getInt("quantidade"));
                 regVetor.add(rsfunc.getString("tipo"));
                 regVetor.add(rsfunc.getString("marca_produto"));
+                
+                
 
                 dados.add(regVetor);
                 tablemodel.addRow(regVetor);
@@ -495,9 +551,10 @@ public class Produto extends javax.swing.JDialog {
     private javax.swing.JButton alterar;
     private javax.swing.JButton cadastrar2;
     private javax.swing.JButton deletar;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

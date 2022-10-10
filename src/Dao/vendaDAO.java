@@ -5,6 +5,7 @@
 package Dao;
 
 import Model.VendaModel;
+import View.Produto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -104,7 +105,7 @@ public class vendaDAO {
 
             pgsql.executeUpdate();
             JOptionPane.showMessageDialog(null, "venda foi  Cadastrado com Sucesso");
-
+ 
         } catch (SQLException ex) {
             Logger.getLogger(vendaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

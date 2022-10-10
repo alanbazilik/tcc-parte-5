@@ -7,6 +7,8 @@ package View;
 import CTR.tipoCTR;
 import Model.tipoModel;
 import Sistemas_login.utilitarios;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
@@ -35,6 +37,13 @@ public class tipo extends javax.swing.JDialog {
     public tipo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+                  Toolkit tk = Toolkit.getDefaultToolkit();
+        Dimension d = tk.getScreenSize();
+        
+        this.setBounds(0, 0, d.width = 800, d.height  = 600);
+      setResizable(false);
+        setFocusable(true);
+         setLocationRelativeTo(null);
         pesquisarMarca();      
         desativarBotoes();
         utilitarios u = new utilitarios();
@@ -54,22 +63,20 @@ public class tipo extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         produtos = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        excluir = new javax.swing.JButton();
-        buscardados = new javax.swing.JButton();
-        salvar = new javax.swing.JButton();
-        Alterar1 = new javax.swing.JButton();
-        cradastrar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbtipo = new javax.swing.JTable();
-        jLabel4 = new javax.swing.JLabel();
+        cradastrar = new javax.swing.JButton();
+        salvar = new javax.swing.JButton();
+        Alterar1 = new javax.swing.JButton();
+        excluir = new javax.swing.JButton();
+        buscardados = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setFocusCycleRoot(false);
-        setMaximumSize(new java.awt.Dimension(432, 240));
-        setMinimumSize(new java.awt.Dimension(432, 240));
-        setPreferredSize(new java.awt.Dimension(432, 240));
-        setSize(new java.awt.Dimension(432, 240));
+        setMaximumSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 600));
+        setSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 255));
@@ -105,88 +112,10 @@ public class tipo extends javax.swing.JDialog {
         getContentPane().add(produtos);
         produtos.setBounds(10, 90, 120, 20);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel3.setText("Tipo do produtos:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(10, 60, 120, 20);
-
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED), "açoês"));
-
-        excluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar (1).png"))); // NOI18N
-        excluir.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        excluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                excluirActionPerformed(evt);
-            }
-        });
-
-        buscardados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/lupa.png"))); // NOI18N
-        buscardados.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        buscardados.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscardadosActionPerformed(evt);
-            }
-        });
-
-        salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salvar.png"))); // NOI18N
-        salvar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        salvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                salvarActionPerformed(evt);
-            }
-        });
-
-        Alterar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar (1).png"))); // NOI18N
-        Alterar1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        Alterar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Alterar1ActionPerformed(evt);
-            }
-        });
-
-        cradastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/addition.png"))); // NOI18N
-        cradastrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        cradastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cradastrarActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(cradastrar)
-                    .addComponent(Alterar1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(excluir)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(salvar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buscardados, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cradastrar)
-                    .addComponent(salvar)
-                    .addComponent(buscardados, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(excluir)
-                    .addComponent(Alterar1))
-                .addContainerGap(13, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPanel3);
-        jPanel3.setBounds(0, 120, 150, 120);
+        jLabel3.setBounds(10, 60, 120, 14);
 
         tbtipo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         tbtipo.setModel(new javax.swing.table.DefaultTableModel(
@@ -213,13 +142,64 @@ public class tipo extends javax.swing.JDialog {
         jScrollPane1.setViewportView(tbtipo);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(150, 60, 280, 180);
+        jScrollPane1.setBounds(300, 60, 440, 490);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thumb2-program-code-black-backgrounds-programming-background-with-program-code-code.jpg"))); // NOI18N
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 60, 340, 180);
+        cradastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/addition.png"))); // NOI18N
+        cradastrar.setText("Novo");
+        cradastrar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        cradastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cradastrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cradastrar);
+        cradastrar.setBounds(20, 160, 130, 36);
 
-        setSize(new java.awt.Dimension(448, 279));
+        salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salvar.png"))); // NOI18N
+        salvar.setText("Salvar");
+        salvar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(salvar);
+        salvar.setBounds(20, 200, 130, 36);
+
+        Alterar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar (1).png"))); // NOI18N
+        Alterar1.setText("Alterar");
+        Alterar1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Alterar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Alterar1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Alterar1);
+        Alterar1.setBounds(20, 240, 130, 36);
+
+        excluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar (1).png"))); // NOI18N
+        excluir.setText("Excluir");
+        excluir.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        excluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(excluir);
+        excluir.setBounds(20, 280, 130, 36);
+
+        buscardados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/atualizar.png"))); // NOI18N
+        buscardados.setText("Atualizar dados");
+        buscardados.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        buscardados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscardadosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(buscardados);
+        buscardados.setBounds(20, 320, 130, 39);
+
+        setSize(new java.awt.Dimension(816, 608));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -506,9 +486,7 @@ public class tipo extends javax.swing.JDialog {
     private javax.swing.JButton excluir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField produtos;
     private javax.swing.JButton salvar;

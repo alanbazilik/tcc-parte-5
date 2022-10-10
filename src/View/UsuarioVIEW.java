@@ -20,6 +20,7 @@ public class UsuarioVIEW extends javax.swing.JDialog {
     public UsuarioVIEW(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+         setLocationRelativeTo(null);
          utilitarios u = new utilitarios();
     u.inserirIcone(this);
     }
@@ -46,7 +47,6 @@ public class UsuarioVIEW extends javax.swing.JDialog {
         txtemail = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Source Serif Pro Black", 3, 14)); // NOI18N
@@ -120,7 +120,8 @@ public class UsuarioVIEW extends javax.swing.JDialog {
               txtsenha.getText());
             UsuarioLoginVIEW SEUFRAME= new UsuarioLoginVIEW(null,true);
 SEUFRAME.setVisible(true);
-this.dispose();
+setDefaultCloseOperation(SEUFRAME.HIDE_ON_CLOSE);
+SEUFRAME.setVisible(false);
       
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
@@ -128,7 +129,8 @@ this.dispose();
         // TODO add your handling code here:
             UsuarioLoginVIEW SEUFRAME= new UsuarioLoginVIEW(null,true);
 SEUFRAME.setVisible(true);
-this.dispose();
+setDefaultCloseOperation(SEUFRAME.HIDE_ON_CLOSE);
+SEUFRAME.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txttelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttelefoneActionPerformed
@@ -174,7 +176,7 @@ this.dispose();
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
+                        System.exit(4);
                     }
                 });
                 dialog.setVisible(true);

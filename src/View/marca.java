@@ -15,6 +15,8 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import static View.marca.id_marca;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 
 
@@ -37,6 +39,12 @@ public class marca extends javax.swing.JDialog {
     public marca(java.awt.Frame parent, boolean modal) {
          super(parent, modal);
         initComponents();
+                  Toolkit tk = Toolkit.getDefaultToolkit();
+        Dimension d = tk.getScreenSize();
+        
+        this.setBounds(0, 0, d.width = 800, d.height  = 600);
+        setResizable(false);
+        setFocusable(true);
        pesquisarMarca();
          desativarBotoes();
          utilitarios u = new utilitarios();
@@ -54,17 +62,15 @@ public class marca extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        buscardados = new javax.swing.JButton();
-        cradastrar = new javax.swing.JButton();
-        Alterar1 = new javax.swing.JButton();
-        excluir = new javax.swing.JButton();
-        salvar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbmarca = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         produtos = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        cradastrar = new javax.swing.JButton();
+        Alterar1 = new javax.swing.JButton();
+        excluir = new javax.swing.JButton();
+        salvar = new javax.swing.JButton();
+        buscardados = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setFocusCycleRoot(false);
@@ -83,9 +89,9 @@ public class marca extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(121, 121, 121)
+                .addGap(230, 230, 230)
                 .addComponent(jLabel1)
-                .addContainerGap(422, Short.MAX_VALUE))
+                .addContainerGap(313, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,87 +103,6 @@ public class marca extends javax.swing.JDialog {
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(-10, 0, 813, 59);
-
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED), "açoês"));
-
-        buscardados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/lupa.png"))); // NOI18N
-        buscardados.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        buscardados.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscardadosActionPerformed(evt);
-            }
-        });
-
-        cradastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/addition.png"))); // NOI18N
-        cradastrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        cradastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cradastrarActionPerformed(evt);
-            }
-        });
-
-        Alterar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar (1).png"))); // NOI18N
-        Alterar1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        Alterar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Alterar1ActionPerformed(evt);
-            }
-        });
-
-        excluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar (1).png"))); // NOI18N
-        excluir.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        excluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                excluirActionPerformed(evt);
-            }
-        });
-
-        salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salvar.png"))); // NOI18N
-        salvar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        salvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                salvarActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(cradastrar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(salvar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(buscardados))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(Alterar1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(excluir)))
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(cradastrar))
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(buscardados)
-                        .addComponent(salvar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(excluir)
-                    .addComponent(Alterar1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPanel3);
-        jPanel3.setBounds(0, 170, 170, 120);
 
         tbmarca.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         tbmarca.setModel(new javax.swing.table.DefaultTableModel(
@@ -201,13 +126,12 @@ public class marca extends javax.swing.JDialog {
         jScrollPane1.setViewportView(tbmarca);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(170, 60, 300, 230);
+        jScrollPane1.setBounds(280, 60, 470, 460);
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel5.setText("Marca:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(0, 60, 50, 20);
+        jLabel5.setBounds(0, 60, 50, 14);
 
         produtos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,13 +139,64 @@ public class marca extends javax.swing.JDialog {
             }
         });
         getContentPane().add(produtos);
-        produtos.setBounds(50, 60, 120, 20);
+        produtos.setBounds(0, 80, 120, 20);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thumb2-program-code-black-backgrounds-programming-background-with-program-code-code.jpg"))); // NOI18N
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 60, 350, 230);
+        cradastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/addition.png"))); // NOI18N
+        cradastrar.setText("Novo");
+        cradastrar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        cradastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cradastrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cradastrar);
+        cradastrar.setBounds(40, 300, 130, 36);
 
-        setSize(new java.awt.Dimension(485, 326));
+        Alterar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar (1).png"))); // NOI18N
+        Alterar1.setText("Alterar");
+        Alterar1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Alterar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Alterar1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Alterar1);
+        Alterar1.setBounds(40, 380, 130, 36);
+
+        excluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar (1).png"))); // NOI18N
+        excluir.setText("Excluir");
+        excluir.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        excluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(excluir);
+        excluir.setBounds(40, 420, 130, 36);
+
+        salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salvar.png"))); // NOI18N
+        salvar.setText("Salvar");
+        salvar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(salvar);
+        salvar.setBounds(40, 340, 130, 36);
+
+        buscardados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/atualizar.png"))); // NOI18N
+        buscardados.setText("Atualizar dados");
+        buscardados.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        buscardados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscardadosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(buscardados);
+        buscardados.setBounds(40, 460, 130, 36);
+
+        setSize(new java.awt.Dimension(816, 608));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -477,10 +452,8 @@ public class marca extends javax.swing.JDialog {
     private javax.swing.JButton cradastrar;
     private javax.swing.JButton excluir;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTextField produtos;
     private javax.swing.JButton salvar;

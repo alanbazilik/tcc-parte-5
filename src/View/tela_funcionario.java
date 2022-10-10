@@ -11,6 +11,8 @@ import Model.bairroModel;
 import Model.telefoneModel;
 import Model.RuaModel;
 import Sistemas_login.utilitarios;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -48,11 +50,16 @@ public class tela_funcionario extends javax.swing.JDialog {
         initComponents();
         cb = false;
         cids = false;
+        ruas = false;
+        telefones = false;
         desativarBotoes();
-        carregabairrocmb();
-        carregacidadecmb();
-        carregaruacmb();
-        carregatelefonecmb();
+            Toolkit tk = Toolkit.getDefaultToolkit();
+        Dimension d = tk.getScreenSize();
+        
+           this.setBounds(0, 0, d.width = 836, d.height  = 634);
+        setResizable(false);
+        setFocusable(true);
+         setLocationRelativeTo(null);
         utilitarios u = new utilitarios();
         u.inserirIcone(this);
     }
@@ -71,13 +78,13 @@ public class tela_funcionario extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         funcionario = new javax.swing.JTextField();
-        rua = new javax.swing.JComboBox<String>();
+        rua = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        bairro = new javax.swing.JComboBox<String>();
+        bairro = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        cidade = new javax.swing.JComboBox<String>();
-        telefone = new javax.swing.JComboBox<String>();
+        cidade = new javax.swing.JComboBox<>();
+        telefone = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         casa = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -97,12 +104,11 @@ public class tela_funcionario extends javax.swing.JDialog {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(814, 600));
-        setMinimumSize(new java.awt.Dimension(814, 600));
-        setPreferredSize(new java.awt.Dimension(814, 600));
+        setMaximumSize(new java.awt.Dimension(852, 634));
+        setMinimumSize(new java.awt.Dimension(852, 634));
+        setPreferredSize(new java.awt.Dimension(852, 634));
         setResizable(false);
-        setSize(new java.awt.Dimension(814, 600));
+        setSize(new java.awt.Dimension(852, 634));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -192,7 +198,6 @@ public class tela_funcionario extends javax.swing.JDialog {
         funcionariotable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         funcionariotable.setEditingColumn(1);
         funcionariotable.setEditingRow(1);
-        funcionariotable.setIntercellSpacing(new java.awt.Dimension(0, 0));
         funcionariotable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 funcionariotableMouseClicked(evt);
@@ -206,7 +211,7 @@ public class tela_funcionario extends javax.swing.JDialog {
         jScrollPane1.setViewportView(funcionariotable);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(160, 60, 650, 540);
+        jScrollPane1.setBounds(160, 60, 690, 540);
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 255));
 
@@ -229,7 +234,7 @@ public class tela_funcionario extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(197, 197, 197)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 236, Short.MAX_VALUE)
                 .addComponent(tela_princial)
                 .addGap(34, 34, 34))
         );
@@ -243,7 +248,7 @@ public class tela_funcionario extends javax.swing.JDialog {
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 830, 59);
+        jPanel1.setBounds(0, 0, 850, 59);
 
         cadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/addition.png"))); // NOI18N
         cadastrar.setText("Novo");
@@ -351,7 +356,7 @@ public class tela_funcionario extends javax.swing.JDialog {
         getContentPane().add(jButton4);
         jButton4.setBounds(120, 300, 40, 20);
 
-        setSize(new java.awt.Dimension(814, 600));
+        setSize(new java.awt.Dimension(868, 642));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -479,6 +484,7 @@ public class tela_funcionario extends javax.swing.JDialog {
             carregatelefonecmb();
             telefones = false;
         }
+ 
     }//GEN-LAST:event_formWindowActivated
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

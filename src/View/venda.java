@@ -39,7 +39,9 @@ public class venda extends javax.swing.JDialog {
     List<ClienteModel> listcClienteModels;
     List<ProdutoModel> listpProdutoModels;
     static boolean button;
-
+    boolean clientes1;
+    boolean funcionarios;
+    boolean produtos;
     public venda(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -47,11 +49,14 @@ public class venda extends javax.swing.JDialog {
         Dimension d = tk.getScreenSize();
         
         this.setBounds(0, 0, d.width = 800, d.height  = 600);
+            setResizable(false);
+        setFocusable(true);
+         setLocationRelativeTo(null);
         desativarBotoes();
         pesquisarvenda();
-        carregaclintecmb();
-        carregafuncionariocmb();
-        carregaprodutocmb();
+      clientes1 = false;
+      funcionarios = false;
+      produtos = false;
         utilitarios u = new utilitarios();
         u.inserirIcone(this);
     }
@@ -71,15 +76,15 @@ public class venda extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        funcionario = new javax.swing.JComboBox<String>();
-        clientes = new javax.swing.JComboBox<String>();
+        funcionario = new javax.swing.JComboBox<>();
+        clientes = new javax.swing.JComboBox<>();
         atualizar = new javax.swing.JButton();
         alterar = new javax.swing.JButton();
         deletar = new javax.swing.JButton();
         cadastrar = new javax.swing.JButton();
         salvar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        produto = new javax.swing.JComboBox<String>();
+        produto = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         Quantv = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -87,13 +92,20 @@ public class venda extends javax.swing.JDialog {
         date = new javax.swing.JFormattedTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         vendaTable = new javax.swing.JTable();
+        funcionariobu = new javax.swing.JButton();
+        clientebu = new javax.swing.JButton();
+        produtobu = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setFocusCycleRoot(false);
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
         setSize(new java.awt.Dimension(800, 600));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 255));
@@ -132,38 +144,38 @@ public class venda extends javax.swing.JDialog {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 813, 59);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel2.setText("Data:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 70, 50, 20);
+        jLabel2.setBounds(0, 60, 30, 14);
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel5.setText("Cliente:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(0, 110, 70, 20);
+        jLabel5.setBounds(0, 90, 50, 14);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel6.setText("Quantv:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(0, 190, 80, 30);
+        jLabel6.setBounds(0, 200, 60, 30);
 
-        funcionario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        funcionario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         funcionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 funcionarioActionPerformed(evt);
             }
         });
         getContentPane().add(funcionario);
-        funcionario.setBounds(80, 140, 90, 20);
+        funcionario.setBounds(0, 150, 120, 22);
 
-        clientes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        clientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         clientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clientesActionPerformed(evt);
             }
         });
         getContentPane().add(clientes);
-        clientes.setBounds(50, 110, 120, 20);
+        clientes.setBounds(0, 110, 120, 20);
 
         atualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/atualizar.png"))); // NOI18N
         atualizar.setText("Atualizar dados");
@@ -215,28 +227,28 @@ public class venda extends javax.swing.JDialog {
         getContentPane().add(salvar);
         salvar.setBounds(0, 380, 170, 40);
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel7.setText("Funcionário:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(0, 140, 110, 20);
+        jLabel7.setBounds(0, 130, 90, 14);
 
-        produto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        produto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(produto);
-        produto.setBounds(60, 170, 90, 20);
+        produto.setBounds(0, 190, 120, 22);
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel8.setText("Produto:");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(0, 165, 80, 30);
+        jLabel8.setBounds(0, 160, 60, 30);
         getContentPane().add(Quantv);
-        Quantv.setBounds(60, 200, 90, 20);
+        Quantv.setBounds(0, 230, 120, 22);
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel9.setText("Valorv:");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(0, 220, 80, 30);
+        jLabel9.setBounds(0, 240, 60, 30);
         getContentPane().add(Valorv);
-        Valorv.setBounds(50, 230, 100, 20);
+        Valorv.setBounds(0, 260, 120, 22);
 
         try {
             date.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -244,7 +256,7 @@ public class venda extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         getContentPane().add(date);
-        date.setBounds(40, 70, 80, 20);
+        date.setBounds(30, 60, 80, 22);
 
         vendaTable.setAutoCreateRowSorter(true);
         vendaTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -266,7 +278,6 @@ public class venda extends javax.swing.JDialog {
         vendaTable.setDebugGraphicsOptions(javax.swing.DebugGraphics.BUFFERED_OPTION);
         vendaTable.setEditingColumn(1);
         vendaTable.setEditingRow(1);
-        vendaTable.setIntercellSpacing(new java.awt.Dimension(0, 0));
         vendaTable.setRowHeight(12);
         vendaTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -282,6 +293,33 @@ public class venda extends javax.swing.JDialog {
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(170, 60, 630, 540);
+
+        funcionariobu.setText("+");
+        funcionariobu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                funcionariobuActionPerformed(evt);
+            }
+        });
+        getContentPane().add(funcionariobu);
+        funcionariobu.setBounds(90, 130, 30, 20);
+
+        clientebu.setText("+");
+        clientebu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clientebuActionPerformed(evt);
+            }
+        });
+        getContentPane().add(clientebu);
+        clientebu.setBounds(90, 90, 30, 20);
+
+        produtobu.setText("+");
+        produtobu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                produtobuActionPerformed(evt);
+            }
+        });
+        getContentPane().add(produtobu);
+        produtobu.setBounds(90, 170, 30, 20);
 
         setSize(new java.awt.Dimension(800, 600));
         setLocationRelativeTo(null);
@@ -370,6 +408,44 @@ public class venda extends javax.swing.JDialog {
             this.dispose();
         }
     }//GEN-LAST:event_vendaTableMouseClicked
+
+    private void clientebuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientebuActionPerformed
+        // TODO add your handling code here:
+        clientes1 = true; 
+        tela_Cliente objtel = new tela_Cliente(null,true);
+        objtel.setVisible(true);
+    }//GEN-LAST:event_clientebuActionPerformed
+
+    private void funcionariobuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_funcionariobuActionPerformed
+        // TODO add your handling code here:
+         funcionarios = true; 
+        tela_funcionario objtel2 = new tela_funcionario(null,true);
+        objtel2.setVisible(true);
+    }//GEN-LAST:event_funcionariobuActionPerformed
+
+    private void produtobuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_produtobuActionPerformed
+        // TODO add your handling code here:
+        produtos = true; 
+        Produto objtel3 = new Produto(null,true);
+        objtel3.setVisible(true);
+    }//GEN-LAST:event_produtobuActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+           if(clientes1==true){
+            carregaclintecmb();
+            clientes1 = false;
+        }
+              if(funcionarios==true){
+            carregafuncionariocmb();
+            funcionarios = false;
+        }
+                 if(produtos==true){
+            carregaprodutocmb();
+            produtos = false;
+        }
+              
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -599,10 +675,12 @@ public class venda extends javax.swing.JDialog {
     private javax.swing.JButton alterar;
     private javax.swing.JButton atualizar;
     private javax.swing.JButton cadastrar;
+    private javax.swing.JButton clientebu;
     private javax.swing.JComboBox<String> clientes;
     private javax.swing.JFormattedTextField date;
     private javax.swing.JButton deletar;
     private javax.swing.JComboBox<String> funcionario;
+    private javax.swing.JButton funcionariobu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
@@ -613,6 +691,7 @@ public class venda extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> produto;
+    private javax.swing.JButton produtobu;
     private javax.swing.JButton salvar;
     private javax.swing.JLabel tela_princial;
     private javax.swing.JTable vendaTable;

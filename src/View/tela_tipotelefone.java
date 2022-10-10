@@ -39,6 +39,9 @@ public class tela_tipotelefone extends javax.swing.JDialog {
         Dimension d = tk.getScreenSize();
         
         this.setBounds(0, 0, d.width = 800, d.height  = 600);
+              setResizable(false);
+        setFocusable(true);
+         setLocationRelativeTo(null);
         pesquisartel();
         desativarBotoes();
         utilitarios u = new utilitarios();
@@ -134,7 +137,7 @@ public class tela_tipotelefone extends javax.swing.JDialog {
 
         cradastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/addition.png"))); // NOI18N
         cradastrar.setText("Novo");
-        cradastrar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        cradastrar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         cradastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cradastrarActionPerformed(evt);
@@ -145,7 +148,7 @@ public class tela_tipotelefone extends javax.swing.JDialog {
 
         salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salvar.png"))); // NOI18N
         salvar.setText("Salvar");
-        salvar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        salvar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         salvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salvarActionPerformed(evt);
@@ -156,7 +159,7 @@ public class tela_tipotelefone extends javax.swing.JDialog {
 
         busca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/atualizar.png"))); // NOI18N
         busca.setText("Atualizar dados");
-        busca.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        busca.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         busca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscaActionPerformed(evt);
@@ -167,7 +170,7 @@ public class tela_tipotelefone extends javax.swing.JDialog {
 
         Alterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar (1).png"))); // NOI18N
         Alterar.setText("Alterar");
-        Alterar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Alterar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         Alterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AlterarActionPerformed(evt);
@@ -178,7 +181,7 @@ public class tela_tipotelefone extends javax.swing.JDialog {
 
         excluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar (1).png"))); // NOI18N
         excluir.setText(" Excluir");
-        excluir.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        excluir.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         excluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 excluirActionPerformed(evt);
@@ -194,7 +197,8 @@ public class tela_tipotelefone extends javax.swing.JDialog {
     private void cradastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cradastrarActionPerformed
         // TODO add your handling code here:
         ativarBotoes();
-        limparCampos();
+       pesquisartel();
+       limparCampos();
         opcao = "Inserir";
         button = true;
     }//GEN-LAST:event_cradastrarActionPerformed
@@ -215,7 +219,8 @@ public class tela_tipotelefone extends javax.swing.JDialog {
 
     private void AlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AlterarActionPerformed
         Alterartel();
-        pesquisartel();
+         pesquisartel();
+       limparCampos();
     }//GEN-LAST:event_AlterarActionPerformed
 
     private void excluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirActionPerformed
@@ -230,7 +235,8 @@ public class tela_tipotelefone extends javax.swing.JDialog {
         if(options[Integer.valueOf(ret.toString())].equals("Sim"))
         {
             Excluirtel();
-            limparCampos();
+             pesquisartel();
+       limparCampos();
         }
     }//GEN-LAST:event_excluirActionPerformed
 

@@ -11,6 +11,8 @@ import Sistemas_login.utilitarios;
 import static View.cidade.id_cidade;
 import static View.tela_telefone.button;
 import static View.tela_telefone.id_tel;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -45,6 +47,13 @@ public class cidade extends javax.swing.JDialog {
          pesquisartel();
          utilitarios u = new utilitarios();
     u.inserirIcone(this);
+             Toolkit tk = Toolkit.getDefaultToolkit();
+        Dimension d = tk.getScreenSize();
+        
+        this.setBounds(0, 0, d.width = 800, d.height  = 600);
+         setResizable(false);
+        setFocusable(true);
+         setLocationRelativeTo(null);
     }
 
     /**
@@ -61,14 +70,13 @@ public class cidade extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         cidade = new javax.swing.JTextField();
-        uf = new javax.swing.JComboBox<String>();
+        uf = new javax.swing.JComboBox<>();
         deletar = new javax.swing.JButton();
         cadastrar = new javax.swing.JButton();
         salvar = new javax.swing.JButton();
         alterar = new javax.swing.JButton();
         atualizar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         cidadetabela = new javax.swing.JTable();
 
@@ -112,13 +120,11 @@ public class cidade extends javax.swing.JDialog {
         jPanel1.setBounds(0, 0, 813, 59);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Estado:");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, 100, 70, 14);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Cidade:");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(0, 60, 70, 14);
@@ -129,39 +135,43 @@ public class cidade extends javax.swing.JDialog {
             }
         });
         getContentPane().add(cidade);
-        cidade.setBounds(20, 80, 160, 20);
+        cidade.setBounds(20, 80, 160, 22);
 
         getContentPane().add(uf);
-        uf.setBounds(20, 120, 160, 20);
+        uf.setBounds(20, 120, 160, 22);
 
         deletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar (1).png"))); // NOI18N
+        deletar.setText("Excluir");
         deletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deletarActionPerformed(evt);
             }
         });
         getContentPane().add(deletar);
-        deletar.setBounds(10, 230, 50, 50);
+        deletar.setBounds(10, 330, 150, 50);
 
         cadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/addition.png"))); // NOI18N
+        cadastrar.setText("Novo");
         cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cadastrarActionPerformed(evt);
             }
         });
         getContentPane().add(cadastrar);
-        cadastrar.setBounds(10, 180, 50, 50);
+        cadastrar.setBounds(10, 180, 150, 50);
 
         salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salvar.png"))); // NOI18N
+        salvar.setText("Salvar");
         salvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salvarActionPerformed(evt);
             }
         });
         getContentPane().add(salvar);
-        salvar.setBounds(70, 180, 50, 50);
+        salvar.setBounds(10, 230, 150, 50);
 
         alterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar (1).png"))); // NOI18N
+        alterar.setText("Alterar");
         alterar.setActionCommand("alterar");
         alterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,9 +179,10 @@ public class cidade extends javax.swing.JDialog {
             }
         });
         getContentPane().add(alterar);
-        alterar.setBounds(70, 230, 50, 50);
+        alterar.setBounds(10, 280, 150, 50);
 
         atualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/atualizar.png"))); // NOI18N
+        atualizar.setText("Atualizar dados");
         atualizar.setToolTipText("");
         atualizar.setActionCommand("refesh");
         atualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -180,7 +191,7 @@ public class cidade extends javax.swing.JDialog {
             }
         });
         getContentPane().add(atualizar);
-        atualizar.setBounds(160, 240, 50, 50);
+        atualizar.setBounds(10, 380, 150, 50);
 
         jButton1.setText("+");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -190,10 +201,6 @@ public class cidade extends javax.swing.JDialog {
         });
         getContentPane().add(jButton1);
         jButton1.setBounds(140, 100, 40, 20);
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thumb2-program-code-black-backgrounds-programming-background-with-program-code-code.jpg"))); // NOI18N
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(-60, 60, 270, 240);
 
         cidadetabela.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.black));
         cidadetabela.setModel(new javax.swing.table.DefaultTableModel(
@@ -220,9 +227,9 @@ public class cidade extends javax.swing.JDialog {
         jScrollPane1.setViewportView(cidadetabela);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(210, 60, 480, 230);
+        jScrollPane1.setBounds(220, 60, 560, 500);
 
-        setSize(new java.awt.Dimension(704, 331));
+        setSize(new java.awt.Dimension(816, 608));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -461,7 +468,6 @@ public void carregaestadocmb()
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton salvar;

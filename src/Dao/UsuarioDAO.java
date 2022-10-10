@@ -77,7 +77,7 @@ public class UsuarioDAO {
             if(rs.next()){
       Tela_principal objtel = new Tela_principal(null,true);
       objtel.setVisible(true);
-      
+
   
       
                return status = true;
