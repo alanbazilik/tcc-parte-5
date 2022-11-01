@@ -53,7 +53,7 @@ public class tipoDAO {
         con = cb.conectaPostgre();
         
         String sql = "UPDATE tipos SET "
-                + " tipo = ? "
+                + " tipo = upper(?) "
                 + "WHERE  cod_tipo_produto = ?";
         
         try {

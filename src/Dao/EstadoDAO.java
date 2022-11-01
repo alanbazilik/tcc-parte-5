@@ -52,7 +52,7 @@ public class EstadoDAO {
         con = cb.conectaPostgre();
         
         String sql = "UPDATE estado SET "
-                + "nome_estado = ? "
+                + "nome_estado = upper(?) "
                 + "WHERE codestado = ?";
         
         try {

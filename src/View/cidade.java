@@ -70,7 +70,7 @@ public class cidade extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         cidade = new javax.swing.JTextField();
-        uf = new javax.swing.JComboBox<>();
+        uf = new javax.swing.JComboBox<String>();
         deletar = new javax.swing.JButton();
         cadastrar = new javax.swing.JButton();
         salvar = new javax.swing.JButton();
@@ -135,10 +135,10 @@ public class cidade extends javax.swing.JDialog {
             }
         });
         getContentPane().add(cidade);
-        cidade.setBounds(20, 80, 160, 22);
+        cidade.setBounds(20, 80, 160, 20);
 
         getContentPane().add(uf);
-        uf.setBounds(20, 120, 160, 22);
+        uf.setBounds(20, 120, 160, 20);
 
         deletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar (1).png"))); // NOI18N
         deletar.setText("Excluir");

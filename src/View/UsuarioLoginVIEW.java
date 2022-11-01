@@ -98,7 +98,7 @@ public class UsuarioLoginVIEW extends javax.swing.JDialog {
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Design sem nome1 (1).png"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 280));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 250));
 
         setSize(new java.awt.Dimension(394, 287));
         setLocationRelativeTo(null);
@@ -116,11 +116,11 @@ SEUFRAME.setVisible(false);
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-       this.dispose();
+        this.dispose();
         UsuarioCTR objusu = new UsuarioCTR();
         objusu.loginUsuarioCTR(txtusuario.getText(), txtsenha.getText());
         limpar();
-     
+      
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

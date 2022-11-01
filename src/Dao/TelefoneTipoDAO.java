@@ -75,7 +75,7 @@ public class TelefoneTipoDAO {
         con = cb.conectaPostgre();
         
         String sql = "UPDATE Tipo_Telefone SET "
-                + "nometipotel = ? "
+                + "nometipotel = upper(?) "
                 + "WHERE codtipotel = ?";
         
         try {

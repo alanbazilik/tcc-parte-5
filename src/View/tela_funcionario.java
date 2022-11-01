@@ -78,13 +78,13 @@ public class tela_funcionario extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         funcionario = new javax.swing.JTextField();
-        rua = new javax.swing.JComboBox<>();
+        rua = new javax.swing.JComboBox<String>();
         jLabel6 = new javax.swing.JLabel();
-        bairro = new javax.swing.JComboBox<>();
+        bairro = new javax.swing.JComboBox<String>();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        cidade = new javax.swing.JComboBox<>();
-        telefone = new javax.swing.JComboBox<>();
+        cidade = new javax.swing.JComboBox<String>();
+        telefone = new javax.swing.JComboBox<String>();
         jLabel9 = new javax.swing.JLabel();
         casa = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -652,7 +652,7 @@ public class tela_funcionario extends javax.swing.JDialog {
     }
 
     public void preenche_item() {
-        String[] colunas = {"Codigo", "Cliente", "Rg", "Cpf", "Bairro", "Cidade", "Telefone", "Rua", "Nº.Casa"};
+        String[] colunas = {"CÓDIGO", "FUNCIONÁRIO", "RG", "CPF", "BAIRRO", "CIDADE", "TELEFONE", "RUA", "Nº.CASA"};
 
         String[][] linhas = {};
 

@@ -93,7 +93,7 @@ public class ProdutoDAO {
         con = cb.conectaPostgre();
 
         String sql = "UPDATE produto SET "
-                + "produto = ?,quantidade = ?,fk_tipo = ?,fk_marca = ?"
+                + "produto = upper(?),quantidade = ?,fk_tipo = ?,fk_marca = ?"
                 + "WHERE codigo_barras = ?";
 
         try {
@@ -157,5 +157,6 @@ public class ProdutoDAO {
         return rs;
 
     }
+    
 
 }

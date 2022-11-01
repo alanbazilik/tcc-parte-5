@@ -55,7 +55,7 @@ public class marca_DAO {
         con = cb.conectaPostgre();
         
         String sql = "UPDATE marca SET "
-                + "marca_produto = ? "
+                + "marca_produto = upper(?) "
                 + "WHERE cod_marca_produto = ?";
         
         try {

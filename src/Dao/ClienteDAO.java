@@ -136,8 +136,8 @@ public class ClienteDAO {
         con = cb.conectaPostgre();
 
         String sql = "UPDATE Cliente SET "
-                + "nome_cliente = ?,rg = ?,cpf = ?,fk_bairro = ?"
-                + ",fk_cidade = ?,fk_codtelefone = ?,fk_codrua = ?,numerocasa = ?"
+                + "nome_cliente = upper(?),rg = ?,cpf = ?,fk_bairro = ?"
+                + ",fk_cidade = ?,fk_codtelefone = ?,fk_codrua = ?,numerocasa = upper(?)"
                 + "WHERE cod_cliente = ?";
 
         try {

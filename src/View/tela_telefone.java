@@ -70,7 +70,7 @@ public class tela_telefone extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         telefone = new javax.swing.JTextField();
-        jcomboxtel = new javax.swing.JComboBox<>();
+        jcomboxtel = new javax.swing.JComboBox<String>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtalbetel = new javax.swing.JTable();
         buscar = new javax.swing.JButton();
@@ -130,7 +130,7 @@ public class tela_telefone extends javax.swing.JDialog {
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 813, 59);
+        jPanel1.setBounds(0, 0, 826, 59);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel3.setText("Tipo de telefone:");
@@ -148,7 +148,7 @@ public class tela_telefone extends javax.swing.JDialog {
             }
         });
         getContentPane().add(telefone);
-        telefone.setBounds(100, 60, 120, 22);
+        telefone.setBounds(100, 60, 120, 20);
 
         jcomboxtel.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -156,7 +156,7 @@ public class tela_telefone extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jcomboxtel);
-        jcomboxtel.setBounds(100, 100, 120, 22);
+        jcomboxtel.setBounds(100, 100, 120, 20);
 
         jtalbetel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -237,7 +237,7 @@ public class tela_telefone extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(200, 80, 23, 20);
+        jButton1.setBounds(200, 80, 41, 20);
 
         setSize(new java.awt.Dimension(816, 639));
         setLocationRelativeTo(null);
@@ -392,7 +392,7 @@ public void carregatelefonecmb()
     
     public void preenche_item()
     {
-     String [] colunas = {"Codigo","Numero","Tipo_Telefone"};
+     String [] colunas = {"CÓDIGO","TELEFONE","TIPO_TELFONE"};
         
         String [][] linhas ={};
         

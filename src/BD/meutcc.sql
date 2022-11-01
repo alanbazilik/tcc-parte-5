@@ -1,4 +1,4 @@
-﻿create database estoque;
+create database estoque;
 
 CREATE TABLE usuario(
 	codusuario serial primary key,
@@ -42,7 +42,8 @@ CREATE TABLE produto (
     produto VARCHAR(80),
     quantidade INTEGER,
     fk_tipo INTEGER,
-    fk_marca INTEGER
+    fk_marca INTEGER,
+	Aviso VARCHAR(80)
 );
 
 CREATE TABLE marca (

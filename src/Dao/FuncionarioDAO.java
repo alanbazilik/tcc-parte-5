@@ -136,8 +136,8 @@ public class FuncionarioDAO {
         con = cb.conectaPostgre();
 
         String sql = "UPDATE funcionario SET "
-                + "nome_funcionario = ?,rg = ?,cpf = ?,fk_bairro = ?"
-                + ",fk_cidade = ?,fk_codtelefone = ?,fk_codrua = ?,numerocasa = ?"
+                + "nome_funcionario = upper(?),rg = ?,cpf = ?,fk_bairro = ?"
+                + ",fk_cidade = ?,fk_codtelefone = ?,fk_codrua = ?,numerocasa = upper(?)"
                 + "WHERE cod_funcionario = ?";
 
         try {

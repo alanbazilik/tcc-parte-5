@@ -163,7 +163,7 @@ public class rua extends javax.swing.JDialog {
             }
         });
         getContentPane().add(salvar);
-        salvar.setBounds(20, 310, 130, 36);
+        salvar.setBounds(20, 310, 130, 37);
 
         alterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar (1).png"))); // NOI18N
         alterar.setText("Alterar");
@@ -174,7 +174,7 @@ public class rua extends javax.swing.JDialog {
             }
         });
         getContentPane().add(alterar);
-        alterar.setBounds(20, 350, 130, 36);
+        alterar.setBounds(20, 350, 130, 37);
 
         Excluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar (1).png"))); // NOI18N
         Excluir.setText("Excluir");
@@ -185,7 +185,7 @@ public class rua extends javax.swing.JDialog {
             }
         });
         getContentPane().add(Excluir);
-        Excluir.setBounds(20, 390, 130, 36);
+        Excluir.setBounds(20, 390, 130, 37);
 
         buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/atualizar.png"))); // NOI18N
         buscar.setText("Atualizar dados");
@@ -196,7 +196,7 @@ public class rua extends javax.swing.JDialog {
             }
         });
         getContentPane().add(buscar);
-        buscar.setBounds(20, 430, 130, 36);
+        buscar.setBounds(20, 430, 130, 37);
 
         setSize(new java.awt.Dimension(816, 608));
         setLocationRelativeTo(null);
@@ -369,7 +369,7 @@ public class rua extends javax.swing.JDialog {
   
   public void preenche_item()
     {
-     String [] colunas = {"Codigo","Nome_Da_Rua "};
+     String [] colunas = {"CÓDIGO","RUA "};
         
         String [][] linhas ={};
         

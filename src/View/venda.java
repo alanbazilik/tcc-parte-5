@@ -76,15 +76,15 @@ public class venda extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        funcionario = new javax.swing.JComboBox<>();
-        clientes = new javax.swing.JComboBox<>();
+        funcionario = new javax.swing.JComboBox<String>();
+        clientes = new javax.swing.JComboBox<String>();
         atualizar = new javax.swing.JButton();
         alterar = new javax.swing.JButton();
         deletar = new javax.swing.JButton();
         cadastrar = new javax.swing.JButton();
         salvar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        produto = new javax.swing.JComboBox<>();
+        produto = new javax.swing.JComboBox<String>();
         jLabel8 = new javax.swing.JLabel();
         Quantv = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -159,16 +159,16 @@ public class venda extends javax.swing.JDialog {
         getContentPane().add(jLabel6);
         jLabel6.setBounds(0, 200, 60, 30);
 
-        funcionario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        funcionario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         funcionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 funcionarioActionPerformed(evt);
             }
         });
         getContentPane().add(funcionario);
-        funcionario.setBounds(0, 150, 120, 22);
+        funcionario.setBounds(0, 150, 120, 20);
 
-        clientes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        clientes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         clientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clientesActionPerformed(evt);
@@ -232,23 +232,23 @@ public class venda extends javax.swing.JDialog {
         getContentPane().add(jLabel7);
         jLabel7.setBounds(0, 130, 90, 14);
 
-        produto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        produto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(produto);
-        produto.setBounds(0, 190, 120, 22);
+        produto.setBounds(0, 190, 120, 20);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel8.setText("Produto:");
         getContentPane().add(jLabel8);
         jLabel8.setBounds(0, 160, 60, 30);
         getContentPane().add(Quantv);
-        Quantv.setBounds(0, 230, 120, 22);
+        Quantv.setBounds(0, 230, 120, 20);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         jLabel9.setText("Valorv:");
         getContentPane().add(jLabel9);
         jLabel9.setBounds(0, 240, 60, 30);
         getContentPane().add(Valorv);
-        Valorv.setBounds(0, 260, 120, 22);
+        Valorv.setBounds(0, 260, 120, 20);
 
         try {
             date.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -256,7 +256,7 @@ public class venda extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         getContentPane().add(date);
-        date.setBounds(30, 60, 80, 22);
+        date.setBounds(30, 60, 80, 20);
 
         vendaTable.setAutoCreateRowSorter(true);
         vendaTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -636,7 +636,7 @@ public class venda extends javax.swing.JDialog {
     }
 
     public void preenche_item() {
-        String[] colunas = {"Codigo","Data","Funcionario","Cliente","Produto","Quantv","Valor"};
+        String[] colunas = {"CÓDIGO","DATA","FUNCIONÁRIO","CLIENTE","PRODUTO","QUANT_V","VALOR_V"};
 
         String[][] linhas = {};
        

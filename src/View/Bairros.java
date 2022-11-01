@@ -343,7 +343,7 @@ public class Bairros extends javax.swing.JDialog {
   
   public void preenche_item()
     {
-     String [] colunas = {"Codigo","Bairro"};
+     String [] colunas = {"CÓDIGO","BAIRRO"};
         
         String [][] linhas ={};
         

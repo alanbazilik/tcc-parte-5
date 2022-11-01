@@ -75,7 +75,7 @@ public class CidadeDAO {
         con = cb.conectaPostgre();
         
         String sql = "UPDATE cidade SET "
-                + "nomecidade = upper(?),fk_uf = ?"
+                + "nomecidade = ?,fk_uf = ?"
                 + "WHERE codcidade = ?";
         
         try {

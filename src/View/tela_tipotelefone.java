@@ -351,7 +351,7 @@ public void desativarBotoes()
   
   public void preenche_item()
     {
-     String [] colunas = {"Codigo","Tipo_Telelefone"};
+     String [] colunas = {"CÓDIGO","TIPO_TELFONE"};
         
         String [][] linhas ={};
         

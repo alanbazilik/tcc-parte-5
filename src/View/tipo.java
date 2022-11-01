@@ -153,7 +153,7 @@ public class tipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(cradastrar);
-        cradastrar.setBounds(20, 160, 130, 36);
+        cradastrar.setBounds(20, 160, 130, 37);
 
         salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salvar.png"))); // NOI18N
         salvar.setText("Salvar");
@@ -164,7 +164,7 @@ public class tipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(salvar);
-        salvar.setBounds(20, 200, 130, 36);
+        salvar.setBounds(20, 200, 130, 37);
 
         Alterar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar (1).png"))); // NOI18N
         Alterar1.setText("Alterar");
@@ -175,7 +175,7 @@ public class tipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(Alterar1);
-        Alterar1.setBounds(20, 240, 130, 36);
+        Alterar1.setBounds(20, 240, 130, 37);
 
         excluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar (1).png"))); // NOI18N
         excluir.setText("Excluir");
@@ -186,7 +186,7 @@ public class tipo extends javax.swing.JDialog {
             }
         });
         getContentPane().add(excluir);
-        excluir.setBounds(20, 280, 130, 36);
+        excluir.setBounds(20, 280, 130, 37);
 
         buscardados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/atualizar.png"))); // NOI18N
         buscardados.setText("Atualizar dados");
@@ -437,7 +437,7 @@ public class tipo extends javax.swing.JDialog {
   
   public void preenche_item()
     {
-     String [] colunas = {"Codigo","Nome"};
+     String [] colunas = {"CÓDIGO","TIPO"};
         
         String [][] linhas ={};
         

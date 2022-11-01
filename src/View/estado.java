@@ -367,7 +367,7 @@ public class estado extends javax.swing.JDialog{
   
   public void preenche_item()
     {
-     String [] colunas = {"Codigo","Nome_estado"};
+     String [] colunas = {"CÓDIGO","ESTADO"};
         
         String [][] linhas ={};
         

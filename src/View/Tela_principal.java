@@ -80,7 +80,7 @@ public class Tela_principal extends javax.swing.JDialog {
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/addition.png"))); // NOI18N
         jMenu1.setText("Cadastros");
 
-        funcionario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        funcionario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
         funcionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/eu-iria.png"))); // NOI18N
         funcionario.setText("Funcionário");
         funcionario.addActionListener(new java.awt.event.ActionListener() {
@@ -90,7 +90,7 @@ public class Tela_principal extends javax.swing.JDialog {
         });
         jMenu1.add(funcionario);
 
-        cliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        cliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/clientes.png"))); // NOI18N
         cliente.setText("Cliente");
         cliente.addActionListener(new java.awt.event.ActionListener() {
@@ -100,7 +100,7 @@ public class Tela_principal extends javax.swing.JDialog {
         });
         jMenu1.add(cliente);
 
-        estado.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        estado.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
         estado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/estados-unidos.png"))); // NOI18N
         estado.setText("Estado");
         estado.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +110,7 @@ public class Tela_principal extends javax.swing.JDialog {
         });
         jMenu1.add(estado);
 
-        cidade.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        cidade.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         cidade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cidade.png"))); // NOI18N
         cidade.setText("Cidade");
         cidade.addActionListener(new java.awt.event.ActionListener() {
@@ -120,7 +120,7 @@ public class Tela_principal extends javax.swing.JDialog {
         });
         jMenu1.add(cidade);
 
-        bairro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        bairro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
         bairro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cidade-verde.png"))); // NOI18N
         bairro.setText("Bairro");
         bairro.addActionListener(new java.awt.event.ActionListener() {
@@ -130,7 +130,7 @@ public class Tela_principal extends javax.swing.JDialog {
         });
         jMenu1.add(bairro);
 
-        rua.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        rua.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
         rua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/rua.png"))); // NOI18N
         rua.setText("Rua");
         rua.addActionListener(new java.awt.event.ActionListener() {
@@ -140,7 +140,7 @@ public class Tela_principal extends javax.swing.JDialog {
         });
         jMenu1.add(rua);
 
-        telefone.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        telefone.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
         telefone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/telefones.png"))); // NOI18N
         telefone.setText("Telefone");
         telefone.addActionListener(new java.awt.event.ActionListener() {
@@ -150,7 +150,7 @@ public class Tela_principal extends javax.swing.JDialog {
         });
         jMenu1.add(telefone);
 
-        tipo_telefone.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        tipo_telefone.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         tipo_telefone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/responsivo.png"))); // NOI18N
         tipo_telefone.setText("Tipo telefone");
         tipo_telefone.addActionListener(new java.awt.event.ActionListener() {
@@ -165,7 +165,7 @@ public class Tela_principal extends javax.swing.JDialog {
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/adicionar-produto.png"))); // NOI18N
         jMenu2.setText("Produtos");
 
-        produto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        produto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         produto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/adicionar-produto.png"))); // NOI18N
         produto.setText("Produto");
         produto.addActionListener(new java.awt.event.ActionListener() {
@@ -175,7 +175,7 @@ public class Tela_principal extends javax.swing.JDialog {
         });
         jMenu2.add(produto);
 
-        marca.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        marca.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
         marca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-square-brackets-32.png"))); // NOI18N
         marca.setText("Marca");
         marca.addActionListener(new java.awt.event.ActionListener() {
@@ -185,7 +185,7 @@ public class Tela_principal extends javax.swing.JDialog {
         });
         jMenu2.add(marca);
 
-        tipo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.SHIFT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        tipo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         tipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/menu-suspenso.png"))); // NOI18N
         tipo.setText("Tipo");
         tipo.addActionListener(new java.awt.event.ActionListener() {
@@ -195,7 +195,7 @@ public class Tela_principal extends javax.swing.JDialog {
         });
         jMenu2.add(tipo);
 
-        venda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.SHIFT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        venda.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         venda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-finalizar-pedido-32.png"))); // NOI18N
         venda.setText("Venda");
         venda.addActionListener(new java.awt.event.ActionListener() {
@@ -207,7 +207,7 @@ public class Tela_principal extends javax.swing.JDialog {
 
         jMenu3.add(jMenu2);
 
-        exit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_BACK_SPACE, java.awt.event.InputEvent.ALT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        exit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_BACK_SPACE, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-exit-64.png"))); // NOI18N
         exit.setText("Deslogar");
         exit.addActionListener(new java.awt.event.ActionListener() {
@@ -217,7 +217,7 @@ public class Tela_principal extends javax.swing.JDialog {
         });
         jMenu3.add(exit);
 
-        Sair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_END, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
+        Sair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_END, java.awt.event.InputEvent.SHIFT_MASK));
         Sair.setText("Exit");
         Sair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -298,9 +298,10 @@ public class Tela_principal extends javax.swing.JDialog {
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         // TODO add your handling code here:
-       UsuarioLoginVIEW exits = new UsuarioLoginVIEW(null,true);
+       this.dispose();
+        UsuarioLoginVIEW exits = new UsuarioLoginVIEW(null,true);
         exits.setVisible(true);
-              this.dispose();
+              
     }//GEN-LAST:event_exitActionPerformed
 
     private void marcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marcaActionPerformed
@@ -317,7 +318,7 @@ public class Tela_principal extends javax.swing.JDialog {
 
     private void SairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SairActionPerformed
         // TODO add your handling code here:
-       dispose();
+       System.exit(0);
     }//GEN-LAST:event_SairActionPerformed
 
     /**

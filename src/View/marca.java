@@ -404,7 +404,7 @@ public class marca extends javax.swing.JDialog {
   
   public void preenche_item()
     {
-     String [] colunas = {"Codigo","Marca_produto"};
+     String [] colunas = {"CÓDIGO","MARCA_PRODUTO"};
         
         String [][] linhas ={};
         

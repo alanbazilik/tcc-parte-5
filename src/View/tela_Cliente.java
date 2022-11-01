@@ -75,13 +75,13 @@ public class tela_Cliente extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         funcionario = new javax.swing.JTextField();
-        rua = new javax.swing.JComboBox<>();
+        rua = new javax.swing.JComboBox<String>();
         jLabel6 = new javax.swing.JLabel();
-        bairro = new javax.swing.JComboBox<>();
+        bairro = new javax.swing.JComboBox<String>();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        cidade = new javax.swing.JComboBox<>();
-        telefone = new javax.swing.JComboBox<>();
+        cidade = new javax.swing.JComboBox<String>();
+        telefone = new javax.swing.JComboBox<String>();
         jLabel9 = new javax.swing.JLabel();
         casa = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -140,7 +140,7 @@ public class tela_Cliente extends javax.swing.JDialog {
             }
         });
         getContentPane().add(funcionario);
-        funcionario.setBounds(0, 70, 130, 22);
+        funcionario.setBounds(0, 70, 130, 20);
 
         getContentPane().add(rua);
         rua.setBounds(0, 270, 140, 20);
@@ -295,7 +295,7 @@ public class tela_Cliente extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         getContentPane().add(rg);
-        rg.setBounds(0, 110, 110, 22);
+        rg.setBounds(0, 110, 110, 20);
 
         try {
             cpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -593,7 +593,7 @@ public class tela_Cliente extends javax.swing.JDialog {
         telefone.removeAllItems();
         int i = 0;
 
-        while (i < listrua.size()) {
+        while (i < listtelefone.size()) {
             telefone.addItem(listtelefone.get(i).getNumerotel());
             i++;
         }
@@ -653,7 +653,7 @@ public class tela_Cliente extends javax.swing.JDialog {
     }
 
     public void preenche_item() {
-        String[] colunas = {"Codigo", "Cliente", "Rg", "Cpf", "Bairro", "Cidade", "Telefone", "Rua", "Nº.Casa"};
+        String[] colunas = {"CÓDIGO", "CLIENTE", "RG", "CPF", "BAIRRO", "CIDADE", "TELEFONE", "RUA", "Nº.CASA"};
 
         String[][] linhas = {};
 

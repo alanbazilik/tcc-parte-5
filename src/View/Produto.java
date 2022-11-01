@@ -73,8 +73,8 @@ public class Produto extends javax.swing.JDialog {
         tipos1 = new javax.swing.JLabel();
         tipos = new javax.swing.JLabel();
         quantidade = new javax.swing.JTextField();
-        tipo = new javax.swing.JComboBox<>();
-        marca = new javax.swing.JComboBox<>();
+        tipo = new javax.swing.JComboBox<String>();
+        marca = new javax.swing.JComboBox<String>();
         deletar = new javax.swing.JButton();
         alterar = new javax.swing.JButton();
         cadastrar2 = new javax.swing.JButton();
@@ -162,10 +162,10 @@ public class Produto extends javax.swing.JDialog {
         quantidade.setBounds(110, 100, 110, 20);
 
         getContentPane().add(tipo);
-        tipo.setBounds(70, 140, 150, 22);
+        tipo.setBounds(50, 140, 150, 20);
 
         getContentPane().add(marca);
-        marca.setBounds(70, 180, 150, 22);
+        marca.setBounds(50, 180, 150, 20);
 
         deletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar (1).png"))); // NOI18N
         deletar.setText("Excluir");
@@ -215,9 +215,9 @@ public class Produto extends javax.swing.JDialog {
             }
         });
         getContentPane().add(refesh);
-        refesh.setBounds(30, 460, 170, 39);
+        refesh.setBounds(30, 460, 170, 41);
         getContentPane().add(Produto);
-        Produto.setBounds(80, 70, 140, 22);
+        Produto.setBounds(80, 70, 140, 20);
 
         jButton1.setText("+");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -226,7 +226,7 @@ public class Produto extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(190, 160, 23, 20);
+        jButton1.setBounds(160, 160, 41, 20);
 
         jButton2.setText("+");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -235,7 +235,7 @@ public class Produto extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(190, 120, 23, 20);
+        jButton2.setBounds(160, 120, 41, 20);
 
         produtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -513,7 +513,7 @@ public class Produto extends javax.swing.JDialog {
     }
 
     public void preenche_item() {
-        String[] colunas = {"Codigo de barras", "Produto", "quantidade", "tipo", "marca"};
+        String[] colunas = {"CÓDIGO", "PRODUTO", "QUANTIDADE", "TIPO", "MARCA","QUANT M"};
 
         String[][] linhas = {};
 
@@ -534,6 +534,7 @@ public class Produto extends javax.swing.JDialog {
                 regVetor.add(rsfunc.getInt("quantidade"));
                 regVetor.add(rsfunc.getString("tipo"));
                 regVetor.add(rsfunc.getString("marca_produto"));
+                //regVetor.add(rsfunc.getString());
                 
                 
 
