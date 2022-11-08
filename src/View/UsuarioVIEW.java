@@ -114,8 +114,8 @@ public class UsuarioVIEW extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-      UsuarioCTR objusu = new UsuarioCTR();
-      
+      this.dispose();
+        UsuarioCTR objusu = new UsuarioCTR();
       objusu.cadastrarUsuarioCTR(txtusuario.getText(),txtemail.getText(),txttelefone.getText(),
               txtsenha.getText());
             UsuarioLoginVIEW SEUFRAME= new UsuarioLoginVIEW(null,true);
@@ -127,6 +127,7 @@ SEUFRAME.setVisible(false);
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+         this.dispose();
             UsuarioLoginVIEW SEUFRAME= new UsuarioLoginVIEW(null,true);
 SEUFRAME.setVisible(true);
 setDefaultCloseOperation(SEUFRAME.HIDE_ON_CLOSE);

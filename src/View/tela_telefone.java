@@ -47,9 +47,9 @@ public class tela_telefone extends javax.swing.JDialog {
             setResizable(false);
         setFocusable(true);
          setLocationRelativeTo(null);
-        pesquisartel();
         carregatelefonecmb();
         desativarBotoes();
+        pesquisartel();
         utilitarios u = new utilitarios();
     u.inserirIcone(this);
     }
@@ -237,7 +237,7 @@ public class tela_telefone extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(200, 80, 41, 20);
+        jButton1.setBounds(180, 80, 41, 20);
 
         setSize(new java.awt.Dimension(816, 639));
         setLocationRelativeTo(null);

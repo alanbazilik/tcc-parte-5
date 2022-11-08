@@ -111,7 +111,7 @@ public class ClienteDAO {
 
         String sql = "insert into Cliente"
                 + "(nome_cliente,rg,cpf,fk_bairro,fk_cidade,fk_codtelefone,fk_codrua,numerocasa)"
-                + " values (?,?,?,?,?,?,?,?)";
+                + " values (upper(?),?,?,?,?,?,?,?)";
 
         try {
             pgsql = con.prepareStatement(sql);

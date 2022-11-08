@@ -45,8 +45,8 @@ public class marca extends javax.swing.JDialog {
         this.setBounds(0, 0, d.width = 800, d.height  = 600);
         setResizable(false);
         setFocusable(true);
-       pesquisarMarca();
          desativarBotoes();
+         pesquisarMarca();
          utilitarios u = new utilitarios();
     u.inserirIcone(this);
     }

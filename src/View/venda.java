@@ -159,7 +159,6 @@ public class venda extends javax.swing.JDialog {
         getContentPane().add(jLabel6);
         jLabel6.setBounds(0, 200, 60, 30);
 
-        funcionario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         funcionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 funcionarioActionPerformed(evt);
@@ -168,7 +167,6 @@ public class venda extends javax.swing.JDialog {
         getContentPane().add(funcionario);
         funcionario.setBounds(0, 150, 120, 20);
 
-        clientes.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         clientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clientesActionPerformed(evt);
@@ -232,7 +230,6 @@ public class venda extends javax.swing.JDialog {
         getContentPane().add(jLabel7);
         jLabel7.setBounds(0, 130, 90, 14);
 
-        produto.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(produto);
         produto.setBounds(0, 190, 120, 20);
 

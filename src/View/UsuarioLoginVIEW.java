@@ -7,6 +7,7 @@ package View;
 
 import CTR.UsuarioCTR;
 import Sistemas_login.utilitarios;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -106,7 +107,7 @@ public class UsuarioLoginVIEW extends javax.swing.JDialog {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-
+         this.dispose();
         UsuarioVIEW SEUFRAME = new UsuarioVIEW(null,true);
         SEUFRAME.setVisible(true);
          setDefaultCloseOperation(SEUFRAME.HIDE_ON_CLOSE);
@@ -126,10 +127,12 @@ SEUFRAME.setVisible(false);
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        tela_recuperar_senha senhas = new tela_recuperar_senha(null,true);
-        senhas.setVisible(true);
-      setDefaultCloseOperation(senhas.HIDE_ON_CLOSE);
-senhas.setVisible(false);
+         
+          JOptionPane.showMessageDialog(null,"Está em Desenvolvimento");
+        //tela_recuperar_senha senhas = new tela_recuperar_senha(null,true);
+        //senhas.setVisible(true);
+     // setDefaultCloseOperation(senhas.HIDE_ON_CLOSE);
+//senhas.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

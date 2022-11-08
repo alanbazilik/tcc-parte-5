@@ -84,4 +84,19 @@ public class ProdutoModel {
     private int quantidade;
     private int fk_tipo;
     private int fk_marca;
+    private int quant_m;
+
+    /**
+     * @return the quant_m
+     */
+    public int getQuant_m() {
+        return quant_m;
+    }
+
+    /**
+     * @param quant_m the quant_m to set
+     */
+    public void setQuant_m(int quant_m) {
+        this.quant_m = quant_m;
+    }
 }

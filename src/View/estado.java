@@ -48,6 +48,7 @@ public class estado extends javax.swing.JDialog{
          setResizable(false);
         setFocusable(true);
          setLocationRelativeTo(null);
+         pesquisarestado();
     }
 
     /**

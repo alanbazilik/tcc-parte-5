@@ -79,7 +79,6 @@ public class ProdutoDAO {
             pgsql.setInt(2, gs.getQuantidade());
             pgsql.setInt(3, gs.getFk_tipo());
             pgsql.setInt(4, gs.getFk_marca());
-
             pgsql.executeUpdate();
             JOptionPane.showMessageDialog(null, "Produto foi  Cadastrado com Sucesso");
 

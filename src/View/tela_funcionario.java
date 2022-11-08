@@ -60,6 +60,7 @@ public class tela_funcionario extends javax.swing.JDialog {
         setResizable(false);
         setFocusable(true);
          setLocationRelativeTo(null);
+         pesquisarfuncionaro();
         utilitarios u = new utilitarios();
         u.inserirIcone(this);
     }

@@ -54,6 +54,7 @@ public class cidade extends javax.swing.JDialog {
          setResizable(false);
         setFocusable(true);
          setLocationRelativeTo(null);
+         pesquisartel();
     }
 
     /**

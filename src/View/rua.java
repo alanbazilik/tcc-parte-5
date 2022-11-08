@@ -35,8 +35,7 @@ public class rua extends javax.swing.JDialog {
     RuaModel objestado = new RuaModel();
     public rua(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        initComponents();
-         pesquisarrua();       
+        initComponents();      
          desativarBotoes();
                      Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension d = tk.getScreenSize();
@@ -45,6 +44,7 @@ public class rua extends javax.swing.JDialog {
            setResizable(false);
         setFocusable(true);
          setLocationRelativeTo(null);
+         pesquisarrua(); 
          utilitarios u = new utilitarios();
     u.inserirIcone(this);
     }

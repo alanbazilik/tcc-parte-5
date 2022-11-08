@@ -41,9 +41,9 @@ public class Bairros extends javax.swing.JDialog {
         this.setBounds(0, 0, d.width = 800, d.height  = 600);
        setResizable(false);
         setFocusable(true);
-         setLocationRelativeTo(null);
-        pesquisarbairro();
+         setLocationRelativeTo(null); 
         desativarBotoes();
+        pesquisarbairro();
         utilitarios u = new utilitarios();
         u.inserirIcone(this);
     }

@@ -53,10 +53,11 @@ public class tela_Cliente extends javax.swing.JDialog {
                 Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension d = tk.getScreenSize();
         
-        this.setBounds(0, 0, d.width = 836, d.height  = 634);
+        this.setBounds(0, 0, d.width = 1200, d.height  = 700);
           setResizable(false);
         setFocusable(true);
          setLocationRelativeTo(null);
+         pesquisarfuncionaro();
         utilitarios u = new utilitarios();
         u.inserirIcone(this);
     }
@@ -114,25 +115,25 @@ public class tela_Cliente extends javax.swing.JDialog {
         });
         getContentPane().setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Cliente:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 60, 50, 14);
+        jLabel2.setBounds(0, 60, 50, 16);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Rg:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(0, 90, 30, 14);
+        jLabel3.setBounds(0, 100, 30, 16);
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setText("Cpf:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 130, 40, 14);
+        jLabel4.setBounds(0, 140, 40, 16);
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel5.setText("Bairro:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(0, 170, 60, 10);
+        jLabel5.setBounds(0, 190, 60, 10);
 
         funcionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,41 +141,41 @@ public class tela_Cliente extends javax.swing.JDialog {
             }
         });
         getContentPane().add(funcionario);
-        funcionario.setBounds(0, 70, 130, 20);
+        funcionario.setBounds(0, 80, 140, 20);
 
         getContentPane().add(rua);
-        rua.setBounds(0, 270, 140, 20);
+        rua.setBounds(0, 310, 140, 20);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel6.setText("Cidade:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(0, 210, 70, 10);
+        jLabel6.setBounds(0, 240, 70, 10);
 
         getContentPane().add(bairro);
-        bairro.setBounds(0, 190, 140, 20);
+        bairro.setBounds(0, 210, 140, 20);
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setText("Telefone:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(0, 290, 70, 10);
+        jLabel7.setBounds(0, 340, 70, 10);
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setText("Rua:");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(0, 250, 40, 10);
+        jLabel8.setBounds(0, 290, 40, 10);
 
         getContentPane().add(cidade);
-        cidade.setBounds(0, 230, 140, 20);
+        cidade.setBounds(0, 260, 140, 20);
 
         getContentPane().add(telefone);
-        telefone.setBounds(0, 310, 140, 20);
+        telefone.setBounds(0, 360, 140, 20);
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel9.setText("Nº.casa:");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(0, 330, 60, 10);
+        jLabel9.setBounds(0, 390, 60, 10);
         getContentPane().add(casa);
-        casa.setBounds(0, 350, 100, 20);
+        casa.setBounds(0, 410, 140, 20);
 
         funcionariotable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -200,7 +201,7 @@ public class tela_Cliente extends javax.swing.JDialog {
         jScrollPane1.setViewportView(funcionariotable);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(170, 60, 650, 540);
+        jScrollPane1.setBounds(170, 60, 1020, 630);
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 255));
 
@@ -221,9 +222,9 @@ public class tela_Cliente extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(315, Short.MAX_VALUE)
+                .addGap(333, 333, 333)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(134, 134, 134)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 476, Short.MAX_VALUE)
                 .addComponent(tela_princial)
                 .addGap(43, 43, 43))
         );
@@ -237,7 +238,7 @@ public class tela_Cliente extends javax.swing.JDialog {
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 840, 59);
+        jPanel1.setBounds(0, 0, 1200, 59);
 
         cadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/addition.png"))); // NOI18N
         cadastrar.setText("Novo");
@@ -247,7 +248,7 @@ public class tela_Cliente extends javax.swing.JDialog {
             }
         });
         getContentPane().add(cadastrar);
-        cadastrar.setBounds(0, 380, 160, 40);
+        cadastrar.setBounds(0, 450, 160, 40);
 
         salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salvar.png"))); // NOI18N
         salvar.setText("Salvar");
@@ -257,7 +258,7 @@ public class tela_Cliente extends javax.swing.JDialog {
             }
         });
         getContentPane().add(salvar);
-        salvar.setBounds(0, 420, 160, 40);
+        salvar.setBounds(0, 490, 160, 40);
 
         deletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar (1).png"))); // NOI18N
         deletar.setText("Excluir");
@@ -267,7 +268,7 @@ public class tela_Cliente extends javax.swing.JDialog {
             }
         });
         getContentPane().add(deletar);
-        deletar.setBounds(0, 500, 160, 40);
+        deletar.setBounds(0, 570, 160, 40);
 
         alterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/alterar (1).png"))); // NOI18N
         alterar.setText("Alterar");
@@ -277,7 +278,7 @@ public class tela_Cliente extends javax.swing.JDialog {
             }
         });
         getContentPane().add(alterar);
-        alterar.setBounds(0, 460, 160, 40);
+        alterar.setBounds(0, 530, 160, 40);
 
         atualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/atualizar.png"))); // NOI18N
         atualizar.setText("Atualizar dados");
@@ -287,7 +288,7 @@ public class tela_Cliente extends javax.swing.JDialog {
             }
         });
         getContentPane().add(atualizar);
-        atualizar.setBounds(0, 540, 160, 50);
+        atualizar.setBounds(0, 610, 160, 50);
 
         try {
             rg.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###-##")));
@@ -295,7 +296,7 @@ public class tela_Cliente extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         getContentPane().add(rg);
-        rg.setBounds(0, 110, 110, 20);
+        rg.setBounds(0, 120, 140, 20);
 
         try {
             cpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -303,7 +304,7 @@ public class tela_Cliente extends javax.swing.JDialog {
             ex.printStackTrace();
         }
         getContentPane().add(cpf);
-        cpf.setBounds(0, 150, 110, 20);
+        cpf.setBounds(0, 160, 140, 20);
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         jButton1.setText("+");
@@ -313,7 +314,7 @@ public class tela_Cliente extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(100, 170, 40, 20);
+        jButton1.setBounds(100, 190, 40, 20);
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         jButton2.setText("+");
@@ -323,7 +324,7 @@ public class tela_Cliente extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(100, 210, 40, 20);
+        jButton2.setBounds(100, 240, 40, 20);
 
         jButton3.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         jButton3.setText("+");
@@ -333,7 +334,7 @@ public class tela_Cliente extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(100, 250, 40, 20);
+        jButton3.setBounds(100, 290, 40, 20);
 
         jButton4.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         jButton4.setText("+");
@@ -343,9 +344,9 @@ public class tela_Cliente extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jButton4);
-        jButton4.setBounds(100, 290, 40, 20);
+        jButton4.setBounds(100, 340, 40, 20);
 
-        setSize(new java.awt.Dimension(852, 642));
+        setSize(new java.awt.Dimension(1216, 739));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

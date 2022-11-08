@@ -44,8 +44,8 @@ public class tipo extends javax.swing.JDialog {
       setResizable(false);
         setFocusable(true);
          setLocationRelativeTo(null);
-        pesquisarMarca();      
         desativarBotoes();
+        pesquisarMarca();
         utilitarios u = new utilitarios();
     u.inserirIcone(this);
     }

@@ -42,8 +42,8 @@ public class tela_tipotelefone extends javax.swing.JDialog {
               setResizable(false);
         setFocusable(true);
          setLocationRelativeTo(null);
-        pesquisartel();
         desativarBotoes();
+        pesquisartel();
         utilitarios u = new utilitarios();
     u.inserirIcone(this);
     }
